@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Juros Compostos com Aportes Mensais</title>
+<meta name="description" content="Calcule quanto seu dinheiro pode render com juros compostos e aportes mensais. Veja o montante final, o total investido e os juros ganhos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">calcula<span>.</span>fin</a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Calculadora de Juros Compostos</h1>
+  <p class="subtitle">Simule o crescimento de um investimento com aportes mensais e taxa de juros fixa.</p>
+
+  <div class="calc-layout">
+
+    <div class="tape" id="calcTape">
+      <label for="valorInicial">Valor inicial (R$)</label>
+      <input type="number" id="valorInicial" value="1000" inputmode="decimal">
+
+      <label for="aporteMensal">Aporte mensal (R$)</label>
+      <input type="number" id="aporteMensal" value="200" inputmode="decimal">
+
+      <label for="taxaMensal">Taxa de juros mensal (%)</label>
+      <input type="number" id="taxaMensal" value="1" step="0.01" inputmode="decimal">
+
+      <label for="periodoMeses">Período (meses)</label>
+      <input type="number" id="periodoMeses" value="60" inputmode="numeric">
+
+      <div class="tape-row">
+        <span>Total investido</span>
+        <span id="resTotalInvestido">R$ 0,00</span>
+      </div>
+      <div class="tape-row">
+        <span>Total em juros</span>
+        <span id="resTotalJuros">R$ 0,00</span>
+      </div>
+      <div class="tape-total">
+        <span><span class="stamp-mark">TOTAL</span>Montante final</span>
+        <span id="resMontante">R$ 0,00</span>
+      </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Como funciona o cálculo</h2>
+      <p>
+        Juros compostos são os juros que incidem também sobre os juros acumulados em períodos
+        anteriores — por isso o crescimento acelera com o tempo. Quando há aportes mensais,
+        cada novo depósito também passa a render juros a partir do mês seguinte.
+      </p>
+      <p>A fórmula usada é:</p>
+      <p><code>M = P × (1 + i)ⁿ + A × [((1 + i)ⁿ − 1) / i]</code></p>
+      <p>Onde:</p>
+      <p>
+        <code>M</code> é o montante final, <code>P</code> é o valor inicial investido,
+        <code>i</code> é a taxa de juros por período (em decimal), <code>n</code> é o número
+        de períodos e <code>A</code> é o valor do aporte feito em cada período.
+      </p>
+      <h2>Sobre a taxa de juros</h2>
+      <p>
+        Se você só tem a taxa anual (por exemplo, a de um CDB ou do Tesouro Direto), converta
+        para a taxa mensal equivalente antes de usar esta calculadora: <code>i_mensal = (1 + i_anual)^(1/12) − 1</code>.
+        Simplesmente dividir a taxa anual por 12 dá um valor aproximado, mas não exatamente equivalente.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo. Rentabilidades reais de investimentos podem envolver impostos, taxas e variações não consideradas aqui.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/calc-juros-compostos.js"></script>
+</body>
+</html>

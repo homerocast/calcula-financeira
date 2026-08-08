@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadoras Financeiras — simule juros, financiamentos e mais</title>
+<meta name="description" content="Calculadoras financeiras gratuitas: juros compostos, financiamento Price e SAC, rescisão trabalhista, 13º salário e mais. Resultado imediato, sem cadastro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">calcula<span>.</span>fin</div>
+    <nav class="site">
+      <a href="#calculadoras">Calculadoras</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:grid; gap:36px; grid-template-columns:1.1fr 0.9fr;">
+    <div>
+      <h1>Números claros para decisões financeiras.</h1>
+      <p class="lead">Calculadoras gratuitas e sem enrolação: digite os valores e veja o resultado na hora, como numa fita de calculadora.</p>
+    </div>
+
+    <div class="tape" id="heroTape">
+      <label for="heroValor">Valor inicial (R$)</label>
+      <input type="number" id="heroValor" value="1000" inputmode="decimal">
+
+      <label for="heroTaxa">Taxa mensal (%)</label>
+      <input type="number" id="heroTaxa" value="1" step="0.1" inputmode="decimal">
+
+      <label for="heroMeses">Período (meses)</label>
+      <input type="number" id="heroMeses" value="12" inputmode="numeric">
+
+      <div class="tape-total">
+        <span><span class="stamp-mark">TOTAL</span>Montante final</span>
+        <span id="heroResultado">R$ 0,00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap" id="calculadoras">
+
+  <div class="category-label">Juros e investimentos</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="calculadoras/juros-compostos.html">
+      <h3>Juros compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="#" aria-disabled="true">
+      <h3>CDB vs Tesouro vs Poupança <em>(em breve)</em></h3>
+      <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
+    </a>
+  </div>
+
+  <div class="category-label">Financiamento</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="#" aria-disabled="true">
+      <h3>Tabela Price vs SAC <em>(em breve)</em></h3>
+      <p>Compare as parcelas e o total pago em cada sistema de amortização.</p>
+    </a>
+  </div>
+
+  <div class="category-label">Trabalhista</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="#" aria-disabled="true">
+      <h3>Rescisão trabalhista <em>(em breve)</em></h3>
+      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    </a>
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p id="sobre">As calculadoras deste site têm caráter educativo e não substituem orientação financeira ou contábil profissional.</p>
+  </div>
+</footer>
+
+<script>
+function formatarBRL(v) {
+  return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+function atualizarHero() {
+  const valor = parseFloat(document.getElementById('heroValor').value) || 0;
+  const taxa = (parseFloat(document.getElementById('heroTaxa').value) || 0) / 100;
+  const meses = parseInt(document.getElementById('heroMeses').value) || 0;
+  const montante = valor * Math.pow(1 + taxa, meses);
+  document.getElementById('heroResultado').textContent = formatarBRL(montante);
+}
+['heroValor', 'heroTaxa', 'heroMeses'].forEach(id => {
+  document.getElementById(id).addEventListener('input', atualizarHero);
+});
+atualizarHero();
+</script>
+
+</body>
+</html>

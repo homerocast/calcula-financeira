@@ -1,0 +1,270 @@
+/* ===========================================================
+   Design tokens
+   Conceito: livro-razão / fita de calculadora mecânica.
+   Os resultados sempre aparecem como uma "fita" impressa —
+   é o elemento de assinatura visual do site.
+=========================================================== */
+:root {
+  --ink: #16332B;         /* verde-tinta escuro — texto e títulos */
+  --ink-soft: #47564D;    /* texto secundário */
+  --paper: #EFECDE;       /* papel */
+  --paper-raised: #FBFAF3;/* papel da "fita" de resultado */
+  --line: #C7BFA6;        /* linhas de régua do razão */
+  --stamp: #B23A2E;       /* vermelho-carimbo — destaque/CTA */
+  --brass: #B4872B;       /* latão/moeda — destaque secundário */
+  --radius: 3px;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 35px,
+      rgba(22, 51, 43, 0.055) 36px
+    ),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+a { color: var(--ink); }
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Header ---------- */
+header.site {
+  padding: 28px 0 18px;
+  border-bottom: 2px solid var(--ink);
+}
+header.site .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.brand span { color: var(--stamp); }
+nav.site a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-left: 18px;
+}
+nav.site a:hover { color: var(--stamp); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 56px 0 40px;
+  display: grid;
+  gap: 36px;
+}
+@media (min-width: 760px) {
+  .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  line-height: 1.12;
+  margin: 0 0 16px;
+}
+.hero p.lead {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+/* ---------- Fita de calculadora (elemento de assinatura) ---------- */
+.tape {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(22, 51, 43, 0.12);
+  padding: 18px 20px;
+  font-family: var(--font-mono);
+}
+.tape .tape-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.92rem;
+}
+.tape .tape-row:last-of-type { border-bottom: none; }
+.tape .tape-total {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 2px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.tape .tape-total .stamp-mark {
+  background: var(--stamp);
+  color: var(--paper-raised);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 7px;
+  border-radius: var(--radius);
+  transform: rotate(-3deg);
+  display: inline-block;
+  margin-right: 8px;
+}
+.tape label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.tape input[type="text"],
+.tape input[type="number"] {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.tape input:focus {
+  outline: 2px solid var(--brass);
+  outline-offset: 1px;
+}
+
+/* ---------- Categorias (divisórias tipo aba de fichário) ---------- */
+.category-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--brass);
+  padding-left: 8px;
+  margin: 40px 0 14px;
+}
+
+/* ---------- Grade de calculadoras ---------- */
+.calc-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .calc-grid { grid-template-columns: 1fr 1fr; }
+}
+.calc-card {
+  display: block;
+  text-decoration: none;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.calc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 51, 43, 0.14);
+}
+.calc-card h3 {
+  font-family: var(--font-display);
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+  color: var(--ink);
+}
+.calc-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Artigo / conteúdo explicativo (SEO) ---------- */
+.calc-page main {
+  padding: 40px 0 60px;
+}
+.calc-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  margin-bottom: 6px;
+}
+.calc-page .subtitle {
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+.calc-layout {
+  display: grid;
+  gap: 32px;
+}
+@media (min-width: 760px) {
+  .calc-layout { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+article.explainer h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-top: 32px;
+}
+article.explainer p { color: var(--ink-soft); }
+article.explainer code {
+  font-family: var(--font-mono);
+  background: rgba(22, 51, 43, 0.08);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.btn-stamp {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper-raised);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.btn-stamp:hover { background: var(--stamp); }
+
+/* ---------- Footer ---------- */
+footer.site {
+  border-top: 2px solid var(--ink);
+  padding: 24px 0 40px;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+footer.site a { color: var(--ink-soft); }
+
+/* ---------- Acessibilidade ---------- */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .calc-card { transition: none; }
+}
