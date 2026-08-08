@@ -251,6 +251,33 @@ article.explainer code {
 }
 .btn-stamp:hover { background: var(--stamp); }
 
+/* ---------- Aviso de cookies ---------- */
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--ink);
+  color: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.cookie-banner a { color: var(--brass); }
+.cookie-banner .btn-stamp {
+  margin-left: auto;
+  background: var(--stamp);
+}
+.cookie-banner .btn-stamp:hover { background: var(--brass); }
+
 /* ---------- Footer ---------- */
 footer.site {
   border-top: 2px solid var(--ink);
