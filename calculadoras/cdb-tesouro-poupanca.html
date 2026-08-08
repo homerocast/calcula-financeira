@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDB vs Tesouro Selic vs Poupança — Comparador de Rentabilidade Líquida</title>
+<meta name="description" content="Compare o rendimento líquido de Imposto de Renda entre CDB, Tesouro Selic e Poupança para o mesmo valor e prazo de investimento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">calcula<span>.</span>fin</a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>CDB vs Tesouro Selic vs Poupança</h1>
+  <p class="subtitle">Compare o rendimento líquido de IR entre as três aplicações mais comuns de renda fixa conservadora.</p>
+
+  <div class="calc-layout">
+
+    <div>
+      <div class="tape" id="calcTape">
+        <label for="valor">Valor a investir (R$)</label>
+        <input type="number" id="valor" value="10000" inputmode="decimal">
+
+        <label for="prazoDias">Prazo (dias)</label>
+        <input type="number" id="prazoDias" value="365" inputmode="numeric">
+
+        <label for="taxaCDI">Taxa CDI anual atual (%)</label>
+        <input type="number" id="taxaCDI" value="10.75" step="0.01" inputmode="decimal">
+
+        <label for="percentualCDB">CDB oferece quanto do CDI (%)</label>
+        <input type="number" id="percentualCDB" value="100" step="1" inputmode="decimal">
+
+        <label for="taxaSelic">Taxa Selic anual atual (%)</label>
+        <input type="number" id="taxaSelic" value="10.75" step="0.01" inputmode="decimal">
+
+        <label for="taxaCustodia">Taxa de custódia B3 do Tesouro Direto (% a.a.)</label>
+        <input type="number" id="taxaCustodia" value="0.20" step="0.01" inputmode="decimal">
+      </div>
+
+      <div style="height:16px;"></div>
+
+      <div class="tape" style="font-size:0.9rem;">
+        <div class="tape-row" style="border-bottom:2px solid var(--ink); font-weight:600; font-family:var(--font-body);">
+          <span>Aplicação</span><span>Líquido de IR</span>
+        </div>
+        <div class="tape-row"><span>CDB</span><span id="resCDB">—</span></div>
+        <div class="tape-row"><span>Tesouro Selic</span><span id="resTesouro">—</span></div>
+        <div class="tape-row"><span>Poupança</span><span id="resPoupanca">—</span></div>
+        <div class="tape-total">
+          <span><span class="stamp-mark">MELHOR</span>Opção mais rentável</span>
+          <span id="resMelhor">—</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Como cada aplicação é tributada</h2>
+      <p>
+        <strong>CDB e Tesouro Selic</strong> seguem a tabela regressiva do Imposto de Renda sobre
+        renda fixa: <code>22,5%</code> até 180 dias, <code>20%</code> de 181 a 360 dias,
+        <code>17,5%</code> de 361 a 720 dias e <code>15%</code> acima de 720 dias. Quanto mais
+        tempo o dinheiro fica aplicado, menor a alíquota.
+      </p>
+      <p>
+        O Tesouro Selic ainda desconta a <strong>taxa de custódia da B3</strong> (atualmente 0,20%
+        ao ano na maioria das corretoras, cobrada só acima de R$ 10 mil investidos no título).
+      </p>
+      <p>
+        <strong>A poupança é isenta de Imposto de Renda</strong>, mas sua regra de rendimento
+        muda conforme a Selic:
+      </p>
+      <p><code>Se Selic &gt; 8,5% a.a.: rende 0,5% ao mês + TR</code></p>
+      <p><code>Se Selic ≤ 8,5% a.a.: rende 70% da Selic ao mês + TR</code></p>
+      <p>
+        Nesta calculadora, a TR (Taxa Referencial) é considerada zero, valor próximo da realidade
+        nos últimos anos.
+      </p>
+      <h2>Por que o CDB costuma vencer</h2>
+      <p>
+        Com Selic acima de 8,5% a.a. (cenário mais comum), a poupança trava em 0,5% ao mês — cerca
+        de 6,17% ao ano — independente de quanto a Selic subir. Um CDB de 100% do CDI, mesmo pagando
+        Imposto de Renda, costuma superar a poupança em prazos de médio a longo prazo.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo, com taxas de CDI e Selic informadas manualmente (atualize com os valores vigentes). Não considera IOF para resgates abaixo de 30 dias nem garante rentabilidade futura.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/calc-cdb-tesouro-poupanca.js"></script>
+</body>
+</html>
