@@ -30,7 +30,7 @@
 }
 </script>
 </head>
-<body>
+<body class="page-navy">
 
 <header class="site">
   <div class="wrap">
@@ -53,28 +53,6 @@
         <span class="badge">100% gratuito</span>
         <span class="badge">Sem cadastro</span>
         <span class="badge">Cálculo no seu navegador</span>
-      </div>
-    </div>
-
-    <div class="tape" id="heroTape">
-      <div class="input-grid">
-        <div class="field">
-          <label for="heroValor">Valor inicial (R$)</label>
-          <input type="number" id="heroValor" value="1000" inputmode="decimal">
-        </div>
-        <div class="field">
-          <label for="heroTaxa">Taxa mensal (%)</label>
-          <input type="number" id="heroTaxa" value="1" step="0.1" inputmode="decimal">
-        </div>
-        <div class="field">
-          <label for="heroMeses">Período (meses)</label>
-          <input type="number" id="heroMeses" value="12" inputmode="numeric">
-        </div>
-      </div>
-
-      <div class="tape-total">
-        <span><span class="stamp-mark">TOTAL</span>Montante final</span>
-        <span id="heroResultado">R$ 0,00</span>
       </div>
     </div>
   </div>
@@ -150,23 +128,6 @@
     <p id="sobre">As calculadoras deste site têm caráter educativo e não substituem orientação financeira ou contábil profissional. <a href="privacidade.html">Política de Privacidade</a>.</p>
   </div>
 </footer>
-
-<script>
-function formatarBRL(v) {
-  return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-function atualizarHero() {
-  const valor = parseFloat(document.getElementById('heroValor').value) || 0;
-  const taxa = (parseFloat(document.getElementById('heroTaxa').value) || 0) / 100;
-  const meses = parseInt(document.getElementById('heroMeses').value) || 0;
-  const montante = valor * Math.pow(1 + taxa, meses);
-  document.getElementById('heroResultado').textContent = formatarBRL(montante);
-}
-['heroValor', 'heroTaxa', 'heroMeses'].forEach(id => {
-  document.getElementById(id).addEventListener('input', atualizarHero);
-});
-atualizarHero();
-</script>
 
 <script src="assets/js/analytics.js"></script>
 <script src="assets/js/cookie-consent.js"></script>

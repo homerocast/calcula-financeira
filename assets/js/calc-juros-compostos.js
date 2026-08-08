@@ -59,6 +59,8 @@ function desenharGrafico(serie, n) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
@@ -81,6 +83,33 @@ function desenharGrafico(serie, n) {
       }
     }
   });
+}
+
+function popularTabelaAnual(P, A, i, n) {
+  const corpo = document.getElementById('corpoTabelaAnual');
+  if (!corpo) return;
+  corpo.innerHTML = '';
+
+  const totalAnos = Math.ceil(n / 12);
+  let investidoAnterior = P, jurosAnterior = 0;
+
+  for (let ano = 1; ano <= totalAnos; ano++) {
+    const mesFim = Math.min(ano * 12, n);
+    const serieAteAqui = gerarSerieMensal(P, A, i, mesFim);
+    const investidoAtual = serieAteAqui.investido[serieAteAqui.investido.length - 1];
+    const jurosAtual = serieAteAqui.juros[serieAteAqui.juros.length - 1];
+    const saldoAcumulado = investidoAtual + jurosAtual;
+
+    const investidoPeriodo = investidoAtual - investidoAnterior;
+    const jurosPeriodo = jurosAtual - jurosAnterior;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${ano}</td><td>${formatarBRL(investidoPeriodo)}</td><td>${formatarBRL(jurosPeriodo)}</td><td>${formatarBRL(saldoAcumulado)}</td>`;
+    corpo.appendChild(tr);
+
+    investidoAnterior = investidoAtual;
+    jurosAnterior = jurosAtual;
+  }
 }
 
 function calcularJurosCompostos() {
@@ -114,6 +143,7 @@ function calcularJurosCompostos() {
   if (n > 0) {
     const serie = gerarSerieMensal(P, A, i, n);
     desenharGrafico(serie, n);
+    popularTabelaAnual(P, A, i, n);
   }
 }
 

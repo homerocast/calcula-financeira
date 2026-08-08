@@ -35,80 +35,89 @@
   <h1>Calculadora de Juros Compostos</h1>
   <p class="subtitle">Simule o crescimento de um investimento com aportes mensais e taxa de juros fixa.</p>
 
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="valorInicial">Valor inicial (R$)</label>
+        <input type="number" id="valorInicial" value="1000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="aporteMensal">Aporte mensal (R$)</label>
+        <input type="number" id="aporteMensal" value="200" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="taxaMensal">Taxa de juros mensal (%)</label>
+        <input type="number" id="taxaMensal" value="1" step="0.01" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="periodoMeses">Período (meses)</label>
+        <input type="number" id="periodoMeses" value="60" inputmode="numeric">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div class="stat-grid" style="max-width:640px; margin:0 auto 24px;">
+    <div class="stat-card">
+      <div class="stat-label">Total investido</div>
+      <div class="stat-value" id="resTotalInvestido">R$ 0,00</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total em juros</div>
+      <div class="stat-value" id="resTotalJuros">R$ 0,00</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">Montante final</div>
+      <div class="stat-value" id="resMontante">R$ 0,00</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="max-width:900px; margin:0 auto;">
+    <h4 style="text-align:center; font-size:0.9rem;">Evolução do investimento</h4>
+    <div class="chart-legend" style="justify-content:center; margin-top:0; margin-bottom:14px;">
+      <span><span class="dot" style="background:#C9963E;"></span>Valor investido</span>
+      <span><span class="dot" style="background:#2F7A56;"></span>Juros acumulados</span>
+    </div>
+    <canvas id="graficoJuros" height="110"></canvas>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="stat-grid" style="max-width:900px; margin:0 auto 32px; grid-template-columns:repeat(3, 1fr);">
+    <div class="stat-card">
+      <div class="stat-label">Investido</div>
+      <div class="stat-value" id="statInvestidoPct">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Em juros</div>
+      <div class="stat-value" id="statJurosPct">—</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">Multiplicou</div>
+      <div class="stat-value" id="statFator">—</div>
+    </div>
+  </div>
+
+  <div class="data-table-wrap" style="max-width:900px; margin:0 auto;">
+    <table class="data-table" id="tabelaAnual">
+      <thead>
+        <tr>
+          <th>Ano</th>
+          <th>Investido no período</th>
+          <th>Juros no período</th>
+          <th>Saldo acumulado</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabelaAnual"></tbody>
+    </table>
+  </div>
+
+  <div style="height:40px;"></div>
+
   <div class="calc-layout">
-
-    <div>
-    <div class="tape" id="calcTape">
-      <div class="input-grid">
-        <div class="field">
-          <label for="valorInicial">Valor inicial (R$)</label>
-          <input type="number" id="valorInicial" value="1000" inputmode="decimal">
-        </div>
-        <div class="field">
-          <label for="aporteMensal">Aporte mensal (R$)</label>
-          <input type="number" id="aporteMensal" value="200" inputmode="decimal">
-        </div>
-        <div class="field">
-          <label for="taxaMensal">Taxa de juros mensal (%)</label>
-          <input type="number" id="taxaMensal" value="1" step="0.01" inputmode="decimal">
-        </div>
-        <div class="field">
-          <label for="periodoMeses">Período (meses)</label>
-          <input type="number" id="periodoMeses" value="60" inputmode="numeric">
-        </div>
-      </div>
-
-      <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="category-label" style="margin-top:0;">Resultados</div>
-    <div class="tape">
-      <div class="tape-row">
-        <span>Total investido</span>
-        <span id="resTotalInvestido">R$ 0,00</span>
-      </div>
-      <div class="tape-row">
-        <span>Total em juros</span>
-        <span id="resTotalJuros">R$ 0,00</span>
-      </div>
-      <div class="tape-total">
-        <span><span class="stamp-mark">TOTAL</span>Montante final</span>
-        <span id="resMontante">R$ 0,00</span>
-      </div>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="chart-card">
-      <h4>Evolução do investimento</h4>
-      <canvas id="graficoJuros" height="220"></canvas>
-      <div class="chart-legend">
-        <span><span class="dot" style="background:#C9963E;"></span>Valor investido</span>
-        <span><span class="dot" style="background:#2F7A56;"></span>Juros acumulados</span>
-      </div>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-label">Investido</div>
-        <div class="stat-value" id="statInvestidoPct">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Em juros</div>
-        <div class="stat-value" id="statJurosPct">—</div>
-      </div>
-      <div class="stat-card destaque">
-        <div class="stat-label">Multiplicou</div>
-        <div class="stat-value" id="statFator">—</div>
-      </div>
-    </div>
-    </div>
-
-    <article class="explainer">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
       <h2>Como funciona o cálculo</h2>
       <p>
         Juros compostos são os juros que incidem também sobre os juros acumulados em períodos

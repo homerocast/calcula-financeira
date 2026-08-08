@@ -108,11 +108,19 @@ nav.site a:hover { color: var(--brass); }
 .badge::before { content: '●'; color: var(--green-gain); font-size: 0.55rem; }
 
 /* ---------- Hero (faixa navy) ---------- */
-.hero {
-  background: linear-gradient(160deg, var(--ink) 0%, #1B2D4F 100%);
+body.page-navy {
+  background: linear-gradient(180deg, var(--ink) 0%, #1B2D4F 45%, #1B2D4F 100%);
   color: var(--paper-raised);
+}
+body.page-navy footer.site {
+  border-top-color: rgba(244, 241, 233, 0.22);
+}
+body.page-navy footer.site p,
+body.page-navy footer.site a {
+  color: rgba(244, 241, 233, 0.65);
+}
+.hero {
   padding: 40px 0 44px;
-  margin-bottom: 40px;
 }
 .hero-top {
   padding: 8px 0 40px;
@@ -120,9 +128,9 @@ nav.site a:hover { color: var(--brass); }
   gap: 36px;
 }
 @media (min-width: 760px) {
-  .hero-top { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+  .hero-top { grid-template-columns: 1fr; max-width: 60ch; }
 }
-.hero .category-label {
+body.page-navy .category-label {
   color: var(--brass);
   border-left-color: var(--brass);
 }
