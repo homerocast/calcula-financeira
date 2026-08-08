@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Aposentadoria | Calcule Seu Dinheiro</title>
+<meta name="description" content="Simule quanto patrimônio você terá ao se aposentar e se ele sustenta seus gastos mensais indefinidamente ou por quantos anos ele dura.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/simulador-aposentadoria.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Simulador de Aposentadoria | Calcule Seu Dinheiro">
+<meta property="og:description" content="Simule quanto patrimônio você terá ao se aposentar e se ele sustenta seus gastos mensais indefinidamente ou por quantos anos ele dura.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/simulador-aposentadoria.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simulador de Aposentadoria | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Simule quanto patrimônio você terá ao se aposentar e se ele sustenta seus gastos mensais indefinidamente ou por quantos anos ele dura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Simulador de Aposentadoria</h1>
+  <p class="subtitle">Descubra quanto patrimônio você terá ao se aposentar e se ele sustenta seu padrão de vida.</p>
+
+  <div class="calc-layout">
+
+    <div>
+    <div class="tape" id="calcTape">
+      <label for="idadeAtual">Idade atual</label>
+      <input type="number" id="idadeAtual" value="35" inputmode="numeric">
+
+      <label for="idadeAposentadoria">Idade desejada para aposentar</label>
+      <input type="number" id="idadeAposentadoria" value="60" inputmode="numeric">
+
+      <label for="rendaMensal">Renda mensal atual (R$)</label>
+      <input type="number" id="rendaMensal" value="12000" inputmode="decimal">
+
+      <label for="percentualInvestido">% da renda investido por mês</label>
+      <input type="number" id="percentualInvestido" value="20" step="1" inputmode="decimal">
+
+      <label for="patrimonioAtual">Patrimônio já investido (R$)</label>
+      <input type="number" id="patrimonioAtual" value="80000" inputmode="decimal">
+
+      <label for="taxaRetorno">Taxa de retorno esperada (% ao ano)</label>
+      <input type="number" id="taxaRetorno" value="8" step="0.1" inputmode="decimal">
+
+      <label for="gastoMensal">Gasto mensal esperado na aposentadoria (R$)</label>
+      <input type="number" id="gastoMensal" value="10000" inputmode="decimal">
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Aporte mensal</div>
+        <div class="stat-value" id="statAporte">—</div>
+      </div>
+      <div class="stat-card destaque">
+        <div class="stat-label">Patrimônio ao aposentar</div>
+        <div class="stat-value" id="statPatrimonio">—</div>
+      </div>
+    </div>
+
+    <div class="tape">
+      <div class="tape-total">
+        <span><span class="stamp-mark" id="resultadoTag">STATUS</span><span id="resLabel">Situação na aposentadoria</span></span>
+        <span id="resValor">—</span>
+      </div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="chart-card">
+      <h4>Acumulação até a aposentadoria</h4>
+      <canvas id="graficoAposentadoria" height="220"></canvas>
+    </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Fase de acumulação</h2>
+      <p>
+        Enquanto você trabalha, o aporte mensal (a % da renda que você investe) cresce a juros
+        compostos até a idade de aposentadoria escolhida — mesma lógica da calculadora de juros
+        compostos.
+      </p>
+      <h2>Viver de renda (perpetuidade)</h2>
+      <p>
+        Se o rendimento mensal do patrimônio acumulado (patrimônio × taxa mensal) for maior ou
+        igual ao seu gasto mensal esperado, você pode viver apenas dos juros, sem consumir o
+        principal — na prática, uma "aposentadoria perpétua", que ainda deixa herança.
+      </p>
+      <h2>Quando o patrimônio se esgota</h2>
+      <p>
+        Se o gasto mensal for maior do que o rendimento gerado, parte do principal precisa ser
+        consumida todo mês. A calculadora projeta quantos anos o patrimônio dura nesse ritmo de
+        consumo, usando a fórmula de esgotamento de uma renda perpétua decrescente.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="reserva-emergencia.html">
+      <h3>Reserva de Emergência</h3>
+      <p>Descubra o tamanho ideal da reserva e quanto tempo falta para completá-la.</p>
+    </a>
+    <a class="calc-card" href="primeiro-milhao.html">
+      <h3>Primeiro Milhão</h3>
+      <p>Descubra quanto tempo falta (ou quanto investir) para chegar a R$ 1 milhão.</p>
+    </a>
+    <a class="calc-card" href="juros-compostos.html">
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="juros-simples.html">
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo, sem considerar inflação sobre os gastos futuros, Imposto de Renda ou benefícios do INSS. <a href="../privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="../assets/js/calc-aposentadoria.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

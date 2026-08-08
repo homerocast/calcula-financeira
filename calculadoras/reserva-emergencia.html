@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Reserva de Emergência | Calcule Seu Dinheiro</title>
+<meta name="description" content="Descubra qual o tamanho ideal da sua reserva de emergência e quanto tempo falta para completá-la, considerando o rendimento do que já está guardado.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/reserva-emergencia.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de Reserva de Emergência | Calcule Seu Dinheiro">
+<meta property="og:description" content="Descubra qual o tamanho ideal da sua reserva de emergência e quanto tempo falta para completá-la, considerando o rendimento do que já está guardado.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/reserva-emergencia.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de Reserva de Emergência | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Descubra qual o tamanho ideal da sua reserva de emergência e quanto tempo falta para completá-la, considerando o rendimento do que já está guardado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Calculadora de Reserva de Emergência</h1>
+  <p class="subtitle">Descubra o tamanho ideal da sua reserva e quanto tempo falta para completá-la.</p>
+
+  <div class="calc-layout">
+
+    <div>
+    <div class="tape" id="calcTape">
+      <label for="despesas">Despesas mensais essenciais (R$)</label>
+      <input type="number" id="despesas" value="4000" inputmode="decimal">
+
+      <label for="perfil">Seu perfil de renda</label>
+      <select id="perfil">
+        <option value="3">CLT estável, casa com 2 rendas — 3x as despesas</option>
+        <option value="6" selected>CLT único provedor ou renda parcialmente variável — 6x</option>
+        <option value="12">Autônomo, PJ ou renda muito variável — 12x</option>
+      </select>
+
+      <label for="jaGuardado">Valor já guardado para a reserva (R$)</label>
+      <input type="number" id="jaGuardado" value="5000" inputmode="decimal">
+
+      <label for="aporteMensal">Quanto consegue guardar por mês (R$)</label>
+      <input type="number" id="aporteMensal" value="800" inputmode="decimal">
+
+      <label for="rendimento">Rendimento mensal esperado (%)</label>
+      <input type="number" id="rendimento" value="0.9" step="0.01" inputmode="decimal">
+
+      <div class="tape-row">
+        <span>Reserva ideal</span>
+        <span id="resReservaIdeal">R$ 0,00</span>
+      </div>
+      <div class="tape-row">
+        <span>Falta guardar</span>
+        <span id="resFalta">R$ 0,00</span>
+      </div>
+      <div class="tape-total">
+        <span><span class="stamp-mark">PRAZO</span>Tempo até completar</span>
+        <span id="resPrazo">—</span>
+      </div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="chart-card">
+      <h4>Evolução até a meta</h4>
+      <canvas id="graficoReserva" height="220"></canvas>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="stat-grid" style="grid-template-columns:1fr;">
+      <div class="stat-card destaque">
+        <div class="stat-label">Progresso atual</div>
+        <div class="stat-value" id="statProgresso">—</div>
+      </div>
+    </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Quanto guardar</h2>
+      <p>
+        Não existe um número mágico universal — o multiplicador ideal depende de quão estável
+        e previsível é a sua renda. Quanto mais variável a renda (autônomos, comissionados) ou
+        mais pessoas dependem dela, maior deve ser a reserva.
+      </p>
+      <h2>Onde guardar</h2>
+      <p>
+        A reserva de emergência precisa de <strong>liquidez diária</strong> — poder ser resgatada
+        a qualquer momento sem perdas. Tesouro Selic e CDBs com liquidez diária de bancos
+        sólidos costumam ser as opções mais indicadas, superando a poupança em rentabilidade
+        sem abrir mão da segurança.
+      </p>
+      <h2>Como o prazo é calculado</h2>
+      <p>
+        A calculadora projeta o crescimento do valor já guardado somado aos aportes mensais,
+        rendendo à taxa informada, até atingir o valor da reserva ideal — o mesmo princípio dos
+        juros compostos com aportes.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="primeiro-milhao.html">
+      <h3>Primeiro Milhão</h3>
+      <p>Descubra quanto tempo falta (ou quanto investir) para chegar a R$ 1 milhão.</p>
+    </a>
+    <a class="calc-card" href="simulador-aposentadoria.html">
+      <h3>Simulador de Aposentadoria</h3>
+      <p>Planeje quanto investir para se aposentar com tranquilidade.</p>
+    </a>
+    <a class="calc-card" href="juros-compostos.html">
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="juros-simples.html">
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo. <a href="../privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="../assets/js/calc-reserva-emergencia.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

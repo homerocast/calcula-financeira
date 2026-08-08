@@ -51,35 +51,40 @@
 
       <div style="height:16px;"></div>
 
-      <div class="tape" style="font-size:0.92rem;">
-        <div class="tape-row" style="border-bottom:2px solid var(--ink); font-weight:600; font-family:var(--font-body);">
-          <span></span>
-          <span style="display:flex; gap:28px;"><span>SAC</span><span>PRICE</span></span>
-        </div>
-        <div class="tape-row">
-          <span>1ª parcela</span>
-          <span style="display:flex; gap:16px; min-width:210px; justify-content:flex-end;">
-            <span id="sacPrimeira">—</span><span id="pricePrimeira">—</span>
-          </span>
-        </div>
-        <div class="tape-row">
-          <span>Última parcela</span>
-          <span style="display:flex; gap:16px; min-width:210px; justify-content:flex-end;">
-            <span id="sacUltima">—</span><span id="priceUltima">—</span>
-          </span>
-        </div>
-        <div class="tape-row">
-          <span>Total de juros</span>
-          <span style="display:flex; gap:16px; min-width:210px; justify-content:flex-end;">
-            <span id="sacJuros">—</span><span id="priceJuros">—</span>
-          </span>
-        </div>
-        <div class="tape-total">
-          <span><span class="stamp-mark">TOTAL</span>Total pago</span>
-          <span style="display:flex; gap:16px; font-size:1rem;">
-            <span id="sacTotal">—</span><span id="priceTotal">—</span>
-          </span>
-        </div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>SAC</th>
+              <th>PRICE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1ª parcela</td>
+              <td id="sacPrimeira">—</td>
+              <td id="pricePrimeira">—</td>
+            </tr>
+            <tr>
+              <td>Última parcela</td>
+              <td id="sacUltima">—</td>
+              <td id="priceUltima">—</td>
+            </tr>
+            <tr>
+              <td>Total de juros</td>
+              <td id="sacJuros">—</td>
+              <td id="priceJuros">—</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><span class="stamp-mark">TOTAL</span>Total pago</td>
+              <td id="sacTotal">—</td>
+              <td id="priceTotal">—</td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
 
       <div style="height:16px;"></div>
@@ -136,17 +141,17 @@
       <h3>Calculadora de Juros Compostos</h3>
       <p>Simule o crescimento de um investimento com aportes mensais.</p>
     </a>
-    <a class="calc-card" href="rescisao.html">
-      <h3>Rescisão trabalhista</h3>
-      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    <a class="calc-card" href="juros-simples.html">
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
     </a>
     <a class="calc-card" href="cdb-tesouro-poupanca.html">
       <h3>CDB vs Tesouro vs Poupança</h3>
       <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
     </a>
-    <a class="calc-card" href="comprar-vs-assinar-carro.html">
-      <h3>Comprar ou Assinar um Carro?</h3>
-      <p>Compare 4 formas de ter um carro por 3 anos.</p>
+    <a class="calc-card" href="reserva-emergencia.html">
+      <h3>Reserva de Emergência</h3>
+      <p>Descubra o tamanho ideal da reserva e quanto tempo falta para completá-la.</p>
     </a>
   </div>
 </main>

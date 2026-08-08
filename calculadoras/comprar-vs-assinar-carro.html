@@ -98,19 +98,44 @@
 
     <div style="height:16px;"></div>
 
-    <div class="tape" style="font-size:0.86rem;">
-      <div class="tape-row" style="border-bottom:2px solid var(--ink); font-weight:600; font-family:var(--font-body); font-size:0.78rem;">
-        <span>Opção</span>
-        <span style="display:flex; gap:14px;"><span>Custo 3 anos</span><span>Saldo líquido</span></span>
-      </div>
-      <div class="tape-row"><span>Assinatura</span><span style="display:flex; gap:14px; min-width:180px; justify-content:flex-end;"><span id="resCustoAssinatura">—</span><span id="resSaldoAssinatura">—</span></span></div>
-      <div class="tape-row"><span>Compra à vista</span><span style="display:flex; gap:14px; min-width:180px; justify-content:flex-end;"><span id="resCustoVista">—</span><span id="resSaldoVista">—</span></span></div>
-      <div class="tape-row"><span>Financ. sem juros</span><span style="display:flex; gap:14px; min-width:180px; justify-content:flex-end;"><span id="resCustoSemJuros">—</span><span id="resSaldoSemJuros">—</span></span></div>
-      <div class="tape-row"><span>Financ. com juros</span><span style="display:flex; gap:14px; min-width:180px; justify-content:flex-end;"><span id="resCustoComJuros">—</span><span id="resSaldoComJuros">—</span></span></div>
-      <div class="tape-total">
-        <span><span class="stamp-mark">MELHOR</span>Opção mais vantajosa</span>
-        <span id="resMelhor">—</span>
-      </div>
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Opção</th>
+            <th>Custo 3 anos</th>
+            <th>Saldo líquido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Assinatura</td>
+            <td id="resCustoAssinatura">—</td>
+            <td id="resSaldoAssinatura">—</td>
+          </tr>
+          <tr>
+            <td>Compra à vista</td>
+            <td id="resCustoVista">—</td>
+            <td id="resSaldoVista">—</td>
+          </tr>
+          <tr>
+            <td>Financ. sem juros</td>
+            <td id="resCustoSemJuros">—</td>
+            <td id="resSaldoSemJuros">—</td>
+          </tr>
+          <tr>
+            <td>Financ. com juros</td>
+            <td id="resCustoComJuros">—</td>
+            <td id="resSaldoComJuros">—</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><span class="stamp-mark">MELHOR</span>Opção mais vantajosa</td>
+            <td colspan="2" id="resMelhor">—</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
 
     <div style="height:16px;"></div>
@@ -164,13 +189,17 @@
 
   <div class="category-label">Outras calculadoras</div>
   <div class="calc-grid">
+    <a class="calc-card" href="alugar-vs-financiar.html">
+      <h3>Alugar ou Financiar um Imóvel?</h3>
+      <p>Compare o patrimônio final entre alugar e investir, ou financiar.</p>
+    </a>
     <a class="calc-card" href="juros-compostos.html">
       <h3>Calculadora de Juros Compostos</h3>
       <p>Simule o crescimento de um investimento com aportes mensais.</p>
     </a>
-    <a class="calc-card" href="price-sac.html">
-      <h3>Tabela Price vs SAC</h3>
-      <p>Compare as parcelas e o total pago em cada sistema de amortização.</p>
+    <a class="calc-card" href="juros-simples.html">
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
     </a>
     <a class="calc-card" href="cdb-tesouro-poupanca.html">
       <h3>CDB vs Tesouro vs Poupança</h3>

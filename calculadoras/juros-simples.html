@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Juros Simples | Calcule Seu Dinheiro</title>
+<meta name="description" content="Calcule o rendimento em juros simples e compare com o crescimento em juros compostos para o mesmo capital, taxa e prazo.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/juros-simples.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de Juros Simples | Calcule Seu Dinheiro">
+<meta property="og:description" content="Calcule o rendimento em juros simples e compare com o crescimento em juros compostos para o mesmo capital, taxa e prazo.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/juros-simples.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de Juros Simples | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Calcule o rendimento em juros simples e compare com o crescimento em juros compostos para o mesmo capital, taxa e prazo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Calculadora de Juros Simples</h1>
+  <p class="subtitle">Ideal para prazos curtos ou para entender por que juros compostos rendem mais no longo prazo.</p>
+
+  <div class="calc-layout">
+
+    <div>
+    <div class="tape" id="calcTape">
+      <label for="capital">Capital inicial (R$)</label>
+      <input type="number" id="capital" value="1000" inputmode="decimal">
+
+      <label for="taxa">Taxa de juros mensal (%)</label>
+      <input type="number" id="taxa" value="1" step="0.01" inputmode="decimal">
+
+      <label for="periodo">Período (meses)</label>
+      <input type="number" id="periodo" value="12" inputmode="numeric">
+
+      <div class="tape-row">
+        <span>Total em juros</span>
+        <span id="resJuros">R$ 0,00</span>
+      </div>
+      <div class="tape-total">
+        <span><span class="stamp-mark">TOTAL</span>Montante final</span>
+        <span id="resMontante">R$ 0,00</span>
+      </div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="chart-card">
+      <h4>Juros simples vs. juros compostos</h4>
+      <canvas id="graficoSimples" height="220"></canvas>
+      <div class="chart-legend">
+        <span><span class="dot" style="background:#C9963E;"></span>Juros simples</span>
+        <span><span class="dot" style="background:#2F7A56;"></span>Juros compostos</span>
+      </div>
+    </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Fórmula</h2>
+      <p><code>M = P × (1 + i × n)</code></p>
+      <p>
+        Onde <code>M</code> é o montante final, <code>P</code> o capital inicial, <code>i</code>
+        a taxa de juros por período e <code>n</code> o número de períodos.
+      </p>
+      <h2>Diferença para juros compostos</h2>
+      <p>
+        Nos juros simples, o rendimento incide sempre sobre o capital inicial — cresce de forma
+        linear. Nos juros compostos, os juros de um período passam a render juros também,
+        gerando crescimento exponencial. Quanto maior o prazo, maior a diferença entre os dois.
+      </p>
+      <h2>Quando usar juros simples</h2>
+      <p>
+        É comum em operações de curtíssimo prazo, alguns tipos de multa e juros de mora, e em
+        situações didáticas. A grande maioria dos investimentos e financiamentos no Brasil
+        (CDB, Tesouro, financiamentos, cartão de crédito) usa juros compostos.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="juros-compostos.html">
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="cdb-tesouro-poupanca.html">
+      <h3>CDB vs Tesouro vs Poupança</h3>
+      <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
+    </a>
+    <a class="calc-card" href="reserva-emergencia.html">
+      <h3>Reserva de Emergência</h3>
+      <p>Descubra o tamanho ideal da reserva e quanto tempo falta para completá-la.</p>
+    </a>
+    <a class="calc-card" href="primeiro-milhao.html">
+      <h3>Primeiro Milhão</h3>
+      <p>Descubra quanto tempo falta (ou quanto investir) para chegar a R$ 1 milhão.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo. <a href="../privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="../assets/js/calc-juros-simples.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

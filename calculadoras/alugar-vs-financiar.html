@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alugar ou Financiar um Imóvel? | Calcule Seu Dinheiro</title>
+<meta name="description" content="Compare o patrimônio final entre alugar e investir a diferença versus financiar um imóvel, considerando valorização, IGPM, juros e custo de oportunidade.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/alugar-vs-financiar.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Alugar ou Financiar um Imóvel? | Calcule Seu Dinheiro">
+<meta property="og:description" content="Compare o patrimônio final entre alugar e investir a diferença versus financiar um imóvel, considerando valorização, IGPM, juros e custo de oportunidade.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/alugar-vs-financiar.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Alugar ou Financiar um Imóvel? | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Compare o patrimônio final entre alugar e investir a diferença versus financiar um imóvel, considerando valorização, IGPM, juros e custo de oportunidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Alugar ou Financiar um Imóvel?</h1>
+  <p class="subtitle">Compara o patrimônio final de alugar e investir a diferença contra financiar o imóvel, no horizonte de tempo que você escolher.</p>
+
+  <div class="calc-layout">
+
+    <div>
+    <div class="tape" id="calcTape">
+      <label for="valorImovel">Valor do imóvel (R$)</label>
+      <input type="number" id="valorImovel" value="600000" inputmode="decimal">
+
+      <label for="aluguelMensal">Aluguel mensal equivalente (R$)</label>
+      <input type="number" id="aluguelMensal" value="2800" inputmode="decimal">
+
+      <label for="valorizacaoImovel">Valorização anual do imóvel (%)</label>
+      <input type="number" id="valorizacaoImovel" value="4" step="0.1" inputmode="decimal">
+
+      <label for="reajusteAluguel">Reajuste anual do aluguel — IGPM (%)</label>
+      <input type="number" id="reajusteAluguel" value="5" step="0.1" inputmode="decimal">
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="tape">
+      <label for="entradaFinanciamento">Entrada do financiamento (%)</label>
+      <input type="number" id="entradaFinanciamento" value="20" step="1" inputmode="decimal">
+
+      <label for="custosAdicionais">Custos adicionais (ITBI, cartório etc — %)</label>
+      <input type="number" id="custosAdicionais" value="4" step="0.1" inputmode="decimal">
+
+      <label for="prazoFinanciamento">Prazo do financiamento (anos)</label>
+      <input type="number" id="prazoFinanciamento" value="30" inputmode="numeric">
+
+      <label for="taxaJuros">Taxa de juros do financiamento (% ao ano)</label>
+      <input type="number" id="taxaJuros" value="11" step="0.1" inputmode="decimal">
+
+      <label for="custoOportunidade">Custo de oportunidade (% ao ano)</label>
+      <input type="number" id="custoOportunidade" value="10.5" step="0.1" inputmode="decimal">
+
+      <label for="horizonte">Horizonte de comparação (anos)</label>
+      <input type="number" id="horizonte" value="10" inputmode="numeric">
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Opção</th>
+            <th>Total desembolsado</th>
+            <th>Patrimônio final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alugar e investir a diferença</td>
+            <td id="resDesembolsoAlugar">—</td>
+            <td id="resPatrimonioAlugar">—</td>
+          </tr>
+          <tr>
+            <td>Financiar</td>
+            <td id="resDesembolsoFinanciar">—</td>
+            <td id="resPatrimonioFinanciar">—</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><span class="stamp-mark">MELHOR</span>Maior patrimônio</td>
+            <td colspan="2" id="resMelhor">—</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="chart-card">
+      <h4>Patrimônio ao longo do tempo</h4>
+      <canvas id="graficoImovel" height="240"></canvas>
+      <div class="chart-legend">
+        <span><span class="dot" style="background:#C9963E;"></span>Alugar e investir</span>
+        <span><span class="dot" style="background:#14213D;"></span>Financiar</span>
+      </div>
+    </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Como a comparação funciona</h2>
+      <p>
+        A metodologia compara o patrimônio líquido gerado por cada caminho, mês a mês, ao longo
+        do horizonte escolhido — é a abordagem padrão usada por analistas para decidir entre
+        alugar e comprar.
+      </p>
+      <h2>Alugar e investir a diferença</h2>
+      <p>
+        Quem aluga não desembolsa a entrada nem os custos de aquisição do financiamento — esse
+        dinheiro fica investido desde o início. Todo mês, a diferença entre a parcela que seria
+        paga no financiamento e o aluguel efetivamente pago também é investida (ou retirada, se
+        o aluguel for mais caro que a parcela seria). O aluguel é reajustado anualmente pelo
+        IGPM informado.
+      </p>
+      <h2>Financiar</h2>
+      <p>
+        Quem financia paga a entrada e os custos de aquisição no início, e uma parcela fixa
+        (sistema Price) até o fim do prazo ou do horizonte, o que vier primeiro. Ao final do
+        horizonte, o patrimônio é o valor atualizado do imóvel (valorizado anualmente) menos o
+        saldo devedor restante do financiamento, se houver.
+      </p>
+      <h2>Fórmula da parcela</h2>
+      <p><code>Parcela = [i × PV] / [1 − (1 + i)⁻ⁿ]</code></p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="comprar-vs-assinar-carro.html">
+      <h3>Comprar ou Assinar um Carro?</h3>
+      <p>Compare 4 formas de ter um carro por 3 anos.</p>
+    </a>
+    <a class="calc-card" href="juros-compostos.html">
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="juros-simples.html">
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
+    </a>
+    <a class="calc-card" href="cdb-tesouro-poupanca.html">
+      <h3>CDB vs Tesouro vs Poupança</h3>
+      <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo. Não considera IPTU, condomínio, seguros ou manutenção do imóvel próprio, nem Imposto de Renda sobre os investimentos. <a href="../privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="../assets/js/calc-alugar-vs-financiar.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>
