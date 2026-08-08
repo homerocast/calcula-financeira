@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Price vs SAC — Compare Sistemas de Financiamento</title>
+<meta name="description" content="Compare a Tabela Price e o Sistema SAC de amortização: parcela inicial, parcela final, total pago e total de juros lado a lado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">calcula<span>.</span>fin</a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Todas as calculadoras</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Price vs SAC: qual financiamento sai mais barato?</h1>
+  <p class="subtitle">Compare os dois sistemas de amortização mais usados em financiamentos imobiliários e veículos.</p>
+
+  <div class="calc-layout">
+
+    <div>
+      <div class="tape" id="calcTape">
+        <label for="valorFinanciado">Valor financiado (R$)</label>
+        <input type="number" id="valorFinanciado" value="300000" inputmode="decimal">
+
+        <label for="taxaMensal">Taxa de juros mensal (%)</label>
+        <input type="number" id="taxaMensal" value="0.8" step="0.01" inputmode="decimal">
+
+        <label for="prazoMeses">Prazo (meses)</label>
+        <input type="number" id="prazoMeses" value="360" inputmode="numeric">
+      </div>
+
+      <div style="height:16px;"></div>
+
+      <div class="tape" style="font-size:0.92rem;">
+        <div class="tape-row" style="border-bottom:2px solid var(--ink); font-weight:600; font-family:var(--font-body);">
+          <span></span>
+          <span style="display:flex; gap:28px;"><span>SAC</span><span>PRICE</span></span>
+        </div>
+        <div class="tape-row">
+          <span>1ª parcela</span>
+          <span style="display:flex; gap:16px; min-width:210px; justify-content:flex-end;">
+            <span id="sacPrimeira">—</span><span id="pricePrimeira">—</span>
+          </span>
+        </div>
+        <div class="tape-row">
+          <span>Última parcela</span>
+          <span style="display:flex; gap:16px; min-width:210px; justify-content:flex-end;">
+            <span id="sacUltima">—</span><span id="priceUltima">—</span>
+          </span>
+        </div>
+        <div class="tape-row">
+          <span>Total de juros</span>
+          <span style="display:flex; gap:16px; min-width:210px; justify-content:flex-end;">
+            <span id="sacJuros">—</span><span id="priceJuros">—</span>
+          </span>
+        </div>
+        <div class="tape-total">
+          <span><span class="stamp-mark">TOTAL</span>Total pago</span>
+          <span style="display:flex; gap:16px; font-size:1rem;">
+            <span id="sacTotal">—</span><span id="priceTotal">—</span>
+          </span>
+        </div>
+      </div>
+
+      <div style="height:16px;"></div>
+
+      <div class="tape">
+        <label style="margin-bottom:8px;">Evolução da parcela ao longo do tempo</label>
+        <canvas id="grafico" width="700" height="240" style="width:100%; height:auto; display:block;"></canvas>
+        <div style="display:flex; gap:20px; margin-top:8px; font-family:var(--font-body); font-size:0.78rem; color:var(--ink-soft);">
+          <span><span style="display:inline-block; width:10px; height:10px; background:var(--stamp); margin-right:5px; border-radius:2px;"></span>SAC</span>
+          <span><span style="display:inline-block; width:10px; height:10px; background:var(--brass); margin-right:5px; border-radius:2px;"></span>PRICE</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="explainer">
+      <h2>Sistema SAC (Amortização Constante)</h2>
+      <p>
+        No SAC, a parte da parcela que amortiza a dívida é sempre a mesma: <code>A = P / n</code>.
+        Como os juros incidem sobre o saldo devedor — que vai diminuindo — cada parcela é menor
+        que a anterior. É por isso que a primeira parcela do SAC é a mais cara de todo o financiamento,
+        e a última, a mais barata.
+      </p>
+      <h2>Tabela Price (Sistema Francês)</h2>
+      <p>
+        Na Price, a parcela é fixa do início ao fim:
+      </p>
+      <p><code>Parcela = P × [i(1+i)ⁿ] / [(1+i)ⁿ − 1]</code></p>
+      <p>
+        O que muda mês a mês é a composição interna: no começo, a maior parte da parcela é juros;
+        perto do fim, a maior parte é amortização.
+      </p>
+      <h2>Qual escolher?</h2>
+      <p>
+        O SAC quase sempre resulta em menos juros pagos ao final, porque o saldo devedor cai mais
+        rápido no início. Em compensação, exige uma parcela inicial mais alta — o que pode pesar
+        no orçamento nos primeiros anos. A Price facilita o planejamento por ter parcela previsível,
+        mas custa mais caro no total.
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Cálculo com caráter educativo. Contratos reais podem incluir seguros, taxas administrativas e correção monetária (TR, IPCA) não considerados aqui.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/calc-price-sac.js"></script>
+</body>
+</html>
