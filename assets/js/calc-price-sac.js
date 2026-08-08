@@ -30,56 +30,64 @@ function gerarPrice(P, i, n) {
   return { parcelas, totalJuros, totalPago };
 }
 
+let grafico = null;
+
 function desenharGrafico(sacParcelas, priceParcelas) {
-  const canvas = document.getElementById('grafico');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const padL = 70, padB = 30, padT = 12, padR = 12;
-  ctx.clearRect(0, 0, W, H);
-
   const n = sacParcelas.length;
-  const maxVal = Math.max(...sacParcelas, ...priceParcelas);
-  const minVal = Math.min(...sacParcelas, ...priceParcelas);
+  const passo = n > 60 ? 12 : (n > 24 ? 3 : 1);
+  const indices = [];
+  for (let i = 0; i < n; i += passo) indices.push(i);
+  if (indices[indices.length - 1] !== n - 1) indices.push(n - 1);
 
-  const x = idx => padL + (idx / (n - 1)) * (W - padL - padR);
-  const y = val => H - padB - ((val - minVal) / (maxVal - minVal || 1)) * (H - padT - padB);
+  const labels = indices.map(idx => 'mês ' + (idx + 1));
+  const sacPts = indices.map(idx => sacParcelas[idx]);
+  const pricePts = indices.map(idx => priceParcelas[idx]);
 
-  // eixos
-  ctx.strokeStyle = '#C7BFA6';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(padL, padT);
-  ctx.lineTo(padL, H - padB);
-  ctx.lineTo(W - padR, H - padB);
-  ctx.stroke();
-
-  // labels eixo Y
-  ctx.fillStyle = '#47564D';
-  ctx.font = '11px IBM Plex Mono, monospace';
-  ctx.textAlign = 'right';
-  [maxVal, (maxVal + minVal) / 2, minVal].forEach(v => {
-    ctx.fillText(formatarBRL(v).replace('R$', '').trim(), padL - 8, y(v) + 4);
+  const ctx = document.getElementById('grafico').getContext('2d');
+  if (grafico) grafico.destroy();
+  grafico = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'SAC',
+          data: sacPts,
+          borderColor: '#B23A2E',
+          backgroundColor: 'rgba(178, 58, 46, 0.10)',
+          fill: false,
+          tension: 0.15,
+          pointRadius: 0,
+          borderWidth: 2.2
+        },
+        {
+          label: 'PRICE',
+          data: pricePts,
+          borderColor: '#B4872B',
+          backgroundColor: 'rgba(180, 135, 43, 0.10)',
+          fill: false,
+          tension: 0.15,
+          pointRadius: 0,
+          borderWidth: 2.2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + formatarBRL(ctx.parsed.y) } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D' } },
+        y: {
+          grid: { color: '#EFECDE' },
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D', callback: v => (v / 1000).toFixed(1) + 'k' }
+        }
+      }
+    }
   });
-
-  function linha(dados, cor) {
-    ctx.strokeStyle = cor;
-    ctx.lineWidth = 2.2;
-    ctx.beginPath();
-    dados.forEach((v, idx) => {
-      const px = x(idx), py = y(v);
-      if (idx === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-    });
-    ctx.stroke();
-  }
-
-  linha(sacParcelas, '#B23A2E');
-  linha(priceParcelas, '#B4872B');
-
-  ctx.fillStyle = '#47564D';
-  ctx.textAlign = 'left';
-  ctx.fillText('mês 1', padL, H - 10);
-  ctx.textAlign = 'right';
-  ctx.fillText('mês ' + n, W - padR, H - 10);
 }
 
 function calcular() {
@@ -106,5 +114,4 @@ function calcular() {
 ['valorFinanciado', 'taxaMensal', 'prazoMeses'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
-window.addEventListener('resize', calcular);
 calcular();

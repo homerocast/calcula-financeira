@@ -47,6 +47,41 @@ function calcular() {
   ];
   const melhor = opcoes.reduce((a, b) => (b.valor > a.valor ? b : a));
   document.getElementById('resMelhor').textContent = melhor.nome;
+
+  desenharGrafico(opcoes, melhor.nome);
+}
+
+let grafico = null;
+
+function desenharGrafico(opcoes, nomeMelhor) {
+  const ctx = document.getElementById('graficoComparativo').getContext('2d');
+  if (grafico) grafico.destroy();
+  grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: opcoes.map(o => o.nome),
+      datasets: [{
+        data: opcoes.map(o => o.valor),
+        backgroundColor: opcoes.map(o => o.nome === nomeMelhor ? '#2F7A56' : '#C7BFA6'),
+        borderRadius: 4,
+        maxBarThickness: 70
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 11 }, color: '#47564D' } },
+        y: {
+          grid: { color: '#EFECDE' },
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D', callback: v => formatarBRL(v) }
+        }
+      }
+    }
+  });
 }
 
 ['valor','prazoDias','taxaCDI','percentualCDB','taxaSelic','taxaCustodia'].forEach(id => {

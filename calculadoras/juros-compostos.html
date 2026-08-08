@@ -37,6 +37,7 @@
 
   <div class="calc-layout">
 
+    <div>
     <div class="tape" id="calcTape">
       <label for="valorInicial">Valor inicial (R$)</label>
       <input type="number" id="valorInicial" value="1000" inputmode="decimal">
@@ -62,6 +63,18 @@
         <span><span class="stamp-mark">TOTAL</span>Montante final</span>
         <span id="resMontante">R$ 0,00</span>
       </div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="chart-card">
+      <h4>Evolução do investimento</h4>
+      <canvas id="graficoJuros" height="220"></canvas>
+      <div class="chart-legend">
+        <span><span class="dot" style="background:#B4872B;"></span>Valor investido</span>
+        <span><span class="dot" style="background:#2F7A56;"></span>Juros acumulados</span>
+      </div>
+    </div>
     </div>
 
     <article class="explainer">
@@ -95,6 +108,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script src="../assets/js/calc-juros-compostos.js"></script>
 <script src="../assets/js/cookie-consent.js"></script>
 </body>

@@ -11,8 +11,16 @@
   --paper-raised: #FBFAF3;/* papel da "fita" de resultado */
   --line: #C7BFA6;        /* linhas de régua do razão */
   --stamp: #B23A2E;       /* vermelho-carimbo — destaque/CTA */
+  --stamp-soft: rgba(178, 58, 46, 0.12);
   --brass: #B4872B;       /* latão/moeda — destaque secundário */
+  --brass-soft: rgba(180, 135, 43, 0.14);
+  --green-gain: #2F7A56;  /* verde para valores positivos/ganhos */
+  --green-gain-soft: rgba(47, 122, 86, 0.12);
   --radius: 3px;
+  --radius-lg: 10px;
+  --shadow-sm: 0 2px 8px rgba(22, 51, 43, 0.08);
+  --shadow-md: 0 8px 24px rgba(22, 51, 43, 0.14);
+  --shadow-lg: 0 16px 40px rgba(22, 51, 43, 0.18);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -45,59 +53,99 @@ a { color: var(--ink); }
 
 /* ---------- Header ---------- */
 header.site {
-  padding: 28px 0 18px;
-  border-bottom: 2px solid var(--ink);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 0 var(--line);
 }
 header.site .wrap {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
 }
 .brand {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 0.2px;
 }
 .brand span { color: var(--stamp); }
 nav.site a {
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--ink-soft);
-  margin-left: 18px;
+  margin-left: 22px;
+  transition: color 0.15s ease;
 }
 nav.site a:hover { color: var(--stamp); }
 
+/* ---------- Badges de confiança ---------- */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 100px;
+}
+.badge::before { content: '●'; color: var(--green-gain); font-size: 0.55rem; }
+
 /* ---------- Hero ---------- */
 .hero {
-  padding: 56px 0 40px;
+  padding: 48px 0 40px;
   display: grid;
   gap: 36px;
 }
 @media (min-width: 760px) {
   .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
 }
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  margin-bottom: 10px;
+}
 .hero h1 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.2vw, 2.9rem);
-  line-height: 1.12;
+  line-height: 1.1;
   margin: 0 0 16px;
+  letter-spacing: -0.01em;
 }
 .hero p.lead {
   color: var(--ink-soft);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   max-width: 46ch;
+  line-height: 1.55;
 }
 
 /* ---------- Fita de calculadora (elemento de assinatura) ---------- */
 .tape {
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(22, 51, 43, 0.12);
-  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 20px 22px;
   font-family: var(--font-mono);
 }
 .tape .tape-row {
@@ -143,19 +191,39 @@ nav.site a:hover { color: var(--stamp); }
   width: 100%;
   font-family: var(--font-mono);
   font-size: 1rem;
-  padding: 8px 10px;
+  padding: 9px 11px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #fff;
   color: var(--ink);
   margin-bottom: 12px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .tape input:focus {
-  outline: 2px solid var(--brass);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass-soft);
 }
 
 /* ---------- Categorias (divisórias tipo aba de fichário) ---------- */
+.tape select {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  margin-bottom: 12px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.tape select:focus {
+  outline: none;
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass-soft);
+}
+
 .category-label {
   display: inline-block;
   font-family: var(--font-body);
@@ -183,25 +251,95 @@ nav.site a:hover { color: var(--stamp); }
   text-decoration: none;
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 .calc-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(22, 51, 43, 0.14);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brass);
 }
 .calc-card h3 {
   font-family: var(--font-display);
   margin: 0 0 6px;
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   color: var(--ink);
 }
 .calc-card p {
   margin: 0;
   font-size: 0.88rem;
   color: var(--ink-soft);
+  line-height: 1.45;
 }
+
+/* ---------- Cartão de gráfico ---------- */
+.chart-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+}
+.chart-card h4 {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 14px;
+}
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.chart-legend span.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+/* ---------- Cartões de estatística (número grande) ---------- */
+.stat-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin-bottom: 16px;
+}
+.stat-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+}
+.stat-card .stat-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.stat-card .stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.stat-card.destaque {
+  background: var(--green-gain-soft);
+  border-color: var(--green-gain);
+}
+.stat-card.destaque .stat-value { color: var(--green-gain); }
 
 /* ---------- Artigo / conteúdo explicativo (SEO) ---------- */
 .calc-page main {
@@ -248,8 +386,10 @@ article.explainer code {
   border-radius: var(--radius);
   cursor: pointer;
   letter-spacing: 0.02em;
+  transition: background 0.15s ease, transform 0.1s ease;
 }
 .btn-stamp:hover { background: var(--stamp); }
+.btn-stamp:active { transform: scale(0.97); }
 
 /* ---------- Aviso de cookies ---------- */
 .cookie-banner {

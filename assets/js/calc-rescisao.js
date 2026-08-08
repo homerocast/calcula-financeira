@@ -103,6 +103,49 @@ function calcular() {
   document.getElementById('resAviso').textContent = formatarBRL(itemAviso);
   document.getElementById('resMulta').textContent = formatarBRL(itemMulta);
   document.getElementById('resTotal').textContent = formatarBRL(total);
+
+  desenharGrafico([
+    { label: 'Saldo salário', valor: itemSaldo },
+    { label: '13º proporcional', valor: item13 },
+    { label: 'Férias prop.', valor: itemFeriasProp },
+    { label: 'Férias vencidas', valor: itemFeriasVenc },
+    { label: 'Aviso prévio', valor: itemAviso },
+    { label: 'Multa FGTS', valor: itemMulta }
+  ]);
+}
+
+let grafico = null;
+
+function desenharGrafico(itens) {
+  const cores = ['#16332B', '#2F7A56', '#B4872B', '#8A6A22', '#B23A2E', '#7A2A22'];
+  const ctx = document.getElementById('graficoRescisao').getContext('2d');
+  if (grafico) grafico.destroy();
+  grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: itens.map(i => i.label),
+      datasets: [{
+        data: itens.map(i => i.valor),
+        backgroundColor: cores,
+        borderRadius: 4,
+        maxBarThickness: 46
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 10 }, color: '#47564D' } },
+        y: {
+          grid: { color: '#EFECDE' },
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D', callback: v => (v / 1000).toFixed(1) + 'k' }
+        }
+      }
+    }
+  });
 }
 
 ['salario','dataAdmissao','dataDesligamento','tipoRescisao','feriasVencidas'].forEach(id => {

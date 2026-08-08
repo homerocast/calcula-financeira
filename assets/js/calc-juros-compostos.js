@@ -2,6 +2,87 @@ function formatarBRL(v) {
   return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+let grafico = null;
+
+function gerarSerieMensal(P, A, i, n) {
+  const investido = [P];
+  const juros = [0];
+  let saldo = P;
+  let totalInvestido = P;
+  let totalJuros = 0;
+  for (let mes = 1; mes <= n; mes++) {
+    const jurosDoMes = saldo * i;
+    saldo += jurosDoMes + A;
+    totalInvestido += A;
+    totalJuros += jurosDoMes;
+    investido.push(totalInvestido);
+    juros.push(totalJuros);
+  }
+  return { investido, juros };
+}
+
+function desenharGrafico(serie, n) {
+  const passo = n > 60 ? 12 : (n > 24 ? 3 : 1);
+  const labels = serie.investido.map((_, idx) => idx).filter(idx => idx % passo === 0 || idx === n);
+  const investidoPts = labels.map(idx => serie.investido[idx]);
+  const jurosPts = labels.map(idx => serie.juros[idx]);
+  const labelsTexto = labels.map(idx => idx === 0 ? 'início' : 'mês ' + idx);
+
+  const ctx = document.getElementById('graficoJuros').getContext('2d');
+  if (grafico) grafico.destroy();
+  grafico = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labelsTexto,
+      datasets: [
+        {
+          label: 'Valor investido',
+          data: investidoPts,
+          borderColor: '#B4872B',
+          backgroundColor: 'rgba(180, 135, 43, 0.18)',
+          fill: true,
+          tension: 0.25,
+          pointRadius: 0,
+          borderWidth: 2
+        },
+        {
+          label: 'Juros acumulados',
+          data: jurosPts,
+          borderColor: '#2F7A56',
+          backgroundColor: 'rgba(47, 122, 86, 0.22)',
+          fill: true,
+          tension: 0.25,
+          pointRadius: 0,
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.dataset.label + ': ' + formatarBRL(ctx.parsed.y)
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D' } },
+        y: {
+          stacked: true,
+          grid: { color: '#EFECDE' },
+          ticks: {
+            font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D',
+            callback: v => (v / 1000) + 'k'
+          }
+        }
+      }
+    }
+  });
+}
+
 function calcularJurosCompostos() {
   const P = parseFloat(document.getElementById('valorInicial').value) || 0;
   const A = parseFloat(document.getElementById('aporteMensal').value) || 0;
@@ -20,6 +101,11 @@ function calcularJurosCompostos() {
   document.getElementById('resTotalInvestido').textContent = formatarBRL(totalInvestido);
   document.getElementById('resTotalJuros').textContent = formatarBRL(totalJuros);
   document.getElementById('resMontante').textContent = formatarBRL(montante);
+
+  if (n > 0) {
+    const serie = gerarSerieMensal(P, A, i, n);
+    desenharGrafico(serie, n);
+  }
 }
 
 ['valorInicial', 'aporteMensal', 'taxaMensal', 'periodoMeses'].forEach(id => {

@@ -84,12 +84,12 @@
 
       <div style="height:16px;"></div>
 
-      <div class="tape">
-        <label style="margin-bottom:8px;">Evolução da parcela ao longo do tempo</label>
-        <canvas id="grafico" width="700" height="240" style="width:100%; height:auto; display:block;"></canvas>
-        <div style="display:flex; gap:20px; margin-top:8px; font-family:var(--font-body); font-size:0.78rem; color:var(--ink-soft);">
-          <span><span style="display:inline-block; width:10px; height:10px; background:var(--stamp); margin-right:5px; border-radius:2px;"></span>SAC</span>
-          <span><span style="display:inline-block; width:10px; height:10px; background:var(--brass); margin-right:5px; border-radius:2px;"></span>PRICE</span>
+      <div class="chart-card">
+        <h4>Evolução da parcela ao longo do tempo</h4>
+        <canvas id="grafico" height="220"></canvas>
+        <div class="chart-legend">
+          <span><span class="dot" style="background:#B23A2E;"></span>SAC</span>
+          <span><span class="dot" style="background:#B4872B;"></span>PRICE</span>
         </div>
       </div>
     </div>
@@ -128,6 +128,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script src="../assets/js/calc-price-sac.js"></script>
 <script src="../assets/js/cookie-consent.js"></script>
 </body>
