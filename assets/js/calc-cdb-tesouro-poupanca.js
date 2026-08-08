@@ -74,10 +74,10 @@ function desenharGrafico(opcoes, nomeMelhor) {
         tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
       },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 11 }, color: '#47564D' } },
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 11 }, color: '#5B6472' } },
         y: {
-          grid: { color: '#EFECDE' },
-          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D', callback: v => formatarBRL(v) }
+          grid: { color: '#F4F1E9' },
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#5B6472', callback: v => formatarBRL(v) }
         }
       }
     }

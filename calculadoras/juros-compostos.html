@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Juros Compostos com Aportes Mensais</title>
+<title>Calculadora de Juros Compostos com Aportes Mensais | Calcule Seu Dinheiro</title>
 <meta name="description" content="Calcule quanto seu dinheiro pode render com juros compostos e aportes mensais. Veja o montante final, o total investido e os juros ganhos.">
 <link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/juros-compostos.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="calcula.fin">
-<meta property="og:title" content="Calculadora de Juros Compostos com Aportes Mensais">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de Juros Compostos com Aportes Mensais | Calcule Seu Dinheiro">
 <meta property="og:description" content="Calcule quanto seu dinheiro pode render com juros compostos e aportes mensais. Veja o montante final, o total investido e os juros ganhos.">
 <meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/juros-compostos.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Calculadora de Juros Compostos com Aportes Mensais">
+<meta name="twitter:title" content="Calculadora de Juros Compostos com Aportes Mensais | Calcule Seu Dinheiro">
 <meta name="twitter:description" content="Calcule quanto seu dinheiro pode render com juros compostos e aportes mensais. Veja o montante final, o total investido e os juros ganhos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 
 <header class="site">
   <div class="wrap">
-    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">calcula<span>.</span>fin</a></div>
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
     <nav class="site">
       <a href="../index.html#calculadoras">Todas as calculadoras</a>
     </nav>
@@ -71,8 +71,25 @@
       <h4>Evolução do investimento</h4>
       <canvas id="graficoJuros" height="220"></canvas>
       <div class="chart-legend">
-        <span><span class="dot" style="background:#B4872B;"></span>Valor investido</span>
+        <span><span class="dot" style="background:#C9963E;"></span>Valor investido</span>
         <span><span class="dot" style="background:#2F7A56;"></span>Juros acumulados</span>
+      </div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Investido</div>
+        <div class="stat-value" id="statInvestidoPct">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Em juros</div>
+        <div class="stat-value" id="statJurosPct">—</div>
+      </div>
+      <div class="stat-card destaque">
+        <div class="stat-label">Multiplicou</div>
+        <div class="stat-value" id="statFator">—</div>
       </div>
     </div>
     </div>
@@ -99,6 +116,22 @@
         Simplesmente dividir a taxa anual por 12 dá um valor aproximado, mas não exatamente equivalente.
       </p>
     </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="price-sac.html">
+      <h3>Tabela Price vs SAC</h3>
+      <p>Compare as parcelas e o total pago em cada sistema de amortização.</p>
+    </a>
+    <a class="calc-card" href="rescisao.html">
+      <h3>Rescisão trabalhista</h3>
+      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    </a>
+    <a class="calc-card" href="cdb-tesouro-poupanca.html">
+      <h3>CDB vs Tesouro vs Poupança</h3>
+      <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
+    </a>
   </div>
 </main>
 

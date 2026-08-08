@@ -117,7 +117,7 @@ function calcular() {
 let grafico = null;
 
 function desenharGrafico(itens) {
-  const cores = ['#16332B', '#2F7A56', '#B4872B', '#8A6A22', '#B23A2E', '#7A2A22'];
+  const cores = ['#14213D', '#2F7A56', '#C9963E', '#8A6A22', '#B23A2E', '#7A2A22'];
   const ctx = document.getElementById('graficoRescisao').getContext('2d');
   if (grafico) grafico.destroy();
   grafico = new Chart(ctx, {
@@ -138,10 +138,10 @@ function desenharGrafico(itens) {
         tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
       },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 10 }, color: '#47564D' } },
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 10 }, color: '#5B6472' } },
         y: {
-          grid: { color: '#EFECDE' },
-          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D', callback: v => (v / 1000).toFixed(1) + 'k' }
+          grid: { color: '#F4F1E9' },
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#5B6472', callback: v => (v / 1000).toFixed(1) + 'k' }
         }
       }
     }

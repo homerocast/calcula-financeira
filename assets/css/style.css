@@ -5,22 +5,22 @@
    é o elemento de assinatura visual do site.
 =========================================================== */
 :root {
-  --ink: #16332B;         /* verde-tinta escuro — texto e títulos */
-  --ink-soft: #47564D;    /* texto secundário */
-  --paper: #EFECDE;       /* papel */
-  --paper-raised: #FBFAF3;/* papel da "fita" de resultado */
-  --line: #C7BFA6;        /* linhas de régua do razão */
+  --ink: #14213D;         /* verde-tinta escuro — texto e títulos */
+  --ink-soft: #5B6472;    /* texto secundário */
+  --paper: #F4F1E9;       /* papel */
+  --paper-raised: #FFFFFF;/* papel da "fita" de resultado */
+  --line: #E3DFD2;        /* linhas de régua do razão */
   --stamp: #B23A2E;       /* vermelho-carimbo — destaque/CTA */
   --stamp-soft: rgba(178, 58, 46, 0.12);
-  --brass: #B4872B;       /* latão/moeda — destaque secundário */
-  --brass-soft: rgba(180, 135, 43, 0.14);
+  --brass: #C9963E;       /* latão/moeda — destaque secundário */
+  --brass-soft: rgba(201, 150, 62, 0.14);
   --green-gain: #2F7A56;  /* verde para valores positivos/ganhos */
   --green-gain-soft: rgba(47, 122, 86, 0.12);
   --radius: 3px;
   --radius-lg: 10px;
-  --shadow-sm: 0 2px 8px rgba(22, 51, 43, 0.08);
-  --shadow-md: 0 8px 24px rgba(22, 51, 43, 0.14);
-  --shadow-lg: 0 16px 40px rgba(22, 51, 43, 0.18);
+  --shadow-sm: 0 2px 8px rgba(20, 33, 61, 0.08);
+  --shadow-md: 0 8px 24px rgba(20, 33, 61, 0.14);
+  --shadow-lg: 0 16px 40px rgba(20, 33, 61, 0.18);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -35,7 +35,7 @@ body {
       to bottom,
       transparent 0,
       transparent 35px,
-      rgba(22, 51, 43, 0.055) 36px
+      rgba(20, 33, 61, 0.055) 36px
     ),
     var(--paper);
   color: var(--ink);
@@ -70,11 +70,11 @@ header.site .wrap {
 }
 .brand {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
 }
-.brand span { color: var(--stamp); }
+.brand span { color: var(--brass); }
 nav.site a {
   text-decoration: none;
   font-size: 0.9rem;
@@ -83,7 +83,7 @@ nav.site a {
   margin-left: 22px;
   transition: color 0.15s ease;
 }
-nav.site a:hover { color: var(--stamp); }
+nav.site a:hover { color: var(--brass); }
 
 /* ---------- Badges de confiança ---------- */
 .badge-row {
@@ -122,7 +122,7 @@ nav.site a:hover { color: var(--stamp); }
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--stamp);
+  color: var(--brass);
   margin-bottom: 10px;
 }
 .hero h1 {
@@ -167,8 +167,8 @@ nav.site a:hover { color: var(--stamp); }
   font-weight: 600;
 }
 .tape .tape-total .stamp-mark {
-  background: var(--stamp);
-  color: var(--paper-raised);
+  background: var(--brass);
+  color: var(--ink);
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 700;
@@ -369,7 +369,7 @@ article.explainer h2 {
 article.explainer p { color: var(--ink-soft); }
 article.explainer code {
   font-family: var(--font-mono);
-  background: rgba(22, 51, 43, 0.08);
+  background: rgba(20, 33, 61, 0.08);
   padding: 1px 5px;
   border-radius: 2px;
 }
@@ -388,7 +388,7 @@ article.explainer code {
   letter-spacing: 0.02em;
   transition: background 0.15s ease, transform 0.1s ease;
 }
-.btn-stamp:hover { background: var(--stamp); }
+.btn-stamp:hover { background: var(--brass); }
 .btn-stamp:active { transform: scale(0.97); }
 
 /* ---------- Aviso de cookies ---------- */
@@ -414,7 +414,7 @@ article.explainer code {
 .cookie-banner a { color: var(--brass); }
 .cookie-banner .btn-stamp {
   margin-left: auto;
-  background: var(--stamp);
+  background: var(--brass);
 }
 .cookie-banner .btn-stamp:hover { background: var(--brass); }
 

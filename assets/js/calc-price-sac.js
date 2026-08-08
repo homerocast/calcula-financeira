@@ -63,8 +63,8 @@ function desenharGrafico(sacParcelas, priceParcelas) {
         {
           label: 'PRICE',
           data: pricePts,
-          borderColor: '#B4872B',
-          backgroundColor: 'rgba(180, 135, 43, 0.10)',
+          borderColor: '#C9963E',
+          backgroundColor: 'rgba(201, 150, 62, 0.10)',
           fill: false,
           tension: 0.15,
           pointRadius: 0,
@@ -80,10 +80,10 @@ function desenharGrafico(sacParcelas, priceParcelas) {
         tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + formatarBRL(ctx.parsed.y) } }
       },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D' } },
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#5B6472' } },
         y: {
-          grid: { color: '#EFECDE' },
-          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D', callback: v => (v / 1000).toFixed(1) + 'k' }
+          grid: { color: '#F4F1E9' },
+          ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#5B6472', callback: v => (v / 1000).toFixed(1) + 'k' }
         }
       }
     }
@@ -107,6 +107,11 @@ function calcular() {
   document.getElementById('priceUltima').textContent = formatarBRL(price.parcelas[price.parcelas.length - 1]);
   document.getElementById('priceJuros').textContent = formatarBRL(price.totalJuros);
   document.getElementById('priceTotal').textContent = formatarBRL(price.totalPago);
+
+  const economia = price.totalPago - sac.totalPago;
+  document.getElementById('statEconomia').textContent = economia >= 0
+    ? formatarBRL(economia) + ' a menos'
+    : formatarBRL(Math.abs(economia)) + ' a mais (Price sai mais barato aqui)';
 
   desenharGrafico(sac.parcelas, price.parcelas);
 }

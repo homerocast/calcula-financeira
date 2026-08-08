@@ -38,8 +38,8 @@ function desenharGrafico(serie, n) {
         {
           label: 'Valor investido',
           data: investidoPts,
-          borderColor: '#B4872B',
-          backgroundColor: 'rgba(180, 135, 43, 0.18)',
+          borderColor: '#C9963E',
+          backgroundColor: 'rgba(201, 150, 62, 0.18)',
           fill: true,
           tension: 0.25,
           pointRadius: 0,
@@ -69,12 +69,12 @@ function desenharGrafico(serie, n) {
         }
       },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D' } },
+        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Mono', size: 10 }, color: '#5B6472' } },
         y: {
           stacked: true,
-          grid: { color: '#EFECDE' },
+          grid: { color: '#F4F1E9' },
           ticks: {
-            font: { family: 'IBM Plex Mono', size: 10 }, color: '#47564D',
+            font: { family: 'IBM Plex Mono', size: 10 }, color: '#5B6472',
             callback: v => (v / 1000) + 'k'
           }
         }
@@ -101,6 +101,15 @@ function calcularJurosCompostos() {
   document.getElementById('resTotalInvestido').textContent = formatarBRL(totalInvestido);
   document.getElementById('resTotalJuros').textContent = formatarBRL(totalJuros);
   document.getElementById('resMontante').textContent = formatarBRL(montante);
+
+  if (montante > 0) {
+    const pctInvestido = (totalInvestido / montante) * 100;
+    const pctJuros = (totalJuros / montante) * 100;
+    const fator = P > 0 || totalInvestido > 0 ? montante / (totalInvestido || 1) : 0;
+    document.getElementById('statInvestidoPct').textContent = pctInvestido.toFixed(1) + '%';
+    document.getElementById('statJurosPct').textContent = pctJuros.toFixed(1) + '%';
+    document.getElementById('statFator').textContent = fator.toFixed(2) + 'x';
+  }
 
   if (n > 0) {
     const serie = gerarSerieMensal(P, A, i, n);
