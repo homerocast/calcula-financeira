@@ -13,5 +13,6 @@
   document.getElementById('cookieAceitar').addEventListener('click', function () {
     localStorage.setItem(CHAVE, '1');
     barra.remove();
+    if (window.calculaFinIniciarAnalytics) window.calculaFinIniciarAnalytics();
   });
 })();
