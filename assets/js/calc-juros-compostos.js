@@ -120,4 +120,6 @@ function calcularJurosCompostos() {
 ['valorInicial', 'aporteMensal', 'taxaMensal', 'periodoMeses'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcularJurosCompostos);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcularJurosCompostos);
 calcularJurosCompostos();

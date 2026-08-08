@@ -43,7 +43,8 @@
 </header>
 
 <section class="hero">
-  <div class="wrap" style="display:grid; gap:36px; grid-template-columns:1.1fr 0.9fr;">
+  <div class="wrap">
+  <div class="hero-top">
     <div>
       <div class="eyebrow">Calculadoras gratuitas</div>
       <h1>Números claros para decisões financeiras.</h1>
@@ -56,14 +57,20 @@
     </div>
 
     <div class="tape" id="heroTape">
-      <label for="heroValor">Valor inicial (R$)</label>
-      <input type="number" id="heroValor" value="1000" inputmode="decimal">
-
-      <label for="heroTaxa">Taxa mensal (%)</label>
-      <input type="number" id="heroTaxa" value="1" step="0.1" inputmode="decimal">
-
-      <label for="heroMeses">Período (meses)</label>
-      <input type="number" id="heroMeses" value="12" inputmode="numeric">
+      <div class="input-grid">
+        <div class="field">
+          <label for="heroValor">Valor inicial (R$)</label>
+          <input type="number" id="heroValor" value="1000" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="heroTaxa">Taxa mensal (%)</label>
+          <input type="number" id="heroTaxa" value="1" step="0.1" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="heroMeses">Período (meses)</label>
+          <input type="number" id="heroMeses" value="12" inputmode="numeric">
+        </div>
+      </div>
 
       <div class="tape-total">
         <span><span class="stamp-mark">TOTAL</span>Montante final</span>
@@ -71,9 +78,6 @@
       </div>
     </div>
   </div>
-</section>
-
-<main class="wrap" id="calculadoras">
 
   <div class="category-label">Juros e investimentos</div>
   <div class="calc-grid">
@@ -90,6 +94,10 @@
       <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
     </a>
   </div>
+  </div>
+</section>
+
+<main class="wrap" id="calculadoras">
 
   <div class="category-label">Planejamento de longo prazo</div>
   <div class="calc-grid">
