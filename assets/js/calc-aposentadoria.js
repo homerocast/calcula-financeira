@@ -21,16 +21,22 @@ function calcular() {
   const patrimonioAoAposentar = patrimonioAtual * fator + (i === 0 ? aporteMensal * nMeses : aporteMensal * ((fator - 1) / i));
 
   document.getElementById('statAporte').textContent = formatarBRL(aporteMensal) + '/mês';
+  document.getElementById('statAportePct').textContent = (pctInvestido * 100).toFixed(1) + '%';
   document.getElementById('statPatrimonio').textContent = formatarBRL(patrimonioAoAposentar);
 
   const rendaSustentavel = patrimonioAoAposentar * i;
+  const narrativa = document.getElementById('resultadoNarrativo');
 
   if (rendaSustentavel >= gastoMensal) {
     document.getElementById('resultadoTag').textContent = 'SUSTENTÁVEL';
     document.getElementById('resLabel').textContent = 'Sobra por mês, vivendo só dos juros';
     document.getElementById('resValor').textContent = formatarBRL(rendaSustentavel - gastoMensal) + '/mês';
+    narrativa.innerHTML =
+      `Investindo <strong>${formatarBRL(aporteMensal)} por mês</strong> (${(pctInvestido * 100).toFixed(1)}% da sua renda), ` +
+      `você chegará aos ${idadeAposentadoria} anos com um patrimônio de <strong>${formatarBRL(patrimonioAoAposentar)}</strong>. ` +
+      `<span class="ok">Esse valor sustenta seu gasto mensal de ${formatarBRL(gastoMensal)} indefinidamente</span>, vivendo só dos juros — ` +
+      `e ainda sobram <strong>${formatarBRL(rendaSustentavel - gastoMensal)} por mês</strong>, preservando o patrimônio como herança.`;
   } else {
-    // Fórmula de esgotamento: n = ln(W / (W - P*i)) / ln(1+i)
     const P = patrimonioAoAposentar, W = gastoMensal;
     let mesesDuracao = Infinity;
     if (W > P * i && P > 0) {
@@ -38,13 +44,18 @@ function calcular() {
     }
     document.getElementById('resultadoTag').textContent = 'ATENÇÃO';
     document.getElementById('resLabel').textContent = 'Patrimônio dura aproximadamente';
+    let duracaoTexto = 'patrimônio insuficiente';
     if (isFinite(mesesDuracao)) {
       const anos = Math.floor(mesesDuracao / 12);
       const meses = Math.round(mesesDuracao % 12);
-      document.getElementById('resValor').textContent = anos + ' anos e ' + meses + ' meses';
-    } else {
-      document.getElementById('resValor').textContent = 'patrimônio insuficiente';
+      duracaoTexto = anos + ' anos e ' + meses + ' meses';
     }
+    document.getElementById('resValor').textContent = duracaoTexto;
+    narrativa.innerHTML =
+      `Investindo <strong>${formatarBRL(aporteMensal)} por mês</strong> (${(pctInvestido * 100).toFixed(1)}% da sua renda), ` +
+      `você chegará aos ${idadeAposentadoria} anos com um patrimônio de <strong>${formatarBRL(patrimonioAoAposentar)}</strong>. ` +
+      `<span class="alerta">Gastando ${formatarBRL(gastoMensal)} por mês, esse patrimônio dura cerca de ${duracaoTexto}</span> antes de se esgotar. ` +
+      `Para que o dinheiro nunca acabe, o gasto mensal sustentável seria de <strong>${formatarBRL(rendaSustentavel)}</strong>.`;
   }
 
   desenharGrafico(patrimonioAtual, aporteMensal, i, Math.ceil(nMeses));

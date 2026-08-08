@@ -45,6 +45,13 @@ function calcular() {
   document.getElementById('resFalta').textContent = formatarBRL(falta);
   document.getElementById('resPrazo').textContent = formatarPrazo(meses);
 
+  const narrativa = document.getElementById('resultadoNarrativo');
+  if (falta <= 0) {
+    narrativa.innerHTML = `Com <strong>${formatarBRL(jaGuardado)}</strong> já guardados, você <span class="ok">já atingiu sua reserva ideal</span> de ${formatarBRL(reservaIdeal)} (${multiplicador}x suas despesas mensais). Parabéns — a partir daqui, o foco pode ser outros objetivos.`;
+  } else {
+    narrativa.innerHTML = `Sua reserva ideal é de <strong>${formatarBRL(reservaIdeal)}</strong> (${multiplicador}x suas despesas mensais). Com <strong>${formatarBRL(jaGuardado)}</strong> já guardados e aportando <strong>${formatarBRL(aporte)} por mês</strong>, faltam <strong>${formatarBRL(falta)}</strong> — você deve completar a meta em <span class="ok">${formatarPrazo(meses)}</span>.`;
+  }
+
   const progresso = reservaIdeal > 0 ? Math.min(100, (jaGuardado / reservaIdeal) * 100) : 0;
   document.getElementById('statProgresso').textContent = progresso.toFixed(1) + '%';
 

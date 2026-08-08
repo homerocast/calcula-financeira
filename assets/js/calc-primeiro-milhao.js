@@ -48,16 +48,24 @@ function calcular() {
   const i = Math.pow(1 + taxaAnual, 1 / 12) - 1;
 
   let nMeses, aporteMensal;
+  const narrativa = document.getElementById('resultadoNarrativo');
 
   if (modo === 'prazo') {
     aporteMensal = parseFloat(document.getElementById('aporteMensal').value) || 0;
     nMeses = mesesParaMeta(PV, aporteMensal, i, meta);
-    document.getElementById('resValor').textContent = formatarPrazo(nMeses);
+    const prazoTexto = formatarPrazo(nMeses);
+    document.getElementById('resValor').textContent = prazoTexto;
+    narrativa.innerHTML = isFinite(nMeses)
+      ? `Partindo de <strong>${formatarBRL(PV)}</strong> já investidos e aportando <strong>${formatarBRL(aporteMensal)} por mês</strong>, a uma taxa de ${taxaAnual > 0 ? (taxaAnual * 100).toFixed(1) : 0}% ao ano, você atinge <strong>${formatarBRL(meta)}</strong> em <span class="ok">${prazoTexto}</span>.`
+      : `Com esses valores, a meta de <strong>${formatarBRL(meta)}</strong> <span class="alerta">não é atingível</span> — aumente o aporte mensal ou a taxa de retorno esperada.`;
   } else {
     const prazoAnos = parseFloat(document.getElementById('prazoAnos').value) || 1;
     nMeses = prazoAnos * 12;
     aporteMensal = aporteParaMeta(PV, i, nMeses, meta);
     document.getElementById('resValor').textContent = formatarBRL(Math.max(0, aporteMensal)) + '/mês';
+    narrativa.innerHTML = aporteMensal >= 0
+      ? `Partindo de <strong>${formatarBRL(PV)}</strong> já investidos, para atingir <strong>${formatarBRL(meta)}</strong> em <strong>${prazoAnos} anos</strong> (a ${taxaAnual > 0 ? (taxaAnual * 100).toFixed(1) : 0}% ao ano), você precisa investir <span class="ok">${formatarBRL(aporteMensal)} por mês</span>.`
+      : `Com o valor já investido e o retorno esperado, você <span class="ok">já atinge a meta antes do prazo</span> informado, mesmo sem novos aportes.`;
   }
 
   if (isFinite(nMeses) && nMeses > 0) {

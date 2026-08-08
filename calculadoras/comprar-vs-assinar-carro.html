@@ -121,51 +121,63 @@
 
   <div style="height:24px;"></div>
 
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
   <div class="data-table-wrap" style="max-width:900px; margin:0 auto 24px;">
     <table class="data-table">
       <thead>
         <tr>
           <th>Opção</th>
-          <th>Custo 3 anos</th>
-          <th>Saldo líquido</th>
+          <th>Total gasto (3 anos)</th>
+          <th>Fica com o carro?</th>
+          <th>Valor do carro</th>
+          <th>Custo real</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Assinatura</td>
           <td id="resCustoAssinatura">—</td>
+          <td id="resFicaAssinatura">—</td>
+          <td id="resValorCarroAssinatura">—</td>
           <td id="resSaldoAssinatura">—</td>
         </tr>
         <tr>
           <td>Compra à vista</td>
           <td id="resCustoVista">—</td>
+          <td id="resFicaVista">—</td>
+          <td id="resValorCarroVista">—</td>
           <td id="resSaldoVista">—</td>
         </tr>
         <tr>
           <td>Financ. sem juros</td>
           <td id="resCustoSemJuros">—</td>
+          <td id="resFicaSemJuros">—</td>
+          <td id="resValorCarroSemJuros">—</td>
           <td id="resSaldoSemJuros">—</td>
         </tr>
         <tr>
           <td>Financ. com juros</td>
           <td id="resCustoComJuros">—</td>
+          <td id="resFicaComJuros">—</td>
+          <td id="resValorCarroComJuros">—</td>
           <td id="resSaldoComJuros">—</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
           <td><span class="stamp-mark">MELHOR</span>Opção mais vantajosa</td>
-          <td colspan="2" id="resMelhor">—</td>
+          <td colspan="4" id="resMelhor">—</td>
         </tr>
       </tfoot>
     </table>
   </div>
 
   <div class="chart-card" style="max-width:900px; margin:0 auto;">
-    <h4 style="text-align:center; font-size:0.9rem;">Saldo líquido ao final de 3 anos</h4>
+    <h4 style="text-align:center; font-size:0.9rem;">Custo real ao final de 3 anos</h4>
     <canvas id="graficoCarro" height="130"></canvas>
     <p style="font-family:var(--font-body); font-size:0.78rem; color:var(--ink-soft); margin-top:10px; margin-bottom:0; text-align:center;">
-      O saldo líquido soma o que sobrou de patrimônio (valor do carro depreciado, quando aplicável) menos tudo o que foi gasto em 3 anos. Como o carro é um bem que perde valor, o saldo tende a ser negativo em todas as opções — vence quem perde menos.
+      "Custo real" é o total gasto em 3 anos menos o valor do carro que ainda seria seu (quando aplicável) — na assinatura, o carro é devolvido, então não há valor a descontar.
     </p>
   </div>
 

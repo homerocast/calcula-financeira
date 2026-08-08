@@ -71,16 +71,22 @@
 
   <div style="height:24px;"></div>
 
-  <div class="stat-grid" style="max-width:640px; margin:0 auto 24px; grid-template-columns:repeat(2, 1fr);">
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="stat-grid" style="max-width:900px; margin:0 auto 24px; grid-template-columns:repeat(2, 1fr);">
     <div class="stat-card">
-      <div class="stat-label">Aporte mensal</div>
+      <div class="stat-label">Aporte mensal necessário</div>
       <div class="stat-value" id="statAporte">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">% da sua renda atual</div>
+      <div class="stat-value" id="statAportePct">—</div>
     </div>
     <div class="stat-card destaque">
       <div class="stat-label">Patrimônio ao aposentar</div>
       <div class="stat-value" id="statPatrimonio">—</div>
     </div>
-    <div class="stat-card destaque" style="grid-column:1/-1;">
+    <div class="stat-card destaque">
       <div class="stat-label"><span id="resultadoTag">STATUS</span> <span id="resLabel">Situação na aposentadoria</span></div>
       <div class="stat-value" id="resValor">—</div>
     </div>

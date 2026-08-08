@@ -94,25 +94,51 @@ function calcular() {
   const saldoComJuros = patrimonioFinal - custoComJuros;
 
   // ---- Exibição ----
+  // ---- Custo real = total gasto menos o valor do carro que ainda seria seu ----
+  // Na assinatura o carro é devolvido, então não há valor a descontar.
+  const custoRealAssinatura = custoAssinatura; // não fica com o carro
+  const custoRealVista = custoVista - patrimonioFinal;
+  const custoRealSemJuros = custoSemJuros - patrimonioFinal;
+  const custoRealComJuros = custoComJuros - patrimonioFinal;
+
+  // ---- Exibição ----
   document.getElementById('resCustoAssinatura').textContent = formatarBRL(custoAssinatura);
-  document.getElementById('resSaldoAssinatura').textContent = formatarBRL(saldoAssinatura);
+  document.getElementById('resFicaAssinatura').textContent = 'Não';
+  document.getElementById('resValorCarroAssinatura').textContent = 'R$ 0,00';
+  document.getElementById('resSaldoAssinatura').textContent = formatarBRL(custoRealAssinatura);
+
   document.getElementById('resCustoVista').textContent = formatarBRL(custoVista);
-  document.getElementById('resSaldoVista').textContent = formatarBRL(saldoVista);
+  document.getElementById('resFicaVista').textContent = 'Sim';
+  document.getElementById('resValorCarroVista').textContent = formatarBRL(patrimonioFinal);
+  document.getElementById('resSaldoVista').textContent = formatarBRL(custoRealVista);
+
   document.getElementById('resCustoSemJuros').textContent = formatarBRL(custoSemJuros);
-  document.getElementById('resSaldoSemJuros').textContent = formatarBRL(saldoSemJuros);
+  document.getElementById('resFicaSemJuros').textContent = 'Sim';
+  document.getElementById('resValorCarroSemJuros').textContent = formatarBRL(patrimonioFinal);
+  document.getElementById('resSaldoSemJuros').textContent = formatarBRL(custoRealSemJuros);
+
   document.getElementById('resCustoComJuros').textContent = formatarBRL(custoComJuros);
-  document.getElementById('resSaldoComJuros').textContent = formatarBRL(saldoComJuros);
+  document.getElementById('resFicaComJuros').textContent = 'Sim';
+  document.getElementById('resValorCarroComJuros').textContent = formatarBRL(patrimonioFinal);
+  document.getElementById('resSaldoComJuros').textContent = formatarBRL(custoRealComJuros);
 
   const opcoes = [
-    { nome: 'Assinatura', saldo: saldoAssinatura },
-    { nome: 'Compra à vista', saldo: saldoVista },
-    { nome: 'Financ. sem juros', saldo: saldoSemJuros },
-    { nome: 'Financ. com juros', saldo: saldoComJuros }
+    { nome: 'Assinatura', custoReal: custoRealAssinatura, ficaComCarro: false, totalGasto: custoAssinatura },
+    { nome: 'Compra à vista', custoReal: custoRealVista, ficaComCarro: true, totalGasto: custoVista },
+    { nome: 'Financiamento sem juros', custoReal: custoRealSemJuros, ficaComCarro: true, totalGasto: custoSemJuros },
+    { nome: 'Financiamento com juros', custoReal: custoRealComJuros, ficaComCarro: true, totalGasto: custoComJuros }
   ];
-  const melhor = opcoes.reduce((a, b) => (b.saldo > a.saldo ? b : a));
-  document.getElementById('resMelhor').textContent = melhor.nome;
+  const melhor = opcoes.reduce((a, b) => (b.custoReal < a.custoReal ? b : a));
+  document.getElementById('resMelhor').textContent = melhor.nome + ' — custo real de ' + formatarBRL(melhor.custoReal);
 
-  desenharGrafico(opcoes, melhor.nome);
+  const narrativa = document.getElementById('resultadoNarrativo');
+  narrativa.innerHTML =
+    `Assinando, você gastará <strong>${formatarBRL(custoAssinatura)}</strong> em 3 anos e <strong>devolverá o carro</strong> ao final — não sobra nada em patrimônio. ` +
+    `Comprando à vista, você gastará <strong>${formatarBRL(custoVista)}</strong>, mas ficará com um carro que deve valer cerca de <strong>${formatarBRL(patrimonioFinal)}</strong> — ` +
+    `o custo real, descontando esse valor, é de <strong>${formatarBRL(custoRealVista)}</strong>. ` +
+    `Nesse cenário, a opção mais vantajosa é <span class="ok">${melhor.nome}</span>, com custo real de <strong>${formatarBRL(melhor.custoReal)}</strong> em 3 anos.`;
+
+  desenharGrafico(opcoes.map(o => ({ nome: o.nome, custoReal: o.custoReal })), melhor.nome);
 }
 
 let grafico = null;
@@ -125,7 +151,7 @@ function desenharGrafico(opcoes, nomeMelhor) {
     data: {
       labels: opcoes.map(o => o.nome),
       datasets: [{
-        data: opcoes.map(o => o.saldo),
+        data: opcoes.map(o => o.custoReal),
         backgroundColor: opcoes.map(o => o.nome === nomeMelhor ? '#2F7A56' : '#E3DFD2'),
         borderRadius: 4,
         maxBarThickness: 60
@@ -137,7 +163,7 @@ function desenharGrafico(opcoes, nomeMelhor) {
       aspectRatio: 2.4,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
+        tooltip: { callbacks: { label: ctx => 'Custo real: ' + formatarBRL(ctx.parsed.y) } }
       },
       scales: {
         x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans', size: 10 }, color: '#5B6472' } },
