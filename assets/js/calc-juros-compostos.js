@@ -115,8 +115,15 @@ function popularTabelaAnual(P, A, i, n) {
 function calcularJurosCompostos() {
   const P = parseFloat(document.getElementById('valorInicial').value) || 0;
   const A = parseFloat(document.getElementById('aporteMensal').value) || 0;
-  const i = (parseFloat(document.getElementById('taxaMensal').value) || 0) / 100;
-  const n = parseInt(document.getElementById('periodoMeses').value) || 0;
+  const taxaInformada = (parseFloat(document.getElementById('taxaMensal').value) || 0) / 100;
+  const taxaUnidade = document.getElementById('taxaUnidade').value;
+  const periodoInformado = parseInt(document.getElementById('periodoMeses').value) || 0;
+  const periodoUnidade = document.getElementById('periodoUnidade').value;
+
+  // Conversão correta: taxa anual -> mensal é (1+i_anual)^(1/12) - 1, NUNCA dividir por 12
+  const i = taxaUnidade === 'anual' ? Math.pow(1 + taxaInformada, 1 / 12) - 1 : taxaInformada;
+  // Período: se informado em anos, converte para meses (aqui sim é multiplicação simples de unidade, não de taxa)
+  const n = periodoUnidade === 'anos' ? periodoInformado * 12 : periodoInformado;
 
   // M = P(1+i)^n + A * [((1+i)^n - 1) / i]
   const fatorCrescimento = Math.pow(1 + i, n);
@@ -149,6 +156,9 @@ function calcularJurosCompostos() {
 
 ['valorInicial', 'aporteMensal', 'taxaMensal', 'periodoMeses'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcularJurosCompostos);
+});
+['taxaUnidade', 'periodoUnidade'].forEach(id => {
+  document.getElementById(id).addEventListener('change', calcularJurosCompostos);
 });
 const btnCalcular = document.getElementById('btnCalcular');
 if (btnCalcular) btnCalcular.addEventListener('click', calcularJurosCompostos);

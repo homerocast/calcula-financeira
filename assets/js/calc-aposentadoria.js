@@ -74,6 +74,8 @@ function desenharGrafico(PV, A, i, nMeses) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
@@ -90,4 +92,6 @@ function desenharGrafico(PV, A, i, nMeses) {
 ['idadeAtual', 'idadeAposentadoria', 'rendaMensal', 'percentualInvestido', 'patrimonioAtual', 'taxaRetorno', 'gastoMensal'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 calcular();

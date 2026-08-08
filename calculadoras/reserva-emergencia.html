@@ -35,61 +35,71 @@
   <h1>Calculadora de Reserva de Emergência</h1>
   <p class="subtitle">Descubra o tamanho ideal da sua reserva e quanto tempo falta para completá-la.</p>
 
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="despesas">Despesas mensais essenciais (R$)</label>
+        <input type="number" id="despesas" value="4000" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="perfil">Seu perfil de renda</label>
+        <select id="perfil">
+          <option value="3">CLT estável, casa com 2 rendas — 3x as despesas</option>
+          <option value="6" selected>CLT único provedor ou renda parcialmente variável — 6x</option>
+          <option value="12">Autônomo, PJ ou renda muito variável — 12x</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="jaGuardado">Já guardado (R$)</label>
+        <input type="number" id="jaGuardado" value="5000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="aporteMensal">Aporte mensal (R$)</label>
+        <input type="number" id="aporteMensal" value="800" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="rendimento">Rendimento mensal esperado (%)</label>
+        <input type="number" id="rendimento" value="0.9" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div class="stat-grid" style="max-width:640px; margin:0 auto 24px; grid-template-columns:repeat(2, 1fr);">
+    <div class="stat-card">
+      <div class="stat-label">Reserva ideal</div>
+      <div class="stat-value" id="resReservaIdeal">R$ 0,00</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Falta guardar</div>
+      <div class="stat-value" id="resFalta">R$ 0,00</div>
+    </div>
+    <div class="stat-card destaque" style="grid-column:1/-1;">
+      <div class="stat-label">Tempo até completar</div>
+      <div class="stat-value" id="resPrazo">—</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="max-width:900px; margin:0 auto;">
+    <h4 style="text-align:center; font-size:0.9rem;">Evolução até a meta</h4>
+    <canvas id="graficoReserva" height="110"></canvas>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="stat-grid" style="max-width:900px; margin:0 auto 32px; grid-template-columns:1fr;">
+    <div class="stat-card destaque">
+      <div class="stat-label">Progresso atual</div>
+      <div class="stat-value" id="statProgresso">—</div>
+    </div>
+  </div>
+
+  <div style="height:24px;"></div>
+
   <div class="calc-layout">
-
-    <div>
-    <div class="tape" id="calcTape">
-      <label for="despesas">Despesas mensais essenciais (R$)</label>
-      <input type="number" id="despesas" value="4000" inputmode="decimal">
-
-      <label for="perfil">Seu perfil de renda</label>
-      <select id="perfil">
-        <option value="3">CLT estável, casa com 2 rendas — 3x as despesas</option>
-        <option value="6" selected>CLT único provedor ou renda parcialmente variável — 6x</option>
-        <option value="12">Autônomo, PJ ou renda muito variável — 12x</option>
-      </select>
-
-      <label for="jaGuardado">Valor já guardado para a reserva (R$)</label>
-      <input type="number" id="jaGuardado" value="5000" inputmode="decimal">
-
-      <label for="aporteMensal">Quanto consegue guardar por mês (R$)</label>
-      <input type="number" id="aporteMensal" value="800" inputmode="decimal">
-
-      <label for="rendimento">Rendimento mensal esperado (%)</label>
-      <input type="number" id="rendimento" value="0.9" step="0.01" inputmode="decimal">
-
-      <div class="tape-row">
-        <span>Reserva ideal</span>
-        <span id="resReservaIdeal">R$ 0,00</span>
-      </div>
-      <div class="tape-row">
-        <span>Falta guardar</span>
-        <span id="resFalta">R$ 0,00</span>
-      </div>
-      <div class="tape-total">
-        <span><span class="stamp-mark">PRAZO</span>Tempo até completar</span>
-        <span id="resPrazo">—</span>
-      </div>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="chart-card">
-      <h4>Evolução até a meta</h4>
-      <canvas id="graficoReserva" height="220"></canvas>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="stat-grid" style="grid-template-columns:1fr;">
-      <div class="stat-card destaque">
-        <div class="stat-label">Progresso atual</div>
-        <div class="stat-value" id="statProgresso">—</div>
-      </div>
-    </div>
-    </div>
-
-    <article class="explainer">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
       <h2>Quanto guardar</h2>
       <p>
         Não existe um número mágico universal — o multiplicador ideal depende de quão estável
@@ -115,18 +125,22 @@
   <div class="category-label">Outras calculadoras</div>
   <div class="calc-grid">
     <a class="calc-card" href="primeiro-milhao.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg></span>
       <h3>Primeiro Milhão</h3>
       <p>Descubra quanto tempo falta (ou quanto investir) para chegar a R$ 1 milhão.</p>
     </a>
     <a class="calc-card" href="simulador-aposentadoria.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0z"/><line x1="12" y1="12" x2="12" y2="20"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span>
       <h3>Simulador de Aposentadoria</h3>
       <p>Planeje quanto investir para se aposentar com tranquilidade.</p>
     </a>
     <a class="calc-card" href="juros-compostos.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="14,7 21,7 21,14"/></svg></span>
       <h3>Calculadora de Juros Compostos</h3>
       <p>Simule o crescimento de um investimento com aportes mensais.</p>
     </a>
     <a class="calc-card" href="juros-simples.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
       <h3>Calculadora de Juros Simples</h3>
       <p>Calcule juros simples e compare com o crescimento composto.</p>
     </a>

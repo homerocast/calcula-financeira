@@ -41,6 +41,8 @@ function desenharGrafico(P, i, n) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
@@ -57,4 +59,6 @@ function desenharGrafico(P, i, n) {
 ['capital', 'taxa', 'periodo'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 calcular();

@@ -35,61 +35,66 @@
   <h1>Simulador de Aposentadoria</h1>
   <p class="subtitle">Descubra quanto patrimônio você terá ao se aposentar e se ele sustenta seu padrão de vida.</p>
 
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="idadeAtual">Idade atual</label>
+        <input type="number" id="idadeAtual" value="35" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="idadeAposentadoria">Idade para aposentar</label>
+        <input type="number" id="idadeAposentadoria" value="60" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="rendaMensal">Renda mensal atual (R$)</label>
+        <input type="number" id="rendaMensal" value="12000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="percentualInvestido">% da renda investido/mês</label>
+        <input type="number" id="percentualInvestido" value="20" step="1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="patrimonioAtual">Patrimônio já investido (R$)</label>
+        <input type="number" id="patrimonioAtual" value="80000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="taxaRetorno">Retorno esperado (% ao ano)</label>
+        <input type="number" id="taxaRetorno" value="8" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="gastoMensal">Gasto mensal esperado na aposentadoria (R$)</label>
+        <input type="number" id="gastoMensal" value="10000" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div class="stat-grid" style="max-width:640px; margin:0 auto 24px; grid-template-columns:repeat(2, 1fr);">
+    <div class="stat-card">
+      <div class="stat-label">Aporte mensal</div>
+      <div class="stat-value" id="statAporte">—</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">Patrimônio ao aposentar</div>
+      <div class="stat-value" id="statPatrimonio">—</div>
+    </div>
+    <div class="stat-card destaque" style="grid-column:1/-1;">
+      <div class="stat-label"><span id="resultadoTag">STATUS</span> <span id="resLabel">Situação na aposentadoria</span></div>
+      <div class="stat-value" id="resValor">—</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="max-width:900px; margin:0 auto;">
+    <h4 style="text-align:center; font-size:0.9rem;">Acumulação até a aposentadoria</h4>
+    <canvas id="graficoAposentadoria" height="110"></canvas>
+  </div>
+
+  <div style="height:40px;"></div>
+
   <div class="calc-layout">
-
-    <div>
-    <div class="tape" id="calcTape">
-      <label for="idadeAtual">Idade atual</label>
-      <input type="number" id="idadeAtual" value="35" inputmode="numeric">
-
-      <label for="idadeAposentadoria">Idade desejada para aposentar</label>
-      <input type="number" id="idadeAposentadoria" value="60" inputmode="numeric">
-
-      <label for="rendaMensal">Renda mensal atual (R$)</label>
-      <input type="number" id="rendaMensal" value="12000" inputmode="decimal">
-
-      <label for="percentualInvestido">% da renda investido por mês</label>
-      <input type="number" id="percentualInvestido" value="20" step="1" inputmode="decimal">
-
-      <label for="patrimonioAtual">Patrimônio já investido (R$)</label>
-      <input type="number" id="patrimonioAtual" value="80000" inputmode="decimal">
-
-      <label for="taxaRetorno">Taxa de retorno esperada (% ao ano)</label>
-      <input type="number" id="taxaRetorno" value="8" step="0.1" inputmode="decimal">
-
-      <label for="gastoMensal">Gasto mensal esperado na aposentadoria (R$)</label>
-      <input type="number" id="gastoMensal" value="10000" inputmode="decimal">
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-label">Aporte mensal</div>
-        <div class="stat-value" id="statAporte">—</div>
-      </div>
-      <div class="stat-card destaque">
-        <div class="stat-label">Patrimônio ao aposentar</div>
-        <div class="stat-value" id="statPatrimonio">—</div>
-      </div>
-    </div>
-
-    <div class="tape">
-      <div class="tape-total">
-        <span><span class="stamp-mark" id="resultadoTag">STATUS</span><span id="resLabel">Situação na aposentadoria</span></span>
-        <span id="resValor">—</span>
-      </div>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="chart-card">
-      <h4>Acumulação até a aposentadoria</h4>
-      <canvas id="graficoAposentadoria" height="220"></canvas>
-    </div>
-    </div>
-
-    <article class="explainer">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
       <h2>Fase de acumulação</h2>
       <p>
         Enquanto você trabalha, o aporte mensal (a % da renda que você investe) cresce a juros
@@ -114,18 +119,22 @@
   <div class="category-label">Outras calculadoras</div>
   <div class="calc-grid">
     <a class="calc-card" href="reserva-emergencia.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
       <h3>Reserva de Emergência</h3>
       <p>Descubra o tamanho ideal da reserva e quanto tempo falta para completá-la.</p>
     </a>
     <a class="calc-card" href="primeiro-milhao.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg></span>
       <h3>Primeiro Milhão</h3>
       <p>Descubra quanto tempo falta (ou quanto investir) para chegar a R$ 1 milhão.</p>
     </a>
     <a class="calc-card" href="juros-compostos.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="14,7 21,7 21,14"/></svg></span>
       <h3>Calculadora de Juros Compostos</h3>
       <p>Simule o crescimento de um investimento com aportes mensais.</p>
     </a>
     <a class="calc-card" href="juros-simples.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
       <h3>Calculadora de Juros Simples</h3>
       <p>Calcule juros simples e compare com o crescimento composto.</p>
     </a>

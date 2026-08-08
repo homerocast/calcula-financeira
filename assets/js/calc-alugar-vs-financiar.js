@@ -110,6 +110,8 @@ function desenharGrafico(serieAlugar, serieFinanciar, horizonteMeses) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
@@ -127,4 +129,6 @@ const campos = ['valorImovel', 'aluguelMensal', 'valorizacaoImovel', 'reajusteAl
 campos.forEach(id => {
   document.getElementById(id).addEventListener('input', simular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', simular);
 simular();

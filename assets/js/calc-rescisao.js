@@ -133,6 +133,8 @@ function desenharGrafico(itens) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
@@ -152,4 +154,6 @@ function desenharGrafico(itens) {
   document.getElementById(id).addEventListener('input', calcular);
   document.getElementById(id).addEventListener('change', calcular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 calcular();

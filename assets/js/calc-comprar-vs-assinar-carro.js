@@ -133,6 +133,8 @@ function desenharGrafico(opcoes, nomeMelhor) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
@@ -156,4 +158,6 @@ const camposEntrada = [
 camposEntrada.forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 calcular();

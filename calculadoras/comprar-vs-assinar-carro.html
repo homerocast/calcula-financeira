@@ -35,121 +35,144 @@
   <h1>Comprar ou Assinar um Carro?</h1>
   <p class="subtitle">Compare o custo real de 4 formas de ter um carro por 3 anos: assinatura, compra à vista, financiamento sem juros e financiamento com juros.</p>
 
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="preco">Preço do carro 0km (R$)</label>
+        <input type="number" id="preco" value="154790" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="km">Quilometragem anual (km)</label>
+        <input type="number" id="km" value="24000" inputmode="numeric">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="assinaturaMensal">Preço da assinatura mensal (R$)</label>
+        <input type="number" id="assinaturaMensal" value="4719.60" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="tape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="inflacao">Inflação média anual (%)</label>
+        <input type="number" id="inflacao" value="5" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="custoOportunidade">Custo de oportunidade (%)</label>
+        <input type="number" id="custoOportunidade" value="10.5" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="depreciacao">Depreciação anual (%)</label>
+        <input type="number" id="depreciacao" value="11" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="ipva">Alíquota IPVA (%)</label>
+        <input type="number" id="ipva" value="4" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="licenciamento">Licenciamento anual (R$)</label>
+        <input type="number" id="licenciamento" value="180" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="seguro">Seguro anual (R$)</label>
+        <input type="number" id="seguro" value="4643.70" step="0.01" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="manutPrev">Manutenção preventiva/ano (R$)</label>
+        <input type="number" id="manutPrev" value="2400" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="manutCorr">Manutenção corretiva/ano (R$)</label>
+        <input type="number" id="manutCorr" value="1440" inputmode="decimal">
+      </div>
+    </div>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="tape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="entradaSemJuros">Sem juros — entrada (%)</label>
+        <input type="number" id="entradaSemJuros" value="50" step="1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="prazoSemJuros">Sem juros — prazo (meses)</label>
+        <input type="number" id="prazoSemJuros" value="30" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="entradaComJuros">Com juros — entrada (%)</label>
+        <input type="number" id="entradaComJuros" value="20" step="1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="prazoComJuros">Com juros — prazo (meses)</label>
+        <input type="number" id="prazoComJuros" value="36" inputmode="numeric">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="jurosMensal">Com juros — taxa mensal (%)</label>
+        <input type="number" id="jurosMensal" value="2" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div class="data-table-wrap" style="max-width:900px; margin:0 auto 24px;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Opção</th>
+          <th>Custo 3 anos</th>
+          <th>Saldo líquido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Assinatura</td>
+          <td id="resCustoAssinatura">—</td>
+          <td id="resSaldoAssinatura">—</td>
+        </tr>
+        <tr>
+          <td>Compra à vista</td>
+          <td id="resCustoVista">—</td>
+          <td id="resSaldoVista">—</td>
+        </tr>
+        <tr>
+          <td>Financ. sem juros</td>
+          <td id="resCustoSemJuros">—</td>
+          <td id="resSaldoSemJuros">—</td>
+        </tr>
+        <tr>
+          <td>Financ. com juros</td>
+          <td id="resCustoComJuros">—</td>
+          <td id="resSaldoComJuros">—</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><span class="stamp-mark">MELHOR</span>Opção mais vantajosa</td>
+          <td colspan="2" id="resMelhor">—</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="chart-card" style="max-width:900px; margin:0 auto;">
+    <h4 style="text-align:center; font-size:0.9rem;">Saldo líquido ao final de 3 anos</h4>
+    <canvas id="graficoCarro" height="130"></canvas>
+    <p style="font-family:var(--font-body); font-size:0.78rem; color:var(--ink-soft); margin-top:10px; margin-bottom:0; text-align:center;">
+      O saldo líquido soma o que sobrou de patrimônio (valor do carro depreciado, quando aplicável) menos tudo o que foi gasto em 3 anos. Como o carro é um bem que perde valor, o saldo tende a ser negativo em todas as opções — vence quem perde menos.
+    </p>
+  </div>
+
+  <div style="height:40px;"></div>
+
   <div class="calc-layout">
-
-    <div>
-    <div class="tape" id="calcTape">
-      <label for="preco">Preço do carro 0km (R$)</label>
-      <input type="number" id="preco" value="154790" inputmode="decimal">
-
-      <label for="km">Quilometragem anual (km)</label>
-      <input type="number" id="km" value="24000" inputmode="numeric">
-
-      <label for="assinaturaMensal">Preço da assinatura mensal (R$)</label>
-      <input type="number" id="assinaturaMensal" value="4719.60" step="0.01" inputmode="decimal">
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="tape">
-      <label for="inflacao">Inflação média anual (%)</label>
-      <input type="number" id="inflacao" value="5" step="0.1" inputmode="decimal">
-
-      <label for="custoOportunidade">Custo de oportunidade anual (%)</label>
-      <input type="number" id="custoOportunidade" value="10.5" step="0.1" inputmode="decimal">
-
-      <label for="depreciacao">Taxa de depreciação anual (%)</label>
-      <input type="number" id="depreciacao" value="11" step="0.1" inputmode="decimal">
-
-      <label for="ipva">Alíquota IPVA (%)</label>
-      <input type="number" id="ipva" value="4" step="0.1" inputmode="decimal">
-
-      <label for="licenciamento">Licenciamento anual (R$)</label>
-      <input type="number" id="licenciamento" value="180" inputmode="decimal">
-
-      <label for="seguro">Seguro anual (R$)</label>
-      <input type="number" id="seguro" value="4643.70" step="0.01" inputmode="decimal">
-
-      <label for="manutPrev">Manutenção preventiva anual (R$)</label>
-      <input type="number" id="manutPrev" value="2400" inputmode="decimal">
-
-      <label for="manutCorr">Manutenção corretiva anual (R$)</label>
-      <input type="number" id="manutCorr" value="1440" inputmode="decimal">
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="tape">
-      <label for="entradaSemJuros">Financiamento sem juros — entrada (%)</label>
-      <input type="number" id="entradaSemJuros" value="50" step="1" inputmode="decimal">
-
-      <label for="prazoSemJuros">Financiamento sem juros — prazo (meses)</label>
-      <input type="number" id="prazoSemJuros" value="30" inputmode="numeric">
-
-      <label for="entradaComJuros">Financiamento com juros — entrada (%)</label>
-      <input type="number" id="entradaComJuros" value="20" step="1" inputmode="decimal">
-
-      <label for="prazoComJuros">Financiamento com juros — prazo (meses)</label>
-      <input type="number" id="prazoComJuros" value="36" inputmode="numeric">
-
-      <label for="jurosMensal">Financiamento com juros — taxa mensal (%)</label>
-      <input type="number" id="jurosMensal" value="2" step="0.01" inputmode="decimal">
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="data-table-wrap">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Opção</th>
-            <th>Custo 3 anos</th>
-            <th>Saldo líquido</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Assinatura</td>
-            <td id="resCustoAssinatura">—</td>
-            <td id="resSaldoAssinatura">—</td>
-          </tr>
-          <tr>
-            <td>Compra à vista</td>
-            <td id="resCustoVista">—</td>
-            <td id="resSaldoVista">—</td>
-          </tr>
-          <tr>
-            <td>Financ. sem juros</td>
-            <td id="resCustoSemJuros">—</td>
-            <td id="resSaldoSemJuros">—</td>
-          </tr>
-          <tr>
-            <td>Financ. com juros</td>
-            <td id="resCustoComJuros">—</td>
-            <td id="resSaldoComJuros">—</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td><span class="stamp-mark">MELHOR</span>Opção mais vantajosa</td>
-            <td colspan="2" id="resMelhor">—</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-
-    <div style="height:16px;"></div>
-
-    <div class="chart-card">
-      <h4>Saldo líquido ao final de 3 anos</h4>
-      <canvas id="graficoCarro" height="240"></canvas>
-      <p style="font-family:var(--font-body); font-size:0.78rem; color:var(--ink-soft); margin-top:10px; margin-bottom:0;">
-        O saldo líquido soma o que sobrou de patrimônio (valor do carro depreciado, quando aplicável) menos tudo o que foi gasto em 3 anos. Como o carro é um bem que perde valor, o saldo tende a ser negativo em todas as opções — vence quem perde menos.
-      </p>
-    </div>
-    </div>
-
-    <article class="explainer">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
       <h2>Como o cálculo é feito</h2>
       <p>
         Cada opção acumula, ano a ano, quatro tipos de custo: o desembolso de aquisição
@@ -190,18 +213,22 @@
   <div class="category-label">Outras calculadoras</div>
   <div class="calc-grid">
     <a class="calc-card" href="alugar-vs-financiar.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/><path d="M10 20v-6h4v6"/></svg></span>
       <h3>Alugar ou Financiar um Imóvel?</h3>
       <p>Compare o patrimônio final entre alugar e investir, ou financiar.</p>
     </a>
     <a class="calc-card" href="juros-compostos.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="14,7 21,7 21,14"/></svg></span>
       <h3>Calculadora de Juros Compostos</h3>
       <p>Simule o crescimento de um investimento com aportes mensais.</p>
     </a>
     <a class="calc-card" href="juros-simples.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
       <h3>Calculadora de Juros Simples</h3>
       <p>Calcule juros simples e compare com o crescimento composto.</p>
     </a>
     <a class="calc-card" href="cdb-tesouro-poupanca.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v6c0 1.66 3.13 3 7 3s7-1.34 7-3V7"/><path d="M5 13v4c0 1.66 3.13 3 7 3s7-1.34 7-3v-4"/></svg></span>
       <h3>CDB vs Tesouro vs Poupança</h3>
       <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
     </a>

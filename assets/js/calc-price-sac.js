@@ -74,6 +74,8 @@ function desenharGrafico(sacParcelas, priceParcelas) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
@@ -119,4 +121,6 @@ function calcular() {
 ['valorFinanciado', 'taxaMensal', 'prazoMeses'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 calcular();

@@ -35,50 +35,57 @@
   <h1>Calculadora Primeiro Milhão</h1>
   <p class="subtitle">Escolha se quer descobrir o prazo ou o aporte mensal necessário para chegar à sua meta.</p>
 
-  <div class="calc-layout">
-
-    <div>
-    <div class="tape" id="calcTape">
-      <label for="meta">Meta (R$)</label>
-      <input type="number" id="meta" value="1000000" inputmode="decimal">
-
-      <label for="modo">O que calcular?</label>
-      <select id="modo">
-        <option value="prazo">Prazo necessário (informo o aporte mensal)</option>
-        <option value="aporte">Aporte mensal necessário (informo o prazo)</option>
-      </select>
-
-      <label for="jaInvestido">Valor já investido (R$)</label>
-      <input type="number" id="jaInvestido" value="20000" inputmode="decimal">
-
-      <div id="campoAporte">
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="meta">Meta (R$)</label>
+        <input type="number" id="meta" value="1000000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="jaInvestido">Já investido (R$)</label>
+        <input type="number" id="jaInvestido" value="20000" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="modo">O que calcular?</label>
+        <select id="modo">
+          <option value="prazo">Prazo necessário (informo o aporte mensal)</option>
+          <option value="aporte">Aporte mensal necessário (informo o prazo)</option>
+        </select>
+      </div>
+      <div class="field" id="campoAporte">
         <label for="aporteMensal">Aporte mensal (R$)</label>
         <input type="number" id="aporteMensal" value="3000" inputmode="decimal">
       </div>
-
-      <div id="campoPrazo" style="display:none;">
+      <div class="field" id="campoPrazo" style="display:none;">
         <label for="prazoAnos">Prazo desejado (anos)</label>
         <input type="number" id="prazoAnos" value="15" inputmode="numeric">
       </div>
-
-      <label for="taxa">Taxa de retorno esperada (% ao ano)</label>
-      <input type="number" id="taxa" value="12" step="0.1" inputmode="decimal">
-
-      <div class="tape-total">
-        <span><span class="stamp-mark">RESULTADO</span><span id="resLabel">Prazo até a meta</span></span>
-        <span id="resValor">—</span>
+      <div class="field">
+        <label for="taxa">Retorno esperado (% ao ano)</label>
+        <input type="number" id="taxa" value="12" step="0.1" inputmode="decimal">
       </div>
     </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
 
-    <div style="height:16px;"></div>
+  <div style="height:24px;"></div>
 
-    <div class="chart-card">
-      <h4>Evolução do patrimônio até a meta</h4>
-      <canvas id="graficoMilhao" height="220"></canvas>
+  <div class="stat-grid" style="max-width:640px; margin:0 auto 24px; grid-template-columns:1fr;">
+    <div class="stat-card destaque">
+      <div class="stat-label" id="resLabel">Prazo até a meta</div>
+      <div class="stat-value" id="resValor">—</div>
     </div>
-    </div>
+  </div>
 
-    <article class="explainer">
+  <div class="chart-card" style="max-width:900px; margin:0 auto;">
+    <h4 style="text-align:center; font-size:0.9rem;">Evolução do patrimônio até a meta</h4>
+    <canvas id="graficoMilhao" height="110"></canvas>
+  </div>
+
+  <div style="height:40px;"></div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
       <h2>Como funciona</h2>
       <p>
         No modo "prazo", a calculadora resolve para quantos meses são necessários até o
@@ -105,18 +112,22 @@
   <div class="category-label">Outras calculadoras</div>
   <div class="calc-grid">
     <a class="calc-card" href="reserva-emergencia.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
       <h3>Reserva de Emergência</h3>
       <p>Descubra o tamanho ideal da reserva e quanto tempo falta para completá-la.</p>
     </a>
     <a class="calc-card" href="simulador-aposentadoria.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0z"/><line x1="12" y1="12" x2="12" y2="20"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span>
       <h3>Simulador de Aposentadoria</h3>
       <p>Planeje quanto investir para se aposentar com tranquilidade.</p>
     </a>
     <a class="calc-card" href="juros-compostos.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="14,7 21,7 21,14"/></svg></span>
       <h3>Calculadora de Juros Compostos</h3>
       <p>Simule o crescimento de um investimento com aportes mensais.</p>
     </a>
     <a class="calc-card" href="juros-simples.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
       <h3>Calculadora de Juros Simples</h3>
       <p>Calcule juros simples e compare com o crescimento composto.</p>
     </a>

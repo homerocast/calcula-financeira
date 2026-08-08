@@ -69,6 +69,8 @@ function desenharGrafico(opcoes, nomeMelhor) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2.4,
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { label: ctx => formatarBRL(ctx.parsed.y) } }
@@ -87,4 +89,6 @@ function desenharGrafico(opcoes, nomeMelhor) {
 ['valor','prazoDias','taxaCDI','percentualCDB','taxaSelic','taxaCustodia'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
+const btnCalcular = document.getElementById('btnCalcular');
+if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 calcular();
