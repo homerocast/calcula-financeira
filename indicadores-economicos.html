@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selic, CDI, IPCA e Dólar Hoje — Indicadores Econômicos Atualizados | Calcule Seu Dinheiro</title>
+<meta name="description" content="Selic, CDI, IPCA e dólar atualizados diretamente do Banco Central do Brasil, com explicação de cada indicador e o que ele significa para seus investimentos.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/indicadores-economicos.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Selic, CDI, IPCA e Dólar Hoje — Indicadores Econômicos Atualizados">
+<meta property="og:description" content="Selic, CDI, IPCA e dólar atualizados diretamente do Banco Central do Brasil, com explicação de cada indicador.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/indicadores-economicos.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Selic, CDI, IPCA e Dólar Hoje — Indicadores Econômicos Atualizados">
+<meta name="twitter:description" content="Selic, CDI, IPCA e dólar atualizados diretamente do Banco Central do Brasil, com explicação de cada indicador.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é a taxa Selic?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A Selic é a taxa básica de juros da economia brasileira, definida pelo Copom (Comitê de Política Monetária do Banco Central). Ela serve de referência para praticamente todas as outras taxas de juros do país, incluindo financiamentos, CDBs e a poupança." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é o CDI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "O CDI (Certificado de Depósito Interbancário) é a taxa média dos empréstimos entre bancos, calculada pela B3. Ele acompanha de perto a taxa Selic e é usado como referência de rentabilidade para CDBs, LCIs, LCAs e fundos de renda fixa." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é o IPCA?",
+      "acceptedAnswer": { "@type": "Answer", "text": "O IPCA (Índice Nacional de Preços ao Consumidor Amplo) é o índice oficial de inflação do Brasil, calculado pelo IBGE. É usado pelo Banco Central como meta de inflação e serve de referência para investimentos indexados, como o Tesouro IPCA+." }
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="index.html#calculadoras">Calculadoras</a>
+      <a href="indicadores-economicos.html">Indicadores</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Selic, CDI, IPCA e Dólar Hoje</h1>
+  <p class="subtitle">Dados oficiais, direto do Banco Central do Brasil. Atualizado a cada visita.</p>
+
+  <div id="statusCarregamento" style="max-width:900px; margin:0 auto 16px; font-family:var(--font-body); font-size:0.85rem; color:var(--ink-soft); text-align:center;">
+    Carregando dados do Banco Central...
+  </div>
+
+  <div class="stat-grid" style="max-width:900px; margin:0 auto 32px;" id="gradeIndicadores">
+    <div class="stat-card destaque">
+      <div class="stat-label">Taxa Selic (meta)</div>
+      <div class="stat-value" id="valorSelic">—</div>
+      <div style="font-family:var(--font-body); font-size:0.7rem; color:var(--ink-soft); margin-top:4px;" id="dataSelic"></div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">CDI (anualizado)</div>
+      <div class="stat-value" id="valorCDI">—</div>
+      <div style="font-family:var(--font-body); font-size:0.7rem; color:var(--ink-soft); margin-top:4px;" id="dataCDI"></div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">IPCA (12 meses)</div>
+      <div class="stat-value" id="valorIPCA">—</div>
+      <div style="font-family:var(--font-body); font-size:0.7rem; color:var(--ink-soft); margin-top:4px;" id="dataIPCA"></div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">Dólar (PTAX)</div>
+      <div class="stat-value" id="valorDolar">—</div>
+      <div style="font-family:var(--font-body); font-size:0.7rem; color:var(--ink-soft); margin-top:4px;" id="dataDolar"></div>
+    </div>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>O que é a taxa Selic?</h2>
+      <p>
+        A Selic é a taxa básica de juros da economia brasileira, definida pelo Copom (Comitê de
+        Política Monetária) a cada 45 dias. Ela é a referência para praticamente todas as outras
+        taxas de juros do país — financiamentos, CDBs, Tesouro Selic e a própria poupança. Quando
+        a Selic sobe, o crédito fica mais caro e a renda fixa mais atrativa; quando cai, o inverso.
+      </p>
+      <h2>O que é o CDI?</h2>
+      <p>
+        O CDI (Certificado de Depósito Interbancário) é a taxa média dos empréstimos entre bancos
+        de um dia para o outro, calculada pela B3. Na prática, ele acompanha a Selic de perto —
+        historicamente fica cerca de 0,10 ponto percentual abaixo dela. É a referência mais comum
+        para CDBs, LCIs, LCAs e fundos de renda fixa ("papel que rende 100% do CDI", por exemplo).
+      </p>
+      <h2>O que é o IPCA?</h2>
+      <p>
+        O IPCA (Índice Nacional de Preços ao Consumidor Amplo), calculado pelo IBGE, é o índice
+        oficial de inflação do Brasil — o que o Banco Central usa como meta ao decidir a Selic.
+        O valor acumulado em 12 meses mostra o quanto os preços subiram no último ano. É também a
+        referência de investimentos como o Tesouro IPCA+, que paga essa variação mais uma taxa fixa.
+      </p>
+      <h2>Como esses indicadores se conectam</h2>
+      <p>
+        De forma simplificada: o Banco Central sobe a Selic para conter a inflação (IPCA) quando
+        ela está alta, e reduz quando a inflação está sob controle e a economia precisa de estímulo.
+        O CDI segue a Selic de perto, e é por isso que ele aparece como referência de rentabilidade
+        na maioria dos investimentos de renda fixa do Brasil.
+      </p>
+      <p>
+        Use esses valores atualizados diretamente nas calculadoras de
+        <a href="calculadoras/cdb-tesouro-poupanca.html">CDB vs Tesouro vs Poupança</a> e de
+        <a href="calculadoras/juros-compostos.html">juros compostos</a>.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Calculadoras relacionadas</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="calculadoras/cdb-tesouro-poupanca.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v6c0 1.66 3.13 3 7 3s7-1.34 7-3V7"/><path d="M5 13v4c0 1.66 3.13 3 7 3s7-1.34 7-3v-4"/></svg></span>
+      <h3>CDB vs Tesouro vs Poupança</h3>
+      <p>Compare a rentabilidade líquida de IR entre aplicações usando a Selic e o CDI de hoje.</p>
+    </a>
+    <a class="calc-card" href="calculadoras/juros-compostos.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="14,7 21,7 21,14"/></svg></span>
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com a taxa que você quiser.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Dados obtidos em tempo real da API pública do Banco Central do Brasil (SGS). O Banco Central não se responsabiliza por eventuais defasagens ou instabilidades na fonte. <a href="privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+</footer>
+
+<script src="assets/js/indicadores.js"></script>
+<script src="assets/js/analytics.js"></script>
+<script src="assets/js/cookie-consent.js"></script>
+</body>
+</html>
