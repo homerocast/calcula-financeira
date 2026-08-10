@@ -156,6 +156,13 @@
   </url>
 
   <url>
+    <loc>https://calculeseudinheiro.com.br/comparadores.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://calculeseudinheiro.com.br/indicadores-economicos.html</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>daily</changefreq>
@@ -188,6 +195,56 @@
     <lastmod>2026-08-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/1621.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/2000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/3000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/4000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/5000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/6000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/8000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/calculadoras/salario-liquido/10000.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
