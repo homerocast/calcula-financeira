@@ -26,8 +26,8 @@
   <div class="wrap">
     <div class="brand"><a href="index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
     <nav class="site">
-      <details class="nav-dropdown">
-        <summary>Calculadoras</summary>
+      <div class="nav-dropdown">
+        <button type="button" class="dropdown-trigger">Calculadoras</button>
         <div class="dropdown-panel">
           <div class="dropdown-col">
             <div class="dropdown-col-title">Juros e investimentos</div>
@@ -66,12 +66,25 @@
           </div>
           <a class="dropdown-viewall" href="index.html#calculadoras">Ver todas as calculadoras →</a>
         </div>
-      </details>
+      </div>
       <a href="indicadores-economicos.html">Indicadores</a>
       <a href="sobre.html">Sobre</a>
     </nav>
   </div>
 </header>
+
+<div class="ticker-bar" id="tickerBar">
+  <div class="wrap ticker-scroll">
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemSelic"><span class="ticker-label">SELIC</span><span class="ticker-value" id="tickerSelic">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemCDI"><span class="ticker-label">CDI</span><span class="ticker-value" id="tickerCDI">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemIPCA"><span class="ticker-label">IPCA</span><span class="ticker-value" id="tickerIPCA">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemDolar"><span class="ticker-label">DÓLAR</span><span class="ticker-value" id="tickerDolar">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemIbov"><span class="ticker-label">IBOVESPA</span><span class="ticker-value" id="tickerIbov">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemSP500"><span class="ticker-label">S&amp;P 500</span><span class="ticker-value" id="tickerSP500">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemDow"><span class="ticker-label">DOW JONES</span><span class="ticker-value" id="tickerDow">…</span></a>
+    <a href="indicadores-economicos.html" class="ticker-item" id="itemNasdaq"><span class="ticker-label">NASDAQ</span><span class="ticker-value" id="tickerNasdaq">…</span></a>
+  </div>
+</div>
 
 <main class="wrap">
   <h1>Fale com a gente</h1>
@@ -120,6 +133,8 @@
   </div>
 </footer>
 
+<script src="assets/js/nav-menu.js"></script>
+<script src="assets/js/ticker-indicadores.js"></script>
 <script src="assets/js/analytics.js"></script>
 <script src="assets/js/cookie-consent.js"></script>
 </body>

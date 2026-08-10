@@ -377,6 +377,170 @@ table.data-table tfoot .stamp-mark { margin-right: 6px; }
 .result-narrative .ok { color: var(--green-gain); font-weight: 600; }
 .result-narrative .alerta { color: var(--stamp); font-weight: 600; }
 
+/* ---------- Menu dropdown de categorias ---------- */
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+  margin-left: 22px;
+}
+.dropdown-trigger {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.15s ease;
+}
+.dropdown-trigger::after {
+  content: '▾';
+  font-size: 0.65em;
+  transition: transform 0.15s ease;
+}
+.nav-dropdown.open .dropdown-trigger::after { transform: rotate(180deg); }
+.dropdown-trigger:hover { color: var(--brass); }
+.dropdown-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  z-index: 200;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 6px 22px;
+  width: max-content;
+  max-width: 90vw;
+}
+/* uma área "ponte" invisível fecha o hiato entre o link e o painel, pra não perder o hover */
+.nav-dropdown::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 100%; height: 14px;
+}
+@media (hover: hover) {
+  .nav-dropdown:hover .dropdown-panel { display: grid; }
+  .nav-dropdown:hover .dropdown-trigger::after { transform: rotate(180deg); }
+}
+.nav-dropdown.open .dropdown-panel { display: grid; }
+.dropdown-col-title {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brass);
+  margin-bottom: 4px;
+}
+.dropdown-panel a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 3px 0;
+}
+.dropdown-panel a:hover { color: var(--brass); }
+.dropdown-viewall {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 12px !important;
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+@media (max-width: 760px) {
+  .nav-dropdown.open .dropdown-panel,
+  .dropdown-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+  .nav-dropdown.open .dropdown-panel {
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: none;
+    box-shadow: none;
+    border: none;
+    padding: 12px 0 4px;
+    margin-top: 6px;
+  }
+  .nav-dropdown { display: block; margin-left: 0; }
+}
+@media (max-width: 480px) {
+  .dropdown-panel { grid-template-columns: 1fr; }
+}
+
+/* ---------- Barra de indicadores (ticker) ---------- */
+.ticker-bar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.ticker-scroll {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.ticker-scroll::-webkit-scrollbar { display: none; }
+.ticker-item {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 9px 16px;
+  border-right: 1px solid var(--line);
+  white-space: nowrap;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+.ticker-item:last-child { border-right: none; }
+.ticker-label {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+.ticker-value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ticker-item:hover .ticker-value { color: var(--brass); }
+.ticker-item.hidden { display: none; }
+
+/* ---------- Selo "Mais usadas" ---------- */
+.trending-badge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: var(--stamp);
+  color: var(--paper-raised);
+  letter-spacing: 0.02em;
+}
+.trending-badge.destaque {
+  background: var(--brass-soft);
+  color: var(--ink);
+}
+.calc-card.trending { padding-top: 40px; }
+
 .category-label {
   display: inline-block;
   font-family: var(--font-body);
