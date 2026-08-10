@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora Price vs SAC — Compare Sistemas de Financiamento | Calcule Seu Dinheiro</title>
-<meta name="description" content="Compare a Tabela Price e o Sistema SAC de amortização: parcela inicial, parcela final, total pago e total de juros lado a lado.">
+<title>Calculadora Price vs SAC com CET — Compare Sistemas de Financiamento | Calcule Seu Dinheiro</title>
+<meta name="description" content="Compare a Tabela Price e o Sistema SAC de amortização usando o CET (Custo Efetivo Total): parcela inicial, parcela final, total pago e total de juros lado a lado.">
 <link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/price-sac.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Calcule Seu Dinheiro">
-<meta property="og:title" content="Calculadora Price vs SAC — Compare Sistemas de Financiamento | Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora Price vs SAC com CET — Compare Sistemas de Financiamento | Calcule Seu Dinheiro">
 <meta property="og:description" content="Compare a Tabela Price e o Sistema SAC de amortização: parcela inicial, parcela final, total pago e total de juros lado a lado.">
 <meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/price-sac.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Calculadora Price vs SAC — Compare Sistemas de Financiamento | Calcule Seu Dinheiro">
+<meta name="twitter:title" content="Calculadora Price vs SAC com CET — Compare Sistemas de Financiamento | Calcule Seu Dinheiro">
 <meta name="twitter:description" content="Compare a Tabela Price e o Sistema SAC de amortização: parcela inicial, parcela final, total pago e total de juros lado a lado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -97,8 +97,8 @@
         <input type="number" id="valorFinanciado" value="300000" inputmode="decimal">
       </div>
       <div class="field">
-        <label for="taxaMensal">Taxa de juros mensal (%)</label>
-        <input type="number" id="taxaMensal" value="0.8" step="0.01" inputmode="decimal">
+        <label for="taxaCET">CET — Custo Efetivo Total (% ao ano)</label>
+        <input type="number" id="taxaCET" value="12.5" step="0.01" inputmode="decimal">
       </div>
       <div class="field" style="grid-column:1/-1;">
         <label for="prazoMeses">Prazo (meses)</label>
@@ -168,6 +168,23 @@
 
   <div class="calc-layout">
     <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Por que usamos o CET, e não a "taxa de juros"</h2>
+      <p>
+        No financiamento imobiliário, a métrica que os bancos são obrigados a divulgar (Resolução
+        CMN nº 3.517/2007) e que realmente permite comparar propostas é o
+        <strong>CET — Custo Efetivo Total</strong>, expresso em % ao ano. Ele já engloba juros,
+        seguros obrigatórios (MIP e DFI), tarifas administrativas e outros encargos — diferente da
+        "taxa de juros nominal", que sozinha subestima o custo real. Bancos diferentes podem
+        anunciar a mesma taxa de juros e ainda assim ter CETs bem diferentes por causa desses
+        outros custos.
+      </p>
+      <p style="font-size:0.85rem; color:var(--ink-soft);">
+        Esta calculadora usa o CET informado como taxa equivalente para o cálculo das parcelas
+        (convertido corretamente para uma taxa mensal, por composição — nunca por divisão simples
+        por 12). Como o CET já inclui seguros e tarifas, o valor da parcela aqui é uma boa
+        aproximação do que você pagaria na prática, mas o valor exato pode variar conforme a
+        idade do contratante (que afeta o seguro MIP) e a política de cada banco.
+      </p>
       <h2>Sistema SAC (Amortização Constante)</h2>
       <p>
         No SAC, a parte da parcela que amortiza a dívida é sempre a mesma: <code>A = P / n</code>.

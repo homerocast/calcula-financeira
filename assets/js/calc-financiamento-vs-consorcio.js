@@ -19,14 +19,31 @@ function aplicarDefaultsPorTipo() {
   document.getElementById('taxaAdmConsorcio').value = d.taxaAdm;
   document.getElementById('fundoReserva').value = d.fundoReserva;
   document.getElementById('correcaoAnual').value = d.correcaoAnual;
-  document.getElementById('taxaJurosFinanciamento').value = d.jurosFinanciamento;
+
+  const labelTaxa = document.getElementById('labelTaxaFinanciamento');
+  const hintTaxa = document.getElementById('hintTaxaFinanciamento');
+  const campoTaxa = document.getElementById('taxaJurosFinanciamento');
+
+  if (tipo === 'imovel') {
+    // Financiamento imobiliário: a métrica padrão de mercado é o CET (Custo Efetivo Total), anual
+    labelTaxa.textContent = 'CET — Custo Efetivo Total (% a.a.)';
+    hintTaxa.textContent = 'No financiamento imobiliário, os bancos são obrigados a divulgar o CET (% ao ano) — é a métrica que realmente permite comparar propostas, pois já inclui seguros e tarifas.';
+    campoTaxa.value = 12.5;
+  } else {
+    labelTaxa.textContent = 'Juros mensal (%)';
+    hintTaxa.textContent = 'Para carro e outros bens, os financiamentos costumam ser anunciados em taxa de juros mensal.';
+    campoTaxa.value = d.jurosFinanciamento;
+  }
 }
 
 // ---- Simulação do financiamento (Price ou SAC) ----
-function simularFinanciamento(valorBem, prazo, entradaPct, taxaJurosMensalPct, sistema) {
+// Para imóvel, a taxa informada é o CET anual (convertido por composição); para os demais, já é mensal.
+function simularFinanciamento(valorBem, prazo, entradaPct, taxaInformadaPct, sistema, tipoBem) {
   const entrada = valorBem * (entradaPct / 100);
   const valorFinanciado = valorBem - entrada;
-  const i = taxaJurosMensalPct / 100;
+  const i = tipoBem === 'imovel'
+    ? Math.pow(1 + taxaInformadaPct / 100, 1 / 12) - 1
+    : taxaInformadaPct / 100;
 
   const serieParcelas = [];
   let totalPago = entrada;
@@ -106,7 +123,7 @@ function calcular() {
   const lancePct = parseFloat(document.getElementById('lancePct').value) || 0;
   const correcaoAnualPct = parseFloat(document.getElementById('correcaoAnual').value) || 0;
 
-  const fin = simularFinanciamento(valorBem, prazo, entradaPct, jurosPct, sistema);
+  const fin = simularFinanciamento(valorBem, prazo, entradaPct, jurosPct, sistema, document.getElementById('tipoBem').value);
   const cons = simularConsorcio(valorBem, prazo, taxaAdmPct, fundoReservaPct, taxaAdesaoPct, correcaoAnualPct, lancePct);
 
   document.getElementById('resParcelaInicialFin').textContent = formatarBRL(fin.parcelaInicial);
@@ -178,4 +195,5 @@ document.getElementById('tipoBem').addEventListener('change', () => { aplicarDef
 const btnCalcular = document.getElementById('btnCalcular');
 if (btnCalcular) btnCalcular.addEventListener('click', calcular);
 
+aplicarDefaultsPorTipo();
 calcular();

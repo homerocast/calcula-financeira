@@ -94,7 +94,8 @@ function desenharGrafico(sacParcelas, priceParcelas) {
 
 function calcular() {
   const P = parseFloat(document.getElementById('valorFinanciado').value) || 0;
-  const i = (parseFloat(document.getElementById('taxaMensal').value) || 0) / 100;
+  const cetAnual = (parseFloat(document.getElementById('taxaCET').value) || 0) / 100;
+  const i = Math.pow(1 + cetAnual, 1 / 12) - 1;
   const n = parseInt(document.getElementById('prazoMeses').value) || 1;
 
   const sac = gerarSAC(P, i, n);
@@ -118,7 +119,7 @@ function calcular() {
   desenharGrafico(sac.parcelas, price.parcelas);
 }
 
-['valorFinanciado', 'taxaMensal', 'prazoMeses'].forEach(id => {
+['valorFinanciado', 'taxaCET', 'prazoMeses'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcular);
 });
 const btnCalcular = document.getElementById('btnCalcular');
