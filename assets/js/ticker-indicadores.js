@@ -2,8 +2,8 @@
 // Deixe em branco para esconder esses itens da barra. Ambas são gratuitas:
 // BRAPI_TOKEN: crie em https://brapi.dev/dashboard (cobre o Ibovespa)
 // FMP_API_KEY: crie em https://site.financialmodelingprep.com/developer/docs (cobre S&P 500, Dow Jones e Nasdaq — 250 chamadas/dia grátis)
-const BRAPI_TOKEN = '';
-const FMP_API_KEY = '';
+const BRAPI_TOKEN = 'pmHQwgwkC9rf3ftqAoLrjy';
+const FMP_API_KEY = 'kTzXZ6TzuPCcE0zFuM5i0hjrCwX4eojC';
 
 function paraNumeroBR(valorStr) {
   return parseFloat(String(valorStr).replace(',', '.'));

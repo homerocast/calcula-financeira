@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financiamento ou Consórcio? Simulador Completo | Calcule Seu Dinheiro</title>
+<meta name="description" content="Compare financiamento e consórcio para carro, imóvel ou outros bens — incluindo a correção anual das parcelas do consórcio que a maioria das simulações esconde.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/financiamento-vs-consorcio.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Financiamento ou Consórcio? Simulador Completo | Calcule Seu Dinheiro">
+<meta property="og:description" content="Compare financiamento e consórcio incluindo a correção anual das parcelas que a maioria das simulações esconde.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/financiamento-vs-consorcio.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Financiamento ou Consórcio? Simulador Completo | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Compare financiamento e consórcio incluindo a correção anual das parcelas que a maioria das simulações esconde.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <div class="nav-dropdown">
+        <button type="button" class="dropdown-trigger">Calculadoras</button>
+        <div class="dropdown-panel">
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Juros e investimentos</div>
+            <a href="juros-compostos.html">Juros Compostos</a>
+            <a href="juros-simples.html">Juros Simples</a>
+            <a href="cdb-tesouro-poupanca.html">CDB vs Tesouro vs Poupança</a>
+            <a href="conversor-moedas.html">Conversor de Moedas</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Planejamento</div>
+            <a href="reserva-emergencia.html">Reserva de Emergência</a>
+            <a href="primeiro-milhao.html">Primeiro Milhão</a>
+            <a href="simulador-aposentadoria.html">Aposentadoria</a>
+            <a href="juros-rotativo.html">Custo do Rotativo</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Compras e financiamento</div>
+            <a href="comprar-vs-assinar-carro.html">Carro: Comprar ou Assinar</a>
+            <a href="alugar-vs-financiar.html">Imóvel: Alugar ou Financiar</a>
+            <a href="price-sac.html">Price vs SAC</a>
+            <a href="ipva.html">IPVA por Estado</a>
+            <a href="financiamento-vs-consorcio.html">Financiamento vs Consórcio</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Trabalhista</div>
+            <a href="salario-liquido.html">Salário Líquido</a>
+            <a href="rescisao.html">Rescisão</a>
+            <a href="ferias.html">Férias</a>
+            <a href="decimo-terceiro.html">13º Salário</a>
+            <a href="fgts-saque-aniversario.html">FGTS Saque-Aniversário</a>
+            <a href="restituicao-irpf.html">Restituição IRPF</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">MEI e Freelancer</div>
+            <a href="das-mei.html">DAS-MEI</a>
+            <a href="valor-hora.html">Valor-Hora</a>
+          </div>
+          <a class="dropdown-viewall" href="../index.html#calculadoras">Ver todas as calculadoras →</a>
+        </div>
+      </div>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<div class="ticker-bar" id="tickerBar">
+  <div class="wrap ticker-scroll">
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemSelic"><span class="ticker-label">SELIC</span><span class="ticker-value" id="tickerSelic">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemCDI"><span class="ticker-label">CDI</span><span class="ticker-value" id="tickerCDI">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemIPCA"><span class="ticker-label">IPCA</span><span class="ticker-value" id="tickerIPCA">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemDolar"><span class="ticker-label">DÓLAR</span><span class="ticker-value" id="tickerDolar">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemIbov"><span class="ticker-label">IBOVESPA</span><span class="ticker-value" id="tickerIbov">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemSP500"><span class="ticker-label">S&amp;P 500</span><span class="ticker-value" id="tickerSP500">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemDow"><span class="ticker-label">DOW JONES</span><span class="ticker-value" id="tickerDow">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemNasdaq"><span class="ticker-label">NASDAQ</span><span class="ticker-value" id="tickerNasdaq">…</span></a>
+  </div>
+</div>
+
+<main class="wrap">
+  <h1>Financiamento ou Consórcio?</h1>
+  <p class="subtitle">Comparação completa — incluindo a correção anual das parcelas do consórcio, que a maioria das simulações não mostra.</p>
+
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="tipoBem">Tipo de bem</label>
+        <select id="tipoBem">
+          <option value="carro">Carro</option>
+          <option value="imovel">Imóvel</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="valorBem">Valor do bem (R$)</label>
+        <input type="number" id="valorBem" value="80000" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="prazoMeses">Prazo (meses)</label>
+        <input type="number" id="prazoMeses" value="60" inputmode="numeric">
+      </div>
+    </div>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="tape" style="max-width:640px; margin:0 auto;">
+    <div class="category-label" style="margin:0 0 10px;">Financiamento</div>
+    <div class="input-grid">
+      <div class="field">
+        <label for="entradaFinanciamento">Entrada (%)</label>
+        <input type="number" id="entradaFinanciamento" value="20" step="1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="taxaJurosFinanciamento">Juros mensal (%)</label>
+        <input type="number" id="taxaJurosFinanciamento" value="1.6" step="0.01" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="sistemaFinanciamento">Sistema de amortização</label>
+        <select id="sistemaFinanciamento">
+          <option value="price">Price (parcela fixa)</option>
+          <option value="sac">SAC (parcela decrescente)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="tape" style="max-width:640px; margin:0 auto;">
+    <div class="category-label" style="margin:0 0 10px;">Consórcio</div>
+    <div class="input-grid">
+      <div class="field">
+        <label for="taxaAdmConsorcio">Taxa de administração total (%)</label>
+        <input type="number" id="taxaAdmConsorcio" value="14" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="fundoReserva">Fundo de reserva (%)</label>
+        <input type="number" id="fundoReserva" value="2" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="taxaAdesao">Taxa de adesão (%, opcional)</label>
+        <input type="number" id="taxaAdesao" value="0" step="0.1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="lancePct">Lance à vista (%, opcional)</label>
+        <input type="number" id="lancePct" value="0" step="1" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="correcaoAnual">Correção anual esperada da carta (%)</label>
+        <input type="number" id="correcaoAnual" value="3" step="0.1" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="data-table-wrap" style="max-width:900px; margin:0 auto 24px;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Opção</th>
+          <th>1ª parcela</th>
+          <th>Última parcela</th>
+          <th>Total pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Financiamento</td>
+          <td id="resParcelaInicialFin">—</td>
+          <td id="resParcelaFinalFin">—</td>
+          <td id="resTotalFin">—</td>
+        </tr>
+        <tr>
+          <td>Consórcio</td>
+          <td id="resParcelaInicialCons">—</td>
+          <td id="resParcelaFinalCons">—</td>
+          <td id="resTotalCons">—</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><span class="stamp-mark">MELHOR</span>Menor total pago</td>
+          <td colspan="3" id="resMelhor">—</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="chart-card" style="max-width:900px; margin:0 auto;">
+    <h4 style="text-align:center; font-size:0.9rem;">Evolução da parcela ao longo do tempo</h4>
+    <div class="chart-legend" style="justify-content:center; margin-top:0; margin-bottom:14px;">
+      <span><span class="dot" style="background:#14213D;"></span>Financiamento</span>
+      <span><span class="dot" style="background:#B23A2E;"></span>Consórcio (com correção anual)</span>
+    </div>
+    <canvas id="graficoComparativo" height="130"></canvas>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div class="result-narrative" style="max-width:900px; margin:0 auto 32px; border-left-color: var(--stamp);">
+    <strong style="display:block; margin-bottom:10px; font-family:var(--font-display); font-size:1.05rem;">⚠️ O que normalmente fica nas letras miúdas do consórcio</strong>
+    <p style="margin:0 0 10px;"><strong>1. A parcela não é fixa.</strong> Ela é recalculada sempre que a carta de crédito é corrigida (geralmente 1x ao ano) — pelo INCC em imóveis, pela Tabela FIPE ou índice contratual em veículos. É exatamente isso que o gráfico acima mostra: a parcela cresce ao longo do plano, mesmo sem "juros".</p>
+    <p style="margin:0 0 10px;"><strong>2. Contemplação não tem prazo garantido.</strong> Você só recebe o bem quando é sorteado em assembleia ou oferece um lance vencedor — o que pode acontecer logo no início ou só no último mês do grupo.</p>
+    <p style="margin:0 0 10px;"><strong>3. Desistir não devolve o dinheiro na hora.</strong> Quem sai do grupo antes do fim só recebe de volta o que pagou (descontada a taxa de administração e multas) depois de sorteios futuros do próprio grupo — pode levar meses ou anos.</p>
+    <p style="margin:0 0 10px;"><strong>4. Lance embutido reduz o crédito líquido.</strong> Se o lance usar parte do próprio valor da carta (lance embutido), o valor disponível para comprar o bem é menor que o total contratado.</p>
+    <p style="margin:0 0 10px;"><strong>5. Fundo de reserva pode não ser 100% devolvido.</strong> A devolução ao final do grupo depende do regulamento da administradora e do resultado financeiro do grupo.</p>
+    <p style="margin:0 0 10px;"><strong>6. Seguro prestamista costuma vir à parte.</strong> Quando contratado (às vezes offerecido como padrão), é cobrado mensalmente além da parcela mostrada na proposta comercial.</p>
+    <p style="margin:0;"><strong>7. FGTS só é aceito em consórcio de imóvel</strong>, e apenas para dar lance ou amortizar saldo — com regras específicas da Caixa.</p>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Como o financiamento é calculado</h2>
+      <p>
+        No sistema Price, a parcela é fixa: <code>Parcela = [i × PV] / [1 − (1 + i)⁻ⁿ]</code>. No
+        SAC, a amortização é constante e a parcela cai mês a mês, já que os juros incidem sobre um
+        saldo devedor decrescente.
+      </p>
+      <h2>Como o consórcio é calculado</h2>
+      <p>
+        A parcela do consórcio soma uma fração do valor do bem, a taxa de administração e o fundo
+        de reserva, dividida pelo prazo. Mas, diferente do financiamento, o saldo devedor é
+        <strong>corrigido periodicamente</strong> (aqui simulamos uma correção anual) pelo índice
+        vinculado ao bem — e a parcela é recalculada sobre esse novo saldo para os meses restantes.
+        É por isso que ela cresce ao longo do tempo, mesmo sem "juros" no sentido tradicional.
+      </p>
+      <h2>Consórcio não tem juros, mas tem custo</h2>
+      <p>
+        A ausência de juros é real — mas o custo total do consórcio (taxa de administração + fundo
+        de reserva + correção acumulada) frequentemente aproxima-se, ou até supera, o custo de um
+        financiamento em prazos longos. A vantagem do consórcio está em não pagar juros compostos
+        sobre capital emprestado; a desvantagem está na incerteza da contemplação e no crescimento
+        da parcela ao longo do plano.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="comprar-vs-assinar-carro.html">
+      <h3>Comprar ou Assinar um Carro?</h3>
+      <p>Compare 4 formas de ter um carro por 3 anos.</p>
+    </a>
+    <a class="calc-card" href="alugar-vs-financiar.html">
+      <h3>Alugar ou Financiar um Imóvel?</h3>
+      <p>Compare o patrimônio final entre alugar e investir, ou financiar.</p>
+    </a>
+    <a class="calc-card" href="juros-compostos.html">
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="juros-simples.html">
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Cálculo com caráter educativo. Regras de consórcio variam por administradora e grupo — consulte sempre o regulamento oficial antes de contratar. Não considera IOF, seguros ou taxas de cartório.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="../assets/js/calc-financiamento-vs-consorcio.js"></script>
+<script src="../assets/js/nav-menu.js"></script>
+<script src="../assets/js/ticker-indicadores.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>
