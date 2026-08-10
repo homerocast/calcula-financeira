@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FGTS: Saque-Aniversário ou Saque-Rescisão? | Calcule Seu Dinheiro</title>
+<meta name="description" content="Compare quanto você recebe optando pelo saque-aniversário do FGTS ou mantendo o saque-rescisão tradicional, em caso de demissão sem justa causa.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/fgts-saque-aniversario.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="FGTS: Saque-Aniversário ou Saque-Rescisão? | Calcule Seu Dinheiro">
+<meta property="og:description" content="Compare as duas modalidades de saque do FGTS e veja qual compensa mais no seu caso.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/fgts-saque-aniversario.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FGTS: Saque-Aniversário ou Saque-Rescisão? | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Compare as duas modalidades de saque do FGTS e veja qual compensa mais no seu caso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Calculadoras</a>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>FGTS: Saque-Aniversário ou Saque-Rescisão?</h1>
+  <p class="subtitle">Veja quanto você recebe hoje no aniversário e o que isso custa se você for demitido.</p>
+
+  <div class="tape" id="calcTape" style="max-width:560px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="saldoFGTS">Saldo atual do FGTS (R$)</label>
+        <input type="number" id="saldoFGTS" value="12000" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="data-table-wrap" style="max-width:900px; margin:0 auto;">
+    <table class="data-table">
+      <thead>
+        <tr><th>Cenário</th><th>Recebe agora</th><th>Se for demitido sem justa causa</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Saque-Aniversário</td>
+          <td id="resSaqueAniversario">—</td>
+          <td id="resAniversarioDemissao">Só a multa de 40%</td>
+        </tr>
+        <tr>
+          <td>Saque-Rescisão (padrão)</td>
+          <td>R$ 0,00 (nada agora)</td>
+          <td id="resRescisaoDemissao">Saldo total + multa de 40%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Como funciona o saque-aniversário</h2>
+      <p>
+        No mês do seu aniversário, você pode sacar uma parte do saldo do FGTS, seguindo uma
+        tabela de faixas — quanto maior o saldo, menor o percentual, mas maior a parcela
+        adicional fixa:
+      </p>
+      <p style="font-size:0.85rem;">
+        Até R$500: 50% · R$500,01–R$1.000: 40% + R$50 · R$1.000,01–R$5.000: 30% + R$150 ·
+        R$5.000,01–R$10.000: 20% + R$650 · R$10.000,01–R$15.000: 15% + R$1.150 ·
+        R$15.000,01–R$20.000: 10% + R$1.900 · Acima de R$20.000: 5% + R$2.900.
+      </p>
+      <h2>A pegadinha da demissão</h2>
+      <p>
+        Quem opta pelo saque-aniversário <strong>abre mão do saque integral em caso de
+        demissão sem justa causa</strong>. Nesse cenário, você só recebe a multa rescisória de
+        40% sobre o saldo — o restante permanece na conta, disponível apenas nos próximos
+        aniversários. Já quem está no saque-rescisão (padrão) recebe o saldo inteiro mais a multa
+        na hora da demissão.
+      </p>
+      <h2>Vale a pena mudar?</h2>
+      <p>
+        Depende da sua estabilidade no emprego: para quem tem baixo risco de demissão e quer um
+        dinheiro extra todo ano, o saque-aniversário pode fazer sentido. Para quem valoriza ter
+        acesso ao saldo total como "colchão" em caso de perda do emprego, o saque-rescisão
+        tradicional é mais seguro.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="rescisao.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg></span>
+      <h3>Rescisão trabalhista</h3>
+      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    </a>
+    <a class="calc-card" href="salario-liquido.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="9" x2="6" y2="9.01"/><line x1="18" y1="15" x2="18" y2="15.01"/></svg></span>
+      <h3>Calculadora de Salário Líquido</h3>
+      <p>Do bruto ao líquido, com as tabelas oficiais de INSS e IRRF de 2026.</p>
+    </a>
+    <a class="calc-card" href="ferias.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 8h1M19 8h1M12 3v1M12 12v1M6.5 4.5l.7.7M17.5 4.5l-.7.7"/></svg></span>
+      <h3>Calculadora de Férias</h3>
+      <p>Calcule o valor líquido das suas férias, com ou sem venda de 1/3.</p>
+    </a>
+    <a class="calc-card" href="decimo-terceiro.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/><path d="M2 12h4M18 12h4" stroke-opacity="0"/></svg></span>
+      <h3>Calculadora de 13º Salário</h3>
+      <p>Simule o valor líquido do 13º, em uma ou duas parcelas.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Cálculo estimado com caráter educativo, baseado na tabela oficial vigente em 2026. Regras podem mudar — confirme sempre no app FGTS.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/calc-fgts-saque-aniversario.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

@@ -328,6 +328,22 @@ table.data-table tfoot .stamp-mark { margin-right: 6px; }
 .btn-pill-primary:hover { background: var(--ink); color: var(--paper-raised); }
 .btn-pill-primary:active { transform: scale(0.98); }
 
+/* ---------- Resultado narrativo (frase gerada dinamicamente) ---------- */
+.result-narrative {
+  background: var(--paper-raised);
+  border-left: 4px solid var(--brass);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.result-narrative strong { color: var(--ink); }
+.result-narrative .ok { color: var(--green-gain); font-weight: 600; }
+.result-narrative .alerta { color: var(--stamp); font-weight: 600; }
+
 .category-label {
   display: inline-block;
   font-family: var(--font-body);
@@ -562,6 +578,23 @@ footer.site {
   font-size: 0.82rem;
 }
 footer.site a { color: var(--ink-soft); }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+.footer-links a {
+  text-decoration: none;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+.footer-links a:hover { color: var(--brass); }
+body.page-navy .footer-links a { color: rgba(244, 241, 233, 0.85); }
+body.page-navy .footer-links a:hover { color: var(--brass); }
 
 /* ---------- Acessibilidade ---------- */
 a:focus-visible, button:focus-visible {

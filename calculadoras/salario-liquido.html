@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Salário Líquido 2026 | Calcule Seu Dinheiro</title>
+<meta name="description" content="Calcule seu salário líquido a partir do bruto, descontando INSS e Imposto de Renda pelas tabelas oficiais de 2026, incluindo o novo redutor da Lei 15.270/2025.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/salario-liquido.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de Salário Líquido 2026 | Calcule Seu Dinheiro">
+<meta property="og:description" content="Calcule seu salário líquido a partir do bruto, com as tabelas oficiais de INSS e IRRF de 2026.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/salario-liquido.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de Salário Líquido 2026 | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Calcule seu salário líquido a partir do bruto, com as tabelas oficiais de INSS e IRRF de 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Calculadoras</a>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Calculadora de Salário Líquido</h1>
+  <p class="subtitle">Do bruto ao líquido, com as tabelas oficiais de INSS e IRRF de 2026.</p>
+
+  <div class="tape" id="calcTape" style="max-width:560px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="salarioBruto">Salário bruto mensal (R$)</label>
+        <input type="number" id="salarioBruto" value="4000" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="dependentes">Número de dependentes</label>
+        <input type="number" id="dependentes" value="0" min="0" inputmode="numeric">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="outrosDescontos">Outros descontos (pensão, vale-transporte etc — R$)</label>
+        <input type="number" id="outrosDescontos" value="0" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="stat-grid" style="max-width:900px; margin:0 auto;">
+    <div class="stat-card">
+      <div class="stat-label">Desconto INSS</div>
+      <div class="stat-value" id="resINSS">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Desconto IRRF</div>
+      <div class="stat-value" id="resIRRF">—</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">Salário líquido</div>
+      <div class="stat-value" id="resLiquido">—</div>
+    </div>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Como o cálculo é feito</h2>
+      <p>
+        Primeiro desconta-se o INSS, que segue uma tabela progressiva (7,5% a 14% em 2026,
+        conforme a faixa salarial). Em seguida, calcula-se a base do Imposto de Renda: salário
+        bruto menos INSS menos R$ 189,59 por dependente. Sobre essa base aplica-se a tabela
+        progressiva do IRRF (isento até R$ 2.428,80, alíquotas de 7,5% a 27,5% acima disso).
+      </p>
+      <h2>O redutor de 2026 (Lei 15.270/2025)</h2>
+      <p>
+        Desde janeiro de 2026, existe um mecanismo adicional que reduz ou zera o IRRF: quem tem
+        renda bruta mensal até R$ 5.000 fica isento na prática, e quem ganha entre R$ 5.000,01 e
+        R$ 7.350,00 tem uma redução parcial e decrescente do imposto. Acima de R$ 7.350,00, vale
+        a tabela tradicional, sem redução.
+      </p>
+      <h2>Tabela de INSS 2026</h2>
+      <p>
+        7,5% até R$ 1.621,00 · 9% de R$ 1.621,01 a R$ 2.902,84 · 12% de R$ 2.902,85 a R$ 4.354,27 ·
+        14% de R$ 4.354,28 até o teto de R$ 8.475,55 (desconto máximo R$ 988,09).
+      </p>
+      <p style="font-size:0.85rem; color:var(--ink-soft);">
+        Cálculo estimado com base nas tabelas oficiais vigentes em 2026. Situações com múltiplas
+        fontes de renda, pensão alimentícia ou benefícios específicos podem ter particularidades —
+        confirme com o RH da empresa ou um contador em caso de dúvida.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="rescisao.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg></span>
+      <h3>Rescisão trabalhista</h3>
+      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    </a>
+    <a class="calc-card" href="ferias.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 8h1M19 8h1M12 3v1M12 12v1M6.5 4.5l.7.7M17.5 4.5l-.7.7"/></svg></span>
+      <h3>Calculadora de Férias</h3>
+      <p>Calcule o valor líquido das suas férias, com ou sem venda de 1/3.</p>
+    </a>
+    <a class="calc-card" href="decimo-terceiro.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/><path d="M2 12h4M18 12h4" stroke-opacity="0"/></svg></span>
+      <h3>Calculadora de 13º Salário</h3>
+      <p>Simule o valor líquido do 13º, em uma ou duas parcelas.</p>
+    </a>
+    <a class="calc-card" href="fgts-saque-aniversario.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M3 10l9-6 9 6"/><line x1="12" y1="10" x2="12" y2="20"/></svg></span>
+      <h3>FGTS: Saque-Aniversário ou Rescisão?</h3>
+      <p>Compare as duas modalidades de saque do FGTS.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Cálculo estimado com caráter educativo, baseado nas tabelas oficiais de 2026.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/br-tabelas-2026.js"></script>
+<script src="../assets/js/calc-salario-liquido.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

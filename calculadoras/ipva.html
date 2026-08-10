@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de IPVA por Estado 2026 | Calcule Seu Dinheiro</title>
+<meta name="description" content="Calcule o valor estimado do IPVA 2026 do seu veículo, com as alíquotas de cada estado brasileiro.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/ipva.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de IPVA por Estado 2026 | Calcule Seu Dinheiro">
+<meta property="og:description" content="Calcule o valor estimado do IPVA 2026 com as alíquotas de cada estado.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/ipva.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de IPVA por Estado 2026 | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Calcule o valor estimado do IPVA 2026 com as alíquotas de cada estado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Calculadoras</a>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Calculadora de IPVA por Estado</h1>
+  <p class="subtitle">Estimativa do IPVA 2026 conforme a alíquota do seu estado.</p>
+
+  <div class="tape" id="calcTape" style="max-width:560px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="valorVeiculo">Valor do veículo — Tabela FIPE (R$)</label>
+        <input type="number" id="valorVeiculo" value="60000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="estado">Estado</label>
+        <select id="estado"></select>
+      </div>
+      <div class="field">
+        <label for="tipoVeiculo">Tipo de veículo</label>
+        <select id="tipoVeiculo">
+          <option value="carro">Carro de passeio</option>
+          <option value="moto">Motocicleta</option>
+          <option value="caminhao">Caminhão/utilitário</option>
+        </select>
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="stat-grid" style="max-width:640px; margin:0 auto; grid-template-columns:repeat(2, 1fr);">
+    <div class="stat-card">
+      <div class="stat-label">Alíquota aplicada</div>
+      <div class="stat-value" id="resAliquota">—</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">IPVA estimado</div>
+      <div class="stat-value" id="resIPVA">—</div>
+    </div>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Como o cálculo é feito</h2>
+      <p><code>IPVA = Valor venal do veículo × Alíquota do estado</code></p>
+      <p>
+        O valor venal geralmente segue a Tabela FIPE. A alíquota é definida por cada estado
+        (Secretaria da Fazenda estadual) e varia conforme o tipo de veículo — carros de passeio
+        costumam ter a alíquota mais alta, enquanto caminhões e utilitários costumam ter alíquota
+        reduzida como incentivo ao transporte de cargas.
+      </p>
+      <h2>Isenções comuns</h2>
+      <p>
+        A maioria dos estados isenta veículos antigos (o limite de idade varia, geralmente entre
+        10 e 20 anos), pessoas com deficiência (com laudo), taxistas e veículos elétricos ou
+        híbridos em alguns estados.
+      </p>
+      <p style="font-size:0.85rem; color:var(--ink-soft);">
+        Alíquotas estimadas com base nas regras gerais de 2026 — podem variar por categoria
+        específica do veículo, idade e mudanças na legislação estadual. Confirme o valor exato no
+        site da Secretaria da Fazenda do seu estado antes de pagar.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="price-sac.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span>
+      <h3>Tabela Price vs SAC</h3>
+      <p>Compare as parcelas e o total pago em cada sistema de amortização.</p>
+    </a>
+    <a class="calc-card" href="juros-compostos.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,15 21,7"/><polyline points="14,7 21,7 21,14"/></svg></span>
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+    <a class="calc-card" href="juros-simples.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
+      <h3>Calculadora de Juros Simples</h3>
+      <p>Calcule juros simples e compare com o crescimento composto.</p>
+    </a>
+    <a class="calc-card" href="cdb-tesouro-poupanca.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v6c0 1.66 3.13 3 7 3s7-1.34 7-3V7"/><path d="M5 13v4c0 1.66 3.13 3 7 3s7-1.34 7-3v-4"/></svg></span>
+      <h3>CDB vs Tesouro vs Poupança</h3>
+      <p>Compare a rentabilidade líquida de IR entre aplicações.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Cálculo estimado com caráter educativo. Alíquotas variam por estado e categoria — confirme o valor exato na Secretaria da Fazenda estadual.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/calc-ipva.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Restituição de Imposto de Renda 2026 | Calcule Seu Dinheiro</title>
+<meta name="description" content="Simule se você tem imposto a restituir ou a pagar na declaração anual de IRPF 2026, comparando o desconto simplificado com as deduções completas.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/restituicao-irpf.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Simulador de Restituição de Imposto de Renda 2026 | Calcule Seu Dinheiro">
+<meta property="og:description" content="Simule se você tem imposto a restituir ou a pagar, comparando desconto simplificado com deduções completas.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/restituicao-irpf.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simulador de Restituição de Imposto de Renda 2026 | Calcule Seu Dinheiro">
+<meta name="twitter:description" content="Simule se você tem imposto a restituir ou a pagar, comparando desconto simplificado com deduções completas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <a href="../index.html#calculadoras">Calculadoras</a>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Simulador de Restituição de IRPF</h1>
+  <p class="subtitle">Estimativa de imposto a pagar ou restituir na declaração anual, comparando os dois modelos de dedução.</p>
+
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="rendimentoAnual">Rendimento tributável no ano (R$)</label>
+        <input type="number" id="rendimentoAnual" value="72000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="inssAnual">INSS pago no ano (R$)</label>
+        <input type="number" id="inssAnual" value="6480" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="dependentes">Nº de dependentes</label>
+        <input type="number" id="dependentes" value="0" min="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="despesasEducacao">Despesas com educação/ano (R$)</label>
+        <input type="number" id="despesasEducacao" value="0" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="despesasSaude">Despesas com saúde/ano (R$)</label>
+        <input type="number" id="despesasSaude" value="0" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="irrfRetido">IRRF já retido na fonte no ano (R$)</label>
+        <input type="number" id="irrfRetido" value="4000" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="data-table-wrap" style="max-width:900px; margin:0 auto;">
+    <table class="data-table">
+      <thead>
+        <tr><th>Modelo</th><th>Base de cálculo</th><th>Imposto devido</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Desconto simplificado</td><td id="baseSimplificado">—</td><td id="impostoSimplificado">—</td></tr>
+        <tr><td>Deduções completas</td><td id="baseCompleto">—</td><td id="impostoCompleto">—</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><span class="stamp-mark">MELHOR</span>Modelo mais vantajoso</td><td colspan="2" id="resMelhorModelo">—</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div style="height:16px;"></div>
+
+  <div class="stat-grid" style="max-width:900px; margin:0 auto 24px; grid-template-columns:1fr;">
+    <div class="stat-card destaque">
+      <div class="stat-label" id="resStatusLabel">Resultado da declaração</div>
+      <div class="stat-value" id="resValorFinal">—</div>
+    </div>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Desconto simplificado vs. deduções completas</h2>
+      <p>
+        No modelo <strong>simplificado</strong>, a Receita Federal aplica automaticamente um
+        abatimento de 20% do rendimento tributável, limitado a R$ 17.640,00 por ano, substituindo
+        todas as outras deduções. No modelo <strong>completo</strong>, você soma manualmente o
+        INSS pago, R$ 2.275,08 por dependente, despesas com educação (limitadas a R$ 3.561,50 por
+        pessoa/ano) e despesas com saúde (sem limite). A declaração usa automaticamente o que for
+        mais vantajoso — e esta calculadora simula os dois.
+      </p>
+      <h2>A isenção de 2026 (Lei 15.270/2025)</h2>
+      <p>
+        Desde 2026, rendimentos tributáveis anuais de até R$ 60.000,00 ficam isentos na prática.
+        Entre R$ 60.000,01 e R$ 88.200,00 há uma redução gradual do imposto apurado. Acima de
+        R$ 88.200,00, aplica-se a tabela progressiva tradicional, sem redução adicional.
+      </p>
+      <h2>Restituir ou pagar?</h2>
+      <p>
+        Se o IRRF retido na fonte ao longo do ano for maior que o imposto devido, você tem
+        <strong>direito à restituição</strong>. Se for menor, há <strong>imposto complementar a
+        pagar</strong> na declaração.
+      </p>
+      <p style="font-size:0.85rem; color:var(--ink-soft);">
+        Simulação simplificada e educativa. A legislação de 2026 tem regras específicas para
+        faixas de renda mais altas e situações especiais — para a declaração oficial, use o
+        programa da Receita Federal ou consulte um contador.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="rescisao.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg></span>
+      <h3>Rescisão trabalhista</h3>
+      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    </a>
+    <a class="calc-card" href="salario-liquido.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="9" x2="6" y2="9.01"/><line x1="18" y1="15" x2="18" y2="15.01"/></svg></span>
+      <h3>Calculadora de Salário Líquido</h3>
+      <p>Do bruto ao líquido, com as tabelas oficiais de INSS e IRRF de 2026.</p>
+    </a>
+    <a class="calc-card" href="ferias.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 8h1M19 8h1M12 3v1M12 12v1M6.5 4.5l.7.7M17.5 4.5l-.7.7"/></svg></span>
+      <h3>Calculadora de Férias</h3>
+      <p>Calcule o valor líquido das suas férias, com ou sem venda de 1/3.</p>
+    </a>
+    <a class="calc-card" href="decimo-terceiro.html">
+      <span class="card-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/><path d="M2 12h4M18 12h4" stroke-opacity="0"/></svg></span>
+      <h3>Calculadora de 13º Salário</h3>
+      <p>Simule o valor líquido do 13º, em uma ou duas parcelas.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Simulação estimada com caráter educativo. Não substitui o programa oficial da Receita Federal.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/calc-restituicao-irpf.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>
