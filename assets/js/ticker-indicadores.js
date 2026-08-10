@@ -63,33 +63,33 @@ async function carregarIbovespa() {
   }
 }
 
+async function buscarIndiceFMP(simbolo, idValor, idItem) {
+  try {
+    const resposta = await fetch(`https://financialmodelingprep.com/stable/quote?symbol=${encodeURIComponent(simbolo)}&apikey=${FMP_API_KEY}`);
+    if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
+    const dados = await resposta.json();
+    const d = Array.isArray(dados) ? dados[0] : dados;
+    if (!d || typeof d.price !== 'number') throw new Error('Sem preço retornado para ' + simbolo);
+
+    const variacao = typeof d.changePercentage === 'number' ? d.changePercentage
+      : (typeof d.changesPercentage === 'number' ? d.changesPercentage : null);
+
+    const texto = d.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) +
+      (variacao !== null ? ' (' + (variacao >= 0 ? '+' : '') + variacao.toFixed(2) + '%)' : '');
+    preencherItem(idValor, texto);
+  } catch (erro) {
+    esconderItem(idItem);
+    console.error('Erro ao carregar ' + simbolo + ':', erro);
+  }
+}
+
 async function carregarIndicesEUA() {
   if (!FMP_API_KEY) { ['itemSP500', 'itemDow', 'itemNasdaq'].forEach(esconderItem); return; }
-  try {
-    const resposta = await fetch(`https://financialmodelingprep.com/api/v3/quote/%5EGSPC,%5EDJI,%5EIXIC?apikey=${FMP_API_KEY}`);
-    if (!resposta.ok) throw new Error('Falha FMP');
-    const dados = await resposta.json();
-    const mapa = {};
-    dados.forEach(d => { mapa[d.symbol] = d; });
-
-    if (mapa['^GSPC']) {
-      const d = mapa['^GSPC'];
-      preencherItem('tickerSP500', d.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' (' + (d.changesPercentage >= 0 ? '+' : '') + d.changesPercentage.toFixed(2) + '%)');
-    } else { esconderItem('itemSP500'); }
-
-    if (mapa['^DJI']) {
-      const d = mapa['^DJI'];
-      preencherItem('tickerDow', d.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' (' + (d.changesPercentage >= 0 ? '+' : '') + d.changesPercentage.toFixed(2) + '%)');
-    } else { esconderItem('itemDow'); }
-
-    if (mapa['^IXIC']) {
-      const d = mapa['^IXIC'];
-      preencherItem('tickerNasdaq', d.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' (' + (d.changesPercentage >= 0 ? '+' : '') + d.changesPercentage.toFixed(2) + '%)');
-    } else { esconderItem('itemNasdaq'); }
-  } catch (erro) {
-    ['itemSP500', 'itemDow', 'itemNasdaq'].forEach(esconderItem);
-    console.error('Erro ao carregar índices dos EUA:', erro);
-  }
+  await Promise.all([
+    buscarIndiceFMP('^GSPC', 'tickerSP500', 'itemSP500'),
+    buscarIndiceFMP('^DJI', 'tickerDow', 'itemDow'),
+    buscarIndiceFMP('^IXIC', 'tickerNasdaq', 'itemNasdaq')
+  ]);
 }
 
 if (document.getElementById('tickerBar')) {
