@@ -247,4 +247,72 @@
     <priority>0.6</priority>
   </url>
 
+
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/index.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/como-sair-do-rotativo.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/reserva-de-emergencia-guia-completo.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/juros-compostos-a-favor.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/sac-ou-price-qual-escolher.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/imposto-de-renda-aposentadoria-investimentos.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/vale-a-pena-o-consorcio.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/como-calcular-rescisao-trabalhista.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/mei-das-quando-migrar-para-me.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/alugar-ou-financiar-imovel-como-decidir.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://calculeseudinheiro.com.br/guias/valor-hora-freelancer-autonomo.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

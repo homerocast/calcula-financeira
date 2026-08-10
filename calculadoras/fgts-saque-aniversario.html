@@ -69,10 +69,21 @@
       </div>
       <a href="../comparadores.html">Comparadores</a>
       <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../guias/index.html">Guias</a>
       <a href="../sobre.html">Sobre</a>
     </nav>
+<button type="button" class="search-toggle" id="searchToggle" aria-label="Buscar no site">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
   </div>
 </header>
+
+<div class="search-panel" id="searchPanel">
+  <div class="wrap">
+    <input type="text" id="searchInput" placeholder="Buscar calculadoras, guias, indicadores...">
+    <div id="searchResults"></div>
+  </div>
+</div>
 
 <div class="ticker-bar" id="tickerBar">
   <div class="wrap ticker-scroll">
@@ -190,6 +201,9 @@
 </footer>
 
 <script src="../assets/js/calc-fgts-saque-aniversario.js"></script>
+<script>const SITE_ROOT_PREFIX = '../';</script>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/site-search.js"></script>
 <script src="../assets/js/nav-menu.js"></script>
 <script src="../assets/js/ticker-indicadores.js"></script>
 <script src="../assets/js/analytics.js"></script>
