@@ -151,10 +151,12 @@
 
   <div style="height:24px;"></div>
 
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:640px; margin:0 auto 20px; display:none;"></div>
+
   <div class="data-table-wrap" style="max-width:640px; margin:0 auto 24px;">
     <table class="data-table">
       <thead>
-        <tr><th>Aplicação</th><th>Líquido de IR</th></tr>
+        <tr><th>Aplicação</th><th>Líquido (IOF + IR)</th></tr>
       </thead>
       <tbody>
         <tr><td>CDB</td><td id="resCDB">—</td></tr>
@@ -184,18 +186,33 @@
         tempo o dinheiro fica aplicado, menor a alíquota.
       </p>
       <p>
+        Nos primeiros <strong>29 dias</strong>, incide também o <strong>IOF regressivo</strong>
+        sobre o rendimento — começa em 96% no 1º dia e cai até 0% no 30º dia
+        (<code>IOF% = (30 − dias) ÷ 30</code>). Resgatar um CDB ou Tesouro Selic com poucos dias de
+        aplicação praticamente zera o rendimento líquido; a partir de 30 dias, o IOF deixa de
+        incidir.
+      </p>
+      <p>
         O Tesouro Selic ainda desconta a <strong>taxa de custódia da B3</strong> (atualmente 0,20%
         ao ano na maioria das corretoras, cobrada só acima de R$ 10 mil investidos no título).
       </p>
       <p>
-        <strong>A poupança é isenta de Imposto de Renda</strong>, mas sua regra de rendimento
-        muda conforme a Selic:
+        <strong>A poupança é isenta de Imposto de Renda e de IOF</strong>, mas sua regra de
+        rendimento muda conforme a Selic:
       </p>
       <p><code>Se Selic &gt; 8,5% a.a.: rende 0,5% ao mês + TR</code></p>
       <p><code>Se Selic ≤ 8,5% a.a.: rende 70% da Selic ao mês + TR</code></p>
       <p>
         Nesta calculadora, a TR (Taxa Referencial) é considerada zero, valor próximo da realidade
         nos últimos anos.
+      </p>
+      <h2>A regra do aniversário da poupança</h2>
+      <p>
+        A poupança só credita rendimento no <strong>"aniversário" mensal</strong> da aplicação — o
+        mesmo dia do mês em que o depósito foi feito. Resgatar antes de completar um mês inteiro
+        significa perder <strong>todo</strong> o rendimento daquele período, não uma parte
+        proporcional dele. É por isso que, para prazos curtos (menos de 30 dias), o rendimento da
+        poupança aparece como R$ 0,00 nesta calculadora.
       </p>
       <h2>Por que o CDB costuma vencer</h2>
       <p>

@@ -9,6 +9,13 @@ function aliquotaIR(dias) {
   return 0.15;
 }
 
+// IOF regressivo (Decreto 6.306/2007): incide sobre o RENDIMENTO, só nos primeiros 30 dias.
+// Não se aplica à poupança (isenta de IOF em qualquer prazo).
+function aliquotaIOF(dias) {
+  if (dias >= 30) return 0;
+  return Math.floor(((30 - dias) / 30) * 100) / 100;
+}
+
 function calcular() {
   const valor = parseFloat(document.getElementById('valor').value) || 0;
   const dias = parseFloat(document.getElementById('prazoDias').value) || 0;
@@ -19,26 +26,39 @@ function calcular() {
 
   const anos = dias / 365;
   const aliq = aliquotaIR(dias);
+  const iof = aliquotaIOF(dias);
 
   // --- CDB ---
   const taxaCDBAnual = taxaCDI * percCDB;
   const brutoCDB = valor * (Math.pow(1 + taxaCDBAnual, anos) - 1);
-  const liquidoCDB = brutoCDB * (1 - aliq);
+  const brutoCDBAposIOF = brutoCDB * (1 - iof);
+  const liquidoCDB = brutoCDBAposIOF * (1 - aliq);
 
   // --- Tesouro Selic ---
   const brutoTesouro = valor * (Math.pow(1 + taxaSelic, anos) - 1);
+  const brutoTesouroAposIOF = brutoTesouro * (1 - iof);
   const custodia = valor * taxaCustodia * anos;
-  const liquidoTesouro = brutoTesouro * (1 - aliq) - custodia;
+  const liquidoTesouro = brutoTesouroAposIOF * (1 - aliq) - custodia;
 
   // --- Poupança ---
+  // Só rende no "aniversário" mensal da aplicação — meses incompletos não rendem nada
+  // (e a poupança é isenta de IOF em qualquer prazo).
   const taxaSelicAnualPct = taxaSelic * 100;
   const taxaMensalPoupanca = taxaSelicAnualPct > 8.5 ? 0.005 : (0.70 * taxaSelic / 12);
-  const meses = dias / 30;
-  const liquidoPoupanca = valor * (Math.pow(1 + taxaMensalPoupanca, meses) - 1);
+  const mesesCompletos = Math.floor(dias / 30);
+  const liquidoPoupanca = valor * (Math.pow(1 + taxaMensalPoupanca, mesesCompletos) - 1);
 
   document.getElementById('resCDB').textContent = formatarBRL(liquidoCDB);
   document.getElementById('resTesouro').textContent = formatarBRL(liquidoTesouro);
   document.getElementById('resPoupanca').textContent = formatarBRL(liquidoPoupanca);
+
+  const narrativa = document.getElementById('resultadoNarrativo');
+  if (dias < 30) {
+    narrativa.style.display = 'block';
+    narrativa.innerHTML = `<span class="alerta">Resgate em menos de 30 dias:</span> o CDB e o Tesouro Selic sofrem <strong>IOF regressivo de ${(iof * 100).toFixed(0)}%</strong> sobre o rendimento bruto (some a zero só a partir do 30º dia). A poupança só paga rendimento no "aniversário" mensal do depósito — com ${dias} dia(s), ela ainda não completou um mês, então <strong>o rendimento da poupança é R$ 0,00</strong> nesse prazo.`;
+  } else {
+    narrativa.style.display = 'none';
+  }
 
   const opcoes = [
     { nome: 'CDB', valor: liquidoCDB },
