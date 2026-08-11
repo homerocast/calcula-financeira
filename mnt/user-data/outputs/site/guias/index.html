@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de 13º Salário 2026 | Calcule Seu Dinheiro</title>
-<meta name="description" content="Calcule o valor líquido do seu 13º salário, em uma ou duas parcelas, com desconto de INSS e IRRF pelas tabelas oficiais de 2026.">
-<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/decimo-terceiro.html">
+<title>Guias — Educação Financeira Prática | Calcule Seu Dinheiro</title>
+<meta name="description" content="Artigos práticos sobre dívidas, investimentos, trabalho e imóveis, cada um conectado a uma calculadora para você aplicar direto.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/guias/index.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Calcule Seu Dinheiro">
-<meta property="og:title" content="Calculadora de 13º Salário 2026 | Calcule Seu Dinheiro">
-<meta property="og:description" content="Calcule o valor líquido do seu 13º salário, em uma ou duas parcelas.">
-<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/decimo-terceiro.html">
+<meta property="og:title" content="Guias — Educação Financeira Prática">
+<meta property="og:description" content="Artigos práticos sobre dívidas, investimentos, trabalho e imóveis, conectados às calculadoras do site.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/guias/index.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Calculadora de 13º Salário 2026 | Calcule Seu Dinheiro">
-<meta name="twitter:description" content="Calcule o valor líquido do seu 13º salário, em uma ou duas parcelas.">
+<meta name="twitter:title" content="Guias — Educação Financeira Prática">
+<meta name="twitter:description" content="Artigos práticos sobre dívidas, investimentos, trabalho e imóveis, conectados às calculadoras do site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
@@ -86,7 +86,7 @@
       <a href="../guias/index.html">Guias</a>
       <a href="../sobre.html">Sobre</a>
     </nav>
-<button type="button" class="search-toggle" id="searchToggle" aria-label="Buscar no site">
+    <button type="button" class="search-toggle" id="searchToggle" aria-label="Buscar no site">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </button>
   </div>
@@ -113,85 +113,49 @@
 </div>
 
 <main class="wrap">
-  <h1>Calculadora de 13º Salário</h1>
-  <p class="subtitle">Valor líquido do 13º, considerando a 1ª e a 2ª parcela.</p>
+  <h1>Guias</h1>
+  <p class="subtitle">Educação financeira prática, sem enrolação — cada artigo conectado a uma calculadora pra você aplicar na hora.</p>
 
-  <div class="tape" id="calcTape" style="max-width:560px; margin:0 auto;">
-    <div class="input-grid">
-      <div class="field" style="grid-column:1/-1;">
-        <label for="salarioBruto">Salário bruto mensal (R$)</label>
-        <input type="number" id="salarioBruto" value="3000" inputmode="decimal">
-      </div>
-      <div class="field">
-        <label for="mesesTrabalhados">Meses trabalhados no ano</label>
-        <input type="number" id="mesesTrabalhados" value="12" min="1" max="12" inputmode="numeric">
-      </div>
-      <div class="field">
-        <label for="dependentes">Dependentes</label>
-        <input type="number" id="dependentes" value="0" min="0" inputmode="numeric">
-      </div>
-    </div>
-    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
-  </div>
-
-  <div style="height:24px;"></div>
-
-  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
-
-  <div class="data-table-wrap" style="max-width:900px; margin:0 auto;">
-    <table class="data-table">
-      <tbody>
-        <tr><td>13º salário bruto (integral)</td><td id="res13Bruto">—</td></tr>
-        <tr><td>1ª parcela (sem desconto, até 30/nov)</td><td id="res1aParcela">—</td></tr>
-        <tr><td>Desconto INSS (sobre o total)</td><td id="resINSS">—</td></tr>
-        <tr><td>Desconto IRRF (sobre o total)</td><td id="resIRRF">—</td></tr>
-        <tr><td>2ª parcela (com descontos, até 20/dez)</td><td id="res2aParcela">—</td></tr>
-      </tbody>
-      <tfoot>
-        <tr><td><span class="stamp-mark">TOTAL</span>Valor líquido a receber</td><td id="resLiquido">—</td></tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <div class="calc-layout">
-    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
-      <h2>Como o cálculo é feito</h2>
-      <p><code>13º bruto = (salário ÷ 12) × meses trabalhados</code></p>
-      <p>
-        Um mês só conta para o 13º se o trabalhador ficou 15 dias ou mais nele. Quem trabalhou o
-        ano inteiro recebe o 13º integral (equivalente a um salário).
-      </p>
-      <h2>1ª e 2ª parcela</h2>
-      <p>
-        A 1ª parcela (50% do valor bruto, sem descontos) deve ser paga até 30 de novembro. A 2ª
-        parcela é paga até 20 de dezembro e é onde incide o desconto de INSS e IRRF — calculado
-        sobre o <strong>valor total</strong> do 13º, não apenas sobre a segunda metade.
-      </p>
-      <h2>Diferença para o IRRF do salário mensal</h2>
-      <p>
-        O 13º tem tributação exclusiva na fonte: não se soma ao salário do mês para efeito de
-        IRRF, é calculado separadamente sobre o valor integral do 13º.
-      </p>
-    </article>
-  </div>
-
-  <div class="category-label">Outras calculadoras</div>
   <div class="calc-grid">
-    <a class="calc-card" href="rescisao.html">
-      <h3>Rescisão trabalhista</h3>
-      <p>Calcule aviso prévio, saldo de salário e multa do FGTS.</p>
+    <a class="calc-card" href="como-sair-do-rotativo.html">
+      <h3>Como sair do rotativo do cartão de crédito</h3>
+      <p>O rotativo é a linha de crédito mais cara do mercado brasileiro — entenda por que, e o caminho real pra sair dele.</p>
     </a>
-    <a class="calc-card" href="salario-liquido.html">
-      <h3>Calculadora de Salário Líquido</h3>
-      <p>Do bruto ao líquido, com as tabelas oficiais de INSS e IRRF de 2026.</p>
+    <a class="calc-card" href="reserva-de-emergencia-guia-completo.html">
+      <h3>Reserva de emergência: guia completo</h3>
+      <p>Quanto guardar, onde guardar, e como chegar lá sem sofrimento.</p>
     </a>
-    <a class="calc-card" href="ferias.html">
-      <h3>Calculadora de Férias</h3>
-      <p>Calcule o valor líquido das suas férias, com ou sem venda de 1/3.</p>
+    <a class="calc-card" href="juros-compostos-a-favor.html">
+      <h3>Juros compostos a seu favor</h3>
+      <p>Por que começar cedo importa mais do que investir um valor alto.</p>
     </a>
-    <a class="calc-card" href="fgts-saque-aniversario.html">
-      <h3>FGTS: Saque-Aniversário ou Rescisão?</h3>
-      <p>Compare as duas modalidades de saque do FGTS.</p>
+    <a class="calc-card" href="sac-ou-price-qual-escolher.html">
+      <h3>SAC ou Price: qual sistema de amortização escolher</h3>
+      <p>As diferenças reais entre os dois sistemas mais usados no financiamento imobiliário.</p>
+    </a>
+    <a class="calc-card" href="imposto-de-renda-aposentadoria-investimentos.html">
+      <h3>Imposto de Renda na aposentadoria e nos investimentos</h3>
+      <p>Como a tributação muda dependendo de onde e por quanto tempo você deixa seu dinheiro.</p>
+    </a>
+    <a class="calc-card" href="vale-a-pena-o-consorcio.html">
+      <h3>Vale a pena o consórcio?</h3>
+      <p>O que normalmente não aparece na simulação antes de você assinar.</p>
+    </a>
+    <a class="calc-card" href="como-calcular-rescisao-trabalhista.html">
+      <h3>Como calcular a rescisão trabalhista</h3>
+      <p>Um guia passo a passo de cada verba, para conferir se as contas da empresa batem.</p>
+    </a>
+    <a class="calc-card" href="mei-das-quando-migrar-para-me.html">
+      <h3>MEI: como funciona o DAS e quando migrar para ME</h3>
+      <p>Entenda a composição da guia mensal e os sinais de que é hora de crescer.</p>
+    </a>
+    <a class="calc-card" href="alugar-ou-financiar-imovel-como-decidir.html">
+      <h3>Alugar ou financiar um imóvel: como decidir</h3>
+      <p>A metodologia por trás de uma das decisões financeiras mais caras da vida de alguém.</p>
+    </a>
+    <a class="calc-card" href="valor-hora-freelancer-autonomo.html">
+      <h3>Quanto cobrar por hora como freelancer</h3>
+      <p>Por que dividir o salário desejado pelas horas trabalhadas está errado.</p>
     </a>
   </div>
 </main>
@@ -204,12 +168,10 @@
       <a href="../termos-de-uso.html">Termos de Uso</a>
       <a href="../privacidade.html">Política de Privacidade</a>
     </div>
-    <p>Cálculo estimado com caráter educativo, baseado nas tabelas oficiais de 2026.</p>
+    <p>Conteúdo educativo, não constitui recomendação de investimento ou consultoria personalizada.</p>
   </div>
 </footer>
 
-<script src="../assets/js/br-tabelas-2026.js"></script>
-<script src="../assets/js/calc-decimo-terceiro.js"></script>
 <script>const SITE_ROOT_PREFIX = '../';</script>
 <script src="../assets/js/search-index.js"></script>
 <script src="../assets/js/site-search.js"></script>

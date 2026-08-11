@@ -23,6 +23,17 @@ const SITE_SEARCH_INDEX = [
   { title: 'Comprar ou Assinar um Carro?', desc: 'Compare 4 formas de ter um carro por 3 anos.', url: 'calculadoras/comprar-vs-assinar-carro.html' },
   { title: 'Alugar ou Financiar um Imóvel?', desc: 'Compare o patrimônio final entre alugar e investir, ou financiar.', url: 'calculadoras/alugar-vs-financiar.html' },
 
+  { title: 'Calculadora de Correção Monetária', desc: 'Atualize um valor pelo IPCA, INPC ou IGP-M entre duas datas.', url: 'calculadoras/correcao-monetaria.html' },
+  { title: 'Preço Justo de Ações (Graham)', desc: 'Estime um teto de preço a partir do LPA e do VPA.', url: 'calculadoras/preco-justo-acoes.html' },
+  { title: 'Dividend Yield', desc: 'Calcule o rendimento em dividendos de uma ação.', url: 'calculadoras/dividend-yield.html' },
+  { title: 'IR sobre Ações', desc: 'Imposto devido em swing trade e day trade, com isenção de R$20 mil.', url: 'calculadoras/ir-sobre-acoes.html' },
+  { title: 'Rachar Conta', desc: 'Divida a conta entre amigos, com taxa de serviço incluída.', url: 'calculadoras/rachar-conta.html' },
+  { title: 'Antecipação de Recebíveis', desc: 'Quanto custa antecipar uma venda no cartão de crédito.', url: 'calculadoras/antecipacao-recebiveis.html' },
+  { title: 'Trocar de Banco', desc: 'Veja quanto você economiza mudando de tarifas bancárias.', url: 'calculadoras/trocar-de-banco.html' },
+  { title: 'Aposentadoria pelo INSS', desc: 'Idade mínima ou regra de pontos — quanto tempo falta.', url: 'calculadoras/aposentadoria-inss.html' },
+  { title: 'Empréstimo Consignado', desc: 'Simule a parcela e veja se cabe na margem consignável.', url: 'calculadoras/emprestimo-consignado.html' },
+  { title: 'VPL e TIR', desc: 'Avalie a viabilidade de um investimento ou projeto.', url: 'calculadoras/vpl-tir.html' },
+
   { title: 'Salário Líquido de R$ 1.621 (mínimo)', desc: 'Quanto sobra do salário mínimo de 2026.', url: 'calculadoras/salario-liquido/1621.html' },
   { title: 'Salário Líquido de R$ 2.000', desc: 'Quanto sobra de um salário bruto de R$ 2.000.', url: 'calculadoras/salario-liquido/2000.html' },
   { title: 'Salário Líquido de R$ 3.000', desc: 'Quanto sobra de um salário bruto de R$ 3.000.', url: 'calculadoras/salario-liquido/3000.html' },

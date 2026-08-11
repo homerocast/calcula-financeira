@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Antecipação de Recebíveis do Cartão | Calcule Seu Dinheiro</title>
+<meta name="description" content="Calcule o custo de antecipar o recebimento de uma venda no cartão de crédito.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/antecipacao-recebiveis.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de Antecipação de Recebíveis do Cartão">
+<meta property="og:description" content="Calcule o custo de antecipar o recebimento de uma venda no cartão de crédito.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/antecipacao-recebiveis.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de Antecipação de Recebíveis do Cartão">
+<meta name="twitter:description" content="Calcule o custo de antecipar o recebimento de uma venda no cartão de crédito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <div class="nav-dropdown">
+        <button type="button" class="dropdown-trigger">Calculadoras</button>
+        <div class="dropdown-panel">
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Juros e investimentos</div>
+            <a href="juros-compostos.html">Juros Compostos</a>
+            <a href="juros-simples.html">Juros Simples</a>
+            <a href="cdb-tesouro-poupanca.html">CDB vs Tesouro vs Poupança</a>
+            <a href="conversor-moedas.html">Conversor de Moedas</a>
+            <a href="correcao-monetaria.html">Correção Monetária</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Planejamento</div>
+            <a href="reserva-emergencia.html">Reserva de Emergência</a>
+            <a href="primeiro-milhao.html">Primeiro Milhão</a>
+            <a href="simulador-aposentadoria.html">Aposentadoria (privada)</a>
+            <a href="aposentadoria-inss.html">Aposentadoria INSS</a>
+            <a href="juros-rotativo.html">Custo do Rotativo</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Compras e financiamento</div>
+            <a href="comprar-vs-assinar-carro.html">Carro: Comprar ou Assinar</a>
+            <a href="alugar-vs-financiar.html">Imóvel: Alugar ou Financiar</a>
+            <a href="price-sac.html">Price vs SAC</a>
+            <a href="ipva.html">IPVA por Estado</a>
+            <a href="financiamento-vs-consorcio.html">Financiamento vs Consórcio</a>
+            <a href="emprestimo-consignado.html">Empréstimo Consignado</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Trabalhista</div>
+            <a href="salario-liquido.html">Salário Líquido</a>
+            <a href="rescisao.html">Rescisão</a>
+            <a href="ferias.html">Férias</a>
+            <a href="decimo-terceiro.html">13º Salário</a>
+            <a href="fgts-saque-aniversario.html">FGTS Saque-Aniversário</a>
+            <a href="restituicao-irpf.html">Restituição IRPF</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Investidor</div>
+            <a href="preco-justo-acoes.html">Preço Justo de Ações</a>
+            <a href="dividend-yield.html">Dividend Yield</a>
+            <a href="ir-sobre-acoes.html">IR sobre Ações</a>
+            <a href="vpl-tir.html">VPL e TIR</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">MEI e do dia a dia</div>
+            <a href="das-mei.html">DAS-MEI</a>
+            <a href="valor-hora.html">Valor-Hora</a>
+            <a href="rachar-conta.html">Rachar Conta</a>
+            <a href="antecipacao-recebiveis.html">Antecipação de Recebíveis</a>
+            <a href="trocar-de-banco.html">Trocar de Banco</a>
+          </div>
+          <a class="dropdown-viewall" href="../index.html#calculadoras">Ver todas as calculadoras →</a>
+        </div>
+      </div>
+      <a href="../comparadores.html">Comparadores</a>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../guias/index.html">Guias</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+    <button type="button" class="search-toggle" id="searchToggle" aria-label="Buscar no site">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="search-panel" id="searchPanel">
+  <div class="wrap">
+    <input type="text" id="searchInput" placeholder="Buscar calculadoras, guias, indicadores...">
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<div class="ticker-bar" id="tickerBar">
+  <div class="wrap ticker-scroll">
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemSelic"><span class="ticker-label">SELIC</span><span class="ticker-value" id="tickerSelic">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemCDI"><span class="ticker-label">CDI</span><span class="ticker-value" id="tickerCDI">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemIPCA"><span class="ticker-label">IPCA</span><span class="ticker-value" id="tickerIPCA">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemDolar"><span class="ticker-label">DÓLAR</span><span class="ticker-value" id="tickerDolar">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemIbov"><span class="ticker-label">IBOVESPA</span><span class="ticker-value" id="tickerIbov">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemSP500"><span class="ticker-label">S&amp;P 500</span><span class="ticker-value" id="tickerSP500">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemDow"><span class="ticker-label">DOW JONES</span><span class="ticker-value" id="tickerDow">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemNasdaq"><span class="ticker-label">NASDAQ</span><span class="ticker-value" id="tickerNasdaq">…</span></a>
+  </div>
+</div>
+
+<main class="wrap">
+  <h1>Calculadora de Antecipação de Recebíveis</h1>
+  <p class="subtitle">Quanto custa receber hoje uma venda no cartão que só cairia daqui a alguns dias.</p>
+
+  <div class="tape" id="calcTape" style="max-width:560px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field">
+        <label for="valorVenda">Valor da venda a receber (R$)</label>
+        <input type="number" id="valorVenda" value="5000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="prazoOriginal">Prazo original de recebimento (dias)</label>
+        <input type="number" id="prazoOriginal" value="30" inputmode="numeric">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="taxaAntecipacao">Taxa de antecipação (% ao mês)</label>
+        <input type="number" id="taxaAntecipacao" value="2.5" step="0.1" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="stat-grid" style="max-width:700px; margin:0 auto;">
+    <div class="stat-card">
+      <div class="stat-label">Custo da antecipação</div>
+      <div class="stat-value" id="resCusto">—</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">Valor líquido recebido hoje</div>
+      <div class="stat-value" id="resLiquido">—</div>
+    </div>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>Como o cálculo é feito</h2>
+      <p><code>Custo = Valor × Taxa mensal × (Prazo ÷ 30)</code></p>
+      <p>
+        A antecipação de recebíveis é, na prática, um empréstimo de curtíssimo prazo: a máquina de
+        cartão ou o banco adianta o dinheiro que só cairia na sua conta dias ou meses depois,
+        cobrando uma taxa por isso — proporcional ao tempo antecipado.
+      </p>
+      <h2>Quando vale a pena</h2>
+      <p>
+        Antecipar recebíveis costuma valer a pena quando o custo da antecipação é menor do que o
+        custo de outra forma de capital de giro (como um empréstimo ou o rotativo do cartão da sua
+        empresa), ou quando o dinheiro em caixa hoje permite aproveitar uma oportunidade que vale
+        mais do que a taxa cobrada — um desconto grande de fornecedor, por exemplo.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="das-mei.html">
+      <h3>Calculadora de DAS-MEI</h3>
+      <p>Valor mensal do DAS conforme sua atividade.</p>
+    </a>
+    <a class="calc-card" href="valor-hora.html">
+      <h3>Calculadora de Valor-Hora</h3>
+      <p>Descubra quanto cobrar por hora como autônomo ou freelancer.</p>
+    </a>
+    <a class="calc-card" href="rachar-conta.html">
+      <h3>Rachar Conta</h3>
+      <p>Divida a conta entre amigos, com taxa de serviço incluída.</p>
+    </a>
+    <a class="calc-card" href="trocar-de-banco.html">
+      <h3>Trocar de Banco</h3>
+      <p>Veja quanto você economiza mudando de tarifas.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Cálculo educativo. Taxas reais variam por adquirente, bandeira e relacionamento comercial.</p>
+  </div>
+</footer>
+
+<script>const SITE_ROOT_PREFIX = '../';</script>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/site-search.js"></script>
+<script src="../assets/js/calc-antecipacao-recebiveis.js"></script>
+<script src="../assets/js/nav-menu.js"></script>
+<script src="../assets/js/ticker-indicadores.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>

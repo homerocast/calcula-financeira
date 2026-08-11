@@ -486,16 +486,14 @@ table.data-table tfoot .stamp-mark { margin-right: 6px; }
 }
 .ticker-scroll {
   display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  flex-wrap: wrap;
+  row-gap: 2px;
 }
-.ticker-scroll::-webkit-scrollbar { display: none; }
 .ticker-item {
   display: flex;
   align-items: baseline;
-  gap: 7px;
-  padding: 9px 16px;
+  gap: 6px;
+  padding: 7px 12px;
   border-right: 1px solid var(--line);
   white-space: nowrap;
   text-decoration: none;
@@ -504,19 +502,24 @@ table.data-table tfoot .stamp-mark { margin-right: 6px; }
 .ticker-item:last-child { border-right: none; }
 .ticker-label {
   font-family: var(--font-body);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 700;
   color: var(--ink-soft);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 .ticker-value {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--ink);
 }
 .ticker-item:hover .ticker-value { color: var(--brass); }
 .ticker-item.hidden { display: none; }
+@media (max-width: 640px) {
+  .ticker-item { padding: 6px 9px; }
+  .ticker-label { font-size: 0.6rem; }
+  .ticker-value { font-size: 0.74rem; }
+}
 
 /* ---------- Busca ---------- */
 .search-toggle {

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de VPL e TIR | Calcule Seu Dinheiro</title>
+<meta name="description" content="Calcule o Valor Presente Líquido (VPL) e a Taxa Interna de Retorno (TIR) de um investimento ou projeto, com até 5 anos de fluxo de caixa.">
+<link rel="canonical" href="https://calculeseudinheiro.com.br/calculadoras/vpl-tir.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Calcule Seu Dinheiro">
+<meta property="og:title" content="Calculadora de VPL e TIR">
+<meta property="og:description" content="Calcule o Valor Presente Líquido (VPL) e a Taxa Interna de Retorno (TIR) de um investimento ou projeto, com até 5 anos de fluxo de caixa.">
+<meta property="og:url" content="https://calculeseudinheiro.com.br/calculadoras/vpl-tir.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora de VPL e TIR">
+<meta name="twitter:description" content="Calcule o Valor Presente Líquido (VPL) e a Taxa Interna de Retorno (TIR) de um investimento ou projeto, com até 5 anos de fluxo de caixa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="calc-page">
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><a href="../index.html" style="text-decoration:none; color:inherit;">Calcule Seu <span>Dinheiro</span></a></div>
+    <nav class="site">
+      <div class="nav-dropdown">
+        <button type="button" class="dropdown-trigger">Calculadoras</button>
+        <div class="dropdown-panel">
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Juros e investimentos</div>
+            <a href="juros-compostos.html">Juros Compostos</a>
+            <a href="juros-simples.html">Juros Simples</a>
+            <a href="cdb-tesouro-poupanca.html">CDB vs Tesouro vs Poupança</a>
+            <a href="conversor-moedas.html">Conversor de Moedas</a>
+            <a href="correcao-monetaria.html">Correção Monetária</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Planejamento</div>
+            <a href="reserva-emergencia.html">Reserva de Emergência</a>
+            <a href="primeiro-milhao.html">Primeiro Milhão</a>
+            <a href="simulador-aposentadoria.html">Aposentadoria (privada)</a>
+            <a href="aposentadoria-inss.html">Aposentadoria INSS</a>
+            <a href="juros-rotativo.html">Custo do Rotativo</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Compras e financiamento</div>
+            <a href="comprar-vs-assinar-carro.html">Carro: Comprar ou Assinar</a>
+            <a href="alugar-vs-financiar.html">Imóvel: Alugar ou Financiar</a>
+            <a href="price-sac.html">Price vs SAC</a>
+            <a href="ipva.html">IPVA por Estado</a>
+            <a href="financiamento-vs-consorcio.html">Financiamento vs Consórcio</a>
+            <a href="emprestimo-consignado.html">Empréstimo Consignado</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Trabalhista</div>
+            <a href="salario-liquido.html">Salário Líquido</a>
+            <a href="rescisao.html">Rescisão</a>
+            <a href="ferias.html">Férias</a>
+            <a href="decimo-terceiro.html">13º Salário</a>
+            <a href="fgts-saque-aniversario.html">FGTS Saque-Aniversário</a>
+            <a href="restituicao-irpf.html">Restituição IRPF</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">Investidor</div>
+            <a href="preco-justo-acoes.html">Preço Justo de Ações</a>
+            <a href="dividend-yield.html">Dividend Yield</a>
+            <a href="ir-sobre-acoes.html">IR sobre Ações</a>
+            <a href="vpl-tir.html">VPL e TIR</a>
+          </div>
+          <div class="dropdown-col">
+            <div class="dropdown-col-title">MEI e do dia a dia</div>
+            <a href="das-mei.html">DAS-MEI</a>
+            <a href="valor-hora.html">Valor-Hora</a>
+            <a href="rachar-conta.html">Rachar Conta</a>
+            <a href="antecipacao-recebiveis.html">Antecipação de Recebíveis</a>
+            <a href="trocar-de-banco.html">Trocar de Banco</a>
+          </div>
+          <a class="dropdown-viewall" href="../index.html#calculadoras">Ver todas as calculadoras →</a>
+        </div>
+      </div>
+      <a href="../comparadores.html">Comparadores</a>
+      <a href="../indicadores-economicos.html">Indicadores</a>
+      <a href="../guias/index.html">Guias</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+    <button type="button" class="search-toggle" id="searchToggle" aria-label="Buscar no site">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="search-panel" id="searchPanel">
+  <div class="wrap">
+    <input type="text" id="searchInput" placeholder="Buscar calculadoras, guias, indicadores...">
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<div class="ticker-bar" id="tickerBar">
+  <div class="wrap ticker-scroll">
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemSelic"><span class="ticker-label">SELIC</span><span class="ticker-value" id="tickerSelic">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemCDI"><span class="ticker-label">CDI</span><span class="ticker-value" id="tickerCDI">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemIPCA"><span class="ticker-label">IPCA</span><span class="ticker-value" id="tickerIPCA">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemDolar"><span class="ticker-label">DÓLAR</span><span class="ticker-value" id="tickerDolar">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemIbov"><span class="ticker-label">IBOVESPA</span><span class="ticker-value" id="tickerIbov">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemSP500"><span class="ticker-label">S&amp;P 500</span><span class="ticker-value" id="tickerSP500">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemDow"><span class="ticker-label">DOW JONES</span><span class="ticker-value" id="tickerDow">…</span></a>
+    <a href="../indicadores-economicos.html" class="ticker-item" id="itemNasdaq"><span class="ticker-label">NASDAQ</span><span class="ticker-value" id="tickerNasdaq">…</span></a>
+  </div>
+</div>
+
+<main class="wrap">
+  <h1>Calculadora de VPL e TIR</h1>
+  <p class="subtitle">Avalie se um investimento ou projeto vale a pena, com Valor Presente Líquido e Taxa Interna de Retorno.</p>
+
+  <div class="tape" id="calcTape" style="max-width:640px; margin:0 auto;">
+    <div class="input-grid">
+      <div class="field" style="grid-column:1/-1;">
+        <label for="investimentoInicial">Investimento inicial (R$, saída de caixa)</label>
+        <input type="number" id="investimentoInicial" value="50000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="fluxo1">Retorno no ano 1 (R$)</label>
+        <input type="number" id="fluxo1" value="15000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="fluxo2">Retorno no ano 2 (R$)</label>
+        <input type="number" id="fluxo2" value="18000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="fluxo3">Retorno no ano 3 (R$)</label>
+        <input type="number" id="fluxo3" value="18000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="fluxo4">Retorno no ano 4 (R$)</label>
+        <input type="number" id="fluxo4" value="15000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="fluxo5">Retorno no ano 5 (R$)</label>
+        <input type="number" id="fluxo5" value="10000" inputmode="decimal">
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        <label for="taxaDesconto">Taxa de desconto exigida (% ao ano)</label>
+        <input type="number" id="taxaDesconto" value="12" step="0.1" inputmode="decimal">
+      </div>
+    </div>
+    <button type="button" class="btn-pill-primary" id="btnCalcular">Calcular</button>
+  </div>
+
+  <div style="height:24px;"></div>
+
+  <div id="resultadoNarrativo" class="result-narrative" style="max-width:900px; margin:0 auto 24px;"></div>
+
+  <div class="stat-grid" style="max-width:700px; margin:0 auto;">
+    <div class="stat-card destaque">
+      <div class="stat-label">VPL (Valor Presente Líquido)</div>
+      <div class="stat-value" id="resVPL">—</div>
+    </div>
+    <div class="stat-card destaque">
+      <div class="stat-label">TIR (Taxa Interna de Retorno)</div>
+      <div class="stat-value" id="resTIR">—</div>
+    </div>
+  </div>
+
+  <div class="calc-layout">
+    <article class="explainer" style="grid-column: 1 / -1; max-width:760px; margin:0 auto;">
+      <h2>VPL — Valor Presente Líquido</h2>
+      <p><code>VPL = −Investimento + Σ [Fluxo do ano ÷ (1 + taxa)ⁿ]</code></p>
+      <p>
+        O VPL traz todos os retornos futuros para "valor de hoje", descontados pela taxa mínima que
+        você exige do investimento, e subtrai o investimento inicial. <strong>VPL positivo</strong>
+        significa que o projeto rende mais do que a taxa exigida — vale a pena.
+        <strong>VPL negativo</strong> significa que não compensa nessa taxa.
+      </p>
+      <h2>TIR — Taxa Interna de Retorno</h2>
+      <p>
+        A TIR é a taxa de desconto que faz o VPL ser exatamente zero — na prática, é "a
+        rentabilidade real" que o projeto entrega. Se a TIR for maior que a taxa de desconto
+        exigida, o VPL será positivo (e vice-versa) — os dois indicadores costumam apontar na
+        mesma direção.
+      </p>
+      <h2>Preencha zero nos anos que não usar</h2>
+      <p>
+        Se o seu projeto tem menos de 5 anos de fluxo de caixa, deixe os campos dos anos seguintes
+        em zero — o cálculo ignora automaticamente os períodos sem retorno.
+      </p>
+    </article>
+  </div>
+
+  <div class="category-label">Outras calculadoras</div>
+  <div class="calc-grid">
+    <a class="calc-card" href="preco-justo-acoes.html">
+      <h3>Preço Justo de Ações</h3>
+      <p>Fórmula de Graham para estimar um teto de preço.</p>
+    </a>
+    <a class="calc-card" href="dividend-yield.html">
+      <h3>Dividend Yield</h3>
+      <p>Calcule o rendimento em dividendos de uma ação.</p>
+    </a>
+    <a class="calc-card" href="ir-sobre-acoes.html">
+      <h3>IR sobre Ações</h3>
+      <p>Calcule o imposto devido em swing trade e day trade.</p>
+    </a>
+    <a class="calc-card" href="juros-compostos.html">
+      <h3>Calculadora de Juros Compostos</h3>
+      <p>Simule o crescimento de um investimento com aportes mensais.</p>
+    </a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="../sobre.html">Sobre</a>
+      <a href="../contato.html">Contato</a>
+      <a href="../termos-de-uso.html">Termos de Uso</a>
+      <a href="../privacidade.html">Política de Privacidade</a>
+    </div>
+    <p>Cálculo educativo. Não constitui recomendação de investimento — projeções futuras envolvem incerteza real.</p>
+  </div>
+</footer>
+
+<script>const SITE_ROOT_PREFIX = '../';</script>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/site-search.js"></script>
+<script src="../assets/js/calc-vpl-tir.js"></script>
+<script src="../assets/js/nav-menu.js"></script>
+<script src="../assets/js/ticker-indicadores.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/cookie-consent.js"></script>
+</body>
+</html>
