@@ -34,6 +34,19 @@ const SITE_SEARCH_INDEX = [
   { title: 'Empréstimo Consignado', desc: 'Simule a parcela e veja se cabe na margem consignável.', url: 'calculadoras/emprestimo-consignado.html' },
   { title: 'VPL e TIR', desc: 'Avalie a viabilidade de um investimento ou projeto.', url: 'calculadoras/vpl-tir.html' },
 
+  { title: 'Consignado vs Empréstimo Pessoal', desc: 'Compare a parcela e o custo total das duas modalidades.', url: 'calculadoras/consignado-vs-emprestimo-pessoal.html' },
+  { title: 'Investir ou Quitar Dívida?', desc: 'Compare amortizar o financiamento com investir a sobra.', url: 'calculadoras/investir-ou-quitar-divida.html' },
+  { title: 'CLT vs PJ vs MEI', desc: 'Quanto sobra líquido em cada regime, para o mesmo valor.', url: 'calculadoras/clt-vs-pj-vs-mei.html' },
+
+  { title: 'IPVA em São Paulo 2026', desc: 'Alíquota e exemplos calculados para SP.', url: 'calculadoras/ipva/sao-paulo.html' },
+  { title: 'IPVA em Minas Gerais 2026', desc: 'Alíquota e exemplos calculados para MG.', url: 'calculadoras/ipva/minas-gerais.html' },
+  { title: 'IPVA no Rio de Janeiro 2026', desc: 'Alíquota e exemplos calculados para RJ.', url: 'calculadoras/ipva/rio-de-janeiro.html' },
+  { title: 'IPVA no Rio Grande do Sul 2026', desc: 'Alíquota e exemplos calculados para RS.', url: 'calculadoras/ipva/rio-grande-do-sul.html' },
+  { title: 'IPVA no Paraná 2026', desc: 'Alíquota e exemplos calculados para PR.', url: 'calculadoras/ipva/parana.html' },
+  { title: 'IPVA na Bahia 2026', desc: 'Alíquota e exemplos calculados para BA.', url: 'calculadoras/ipva/bahia.html' },
+  { title: 'IPVA em Santa Catarina 2026', desc: 'Alíquota e exemplos calculados para SC.', url: 'calculadoras/ipva/santa-catarina.html' },
+  { title: 'IPVA no Distrito Federal 2026', desc: 'Alíquota e exemplos calculados para DF.', url: 'calculadoras/ipva/distrito-federal.html' },
+
   { title: 'Salário Líquido de R$ 1.621 (mínimo)', desc: 'Quanto sobra do salário mínimo de 2026.', url: 'calculadoras/salario-liquido/1621.html' },
   { title: 'Salário Líquido de R$ 2.000', desc: 'Quanto sobra de um salário bruto de R$ 2.000.', url: 'calculadoras/salario-liquido/2000.html' },
   { title: 'Salário Líquido de R$ 3.000', desc: 'Quanto sobra de um salário bruto de R$ 3.000.', url: 'calculadoras/salario-liquido/3000.html' },
@@ -58,5 +71,10 @@ const SITE_SEARCH_INDEX = [
   { title: 'Como calcular a rescisão trabalhista', desc: 'Guia passo a passo de cada verba rescisória.', url: 'guias/como-calcular-rescisao-trabalhista.html' },
   { title: 'MEI: como funciona o DAS e quando migrar para ME', desc: 'Entenda o limite de faturamento e os próximos passos.', url: 'guias/mei-das-quando-migrar-para-me.html' },
   { title: 'Alugar ou financiar um imóvel: como decidir', desc: 'A metodologia por trás da decisão mais cara da sua vida.', url: 'guias/alugar-ou-financiar-imovel-como-decidir.html' },
-  { title: 'Quanto cobrar por hora como freelancer', desc: 'Por que o "salário dividido por horas" está errado.', url: 'guias/valor-hora-freelancer-autonomo.html' }
+  { title: 'Quanto cobrar por hora como freelancer', desc: 'Por que o "salário dividido por horas" está errado.', url: 'guias/valor-hora-freelancer-autonomo.html' },
+  { title: 'Financiamento x Consórcio de Imóvel', desc: 'Qual vale mais a pena para comprar um imóvel.', url: 'guias/financiamento-x-consorcio-imovel.html' },
+  { title: 'Alugar ou Financiar: como decidir na prática', desc: 'Um roteiro direto para comparar as duas opções.', url: 'guias/alugar-ou-financiar-como-decidir-na-pratica.html' },
+  { title: 'Como funciona o IOF em 2026', desc: 'Guia completo sobre o imposto que incide sobre operações financeiras.', url: 'guias/como-funciona-iof-2026.html' },
+  { title: 'Reforma Tributária (CBS/IBS) para pessoa física', desc: 'O que muda no seu bolso a partir de 2027.', url: 'guias/reforma-tributaria-cbs-ibs-pessoa-fisica.html' },
+  { title: 'CLT x PJ x MEI: qual regime rende mais', desc: 'Comparando o líquido real de cada regime.', url: 'guias/clt-x-pj-x-mei-qual-regime-rende-mais.html' }
 ];
