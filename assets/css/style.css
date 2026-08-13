@@ -132,7 +132,7 @@ body.page-navy header.site {
   gap: 36px;
 }
 @media (min-width: 760px) {
-  .hero-top { grid-template-columns: 1fr; max-width: 60ch; }
+  .hero-top { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
 }
 body.page-navy .category-label {
   color: var(--brass);
@@ -611,6 +611,50 @@ table.data-table tfoot .stamp-mark { margin-right: 6px; }
   color: var(--ink);
 }
 .calc-card.trending { padding-top: 40px; }
+
+/* ---------- Widget compacto "Mais usadas" (hero) ---------- */
+.mini-trending {
+  background: var(--paper-raised);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 18px 20px;
+}
+.mini-trending-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.mini-trend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-decoration: none;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.mini-trend-item:last-of-type { border-bottom: none; }
+.mini-trend-item:hover { color: var(--brass); }
+.mini-trend-item .mini-trend-badge {
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.mini-trending-viewall {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--brass);
+  text-decoration: none;
+}
+.mini-trending-viewall:hover { color: var(--ink); }
 
 .category-label {
   display: inline-block;
